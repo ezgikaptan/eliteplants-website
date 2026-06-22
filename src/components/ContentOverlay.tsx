@@ -737,10 +737,10 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
           </button>
           
           <div style={{ marginBottom: '24px' }}>
-            <span className="section-tag">Fotoğraf Galerisi</span>
-            <h3 className="modal-title" style={{ fontSize: '1.8rem', marginBottom: '8px' }}>Ekolojik Bahçemiz</h3>
+            <span className="section-tag">{t.galleryTitle}</span>
+            <h3 className="modal-title" style={{ fontSize: '1.8rem', marginBottom: '8px' }}>{t.gallerySub}</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', margin: 0 }}>
-              Bahçemizden çekilmiş, fidanlarımızın büyüme aşamalarını ve ekolojik tarım sahasını gösteren tüm fotoğraflar ({gardenImages.length} Görsel).
+              {t.galleryDesc.replace('{count}', String(gardenImages.length))}
             </p>
           </div>
 
