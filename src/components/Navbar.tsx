@@ -42,7 +42,9 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
       es: 'Español',
       fr: 'Français',
       de: 'Deutsch',
-      ru: 'Русский'
+      ru: 'Русский',
+      zh: '简体中文',
+      ja: '日本語'
     };
     return labels[lang];
   };
@@ -100,7 +102,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
               <span>{language.toUpperCase()}</span>
             </button>
             <div className="lang-dropdown">
-              {(['tr', 'en', 'es', 'fr', 'de', 'ru'] as Language[]).map((lang) => (
+              {(['tr', 'en', 'es', 'fr', 'de', 'ru', 'zh', 'ja'] as Language[]).map((lang) => (
                 <button
                   key={lang}
                   onClick={() => setLanguage(lang)}
