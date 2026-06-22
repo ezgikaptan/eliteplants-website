@@ -51,6 +51,7 @@ export interface TranslationDict {
   galleryTitle: string;
   gallerySub: string;
   galleryDesc: string;
+  galleryViewAll: string;
 
   // Detail Modal
   modalOrigin: string;
@@ -175,6 +176,7 @@ export const translations: Record<Language, TranslationDict> = {
     galleryTitle: 'Fotoğraf Galerisi',
     gallerySub: 'Ekolojik Bahçemiz',
     galleryDesc: 'Bahçemizden çekilmiş, fidanlarımızın büyüme aşamalarını ve ekolojik tarım sahasını gösteren tüm fotoğraflar ({count} Görsel).',
+    galleryViewAll: 'Tüm Fotoğrafları Gör',
     modalOrigin: 'Köken / Islahçı',
     modalGrowth: 'Büyüme Formu',
     modalFruitSize: 'Meyve Boyutu',
@@ -292,6 +294,7 @@ export const translations: Record<Language, TranslationDict> = {
     galleryTitle: 'Photo Gallery',
     gallerySub: 'Our Ecological Garden',
     galleryDesc: 'All photos taken from our garden showing the growth stages of our saplings and the organic farming site ({count} images).',
+    galleryViewAll: 'View All Photos',
     modalOrigin: 'Origin / Breeder',
     modalGrowth: 'Growth Habit',
     modalFruitSize: 'Fruit Size',
@@ -409,6 +412,7 @@ export const translations: Record<Language, TranslationDict> = {
     galleryTitle: 'Galería de Fotos',
     gallerySub: 'Nuestro Jardín Ecológico',
     galleryDesc: 'Todas las fotos tomadas de nuestro jardín que muestran las etapas de crecimiento de nuestras plantas y el sitio de agricultura orgánica ({count} imágenes).',
+    galleryViewAll: 'Ver Todas las Fotos',
     modalOrigin: 'Origen / Obtentor',
     modalGrowth: 'Hábito de Crecimiento',
     modalFruitSize: 'Tamaño del Fruto',
@@ -526,6 +530,7 @@ export const translations: Record<Language, TranslationDict> = {
     galleryTitle: 'Galerie Photos',
     gallerySub: 'Notre Verger Écologique',
     galleryDesc: 'Toutes les photos de notre verger montrant les étapes de croissance de nos plants et le site d\'agriculture biologique ({count} images).',
+    galleryViewAll: 'Voir Toutes les Photos',
     modalOrigin: 'Origine / Obtenteur',
     modalGrowth: 'Port de la Plante',
     modalFruitSize: 'Calibre du Fruit',
@@ -643,6 +648,7 @@ export const translations: Record<Language, TranslationDict> = {
     galleryTitle: 'Fotogalerie',
     gallerySub: 'Unser Ökologischer Garten',
     galleryDesc: 'Alle Fotos aus unserem Garten, die die Wachstumsstadien unserer Pflanzen und die Fläche für biologischen Anbau zeigen ({count} Bilder).',
+    galleryViewAll: 'Alle Fotos anzeigen',
     modalOrigin: 'Herkunft / Züchter',
     modalGrowth: 'Wuchsform',
     modalFruitSize: 'Fruchtgröße',
@@ -760,6 +766,7 @@ export const translations: Record<Language, TranslationDict> = {
     galleryTitle: 'Фотогалерея',
     gallerySub: 'Наш Экологический Сад',
     galleryDesc: 'Все фотографии из нашего сада, показывающие этапы роста саженцев и органическое производство ({count} фото).',
+    galleryViewAll: 'Посмотреть все фото',
     modalOrigin: 'Происхождение / Селекционер',
     modalGrowth: 'Характер роста',
     modalFruitSize: 'Размер ягоды',
@@ -877,6 +884,7 @@ export const translations: Record<Language, TranslationDict> = {
     galleryTitle: '照片画廊',
     gallerySub: '我们的生态果园',
     galleryDesc: '从我们的果园拍摄的所有照片，展示了我们幼苗的生长阶段和有机农业场地（共 {count} 张图片）。',
+    galleryViewAll: '查看所有照片',
     modalOrigin: '来源 / 育种者',
     modalGrowth: '生长形态',
     modalFruitSize: '果实大小',
@@ -994,6 +1002,7 @@ export const translations: Record<Language, TranslationDict> = {
     galleryTitle: 'フォトギャラリー',
     gallerySub: '私たちの生態系農園',
     galleryDesc: '苗木の成長段階と有機農業エリアを示す、農園から撮影されたすべての写真（全 {count} 枚）。',
+    galleryViewAll: 'すべての写真を見る',
     modalOrigin: '原産地 / 育成者',
     modalGrowth: '樹形・生育特性',
     modalFruitSize: '果実サイズ',
@@ -1111,6 +1120,7 @@ export const translations: Record<Language, TranslationDict> = {
     galleryTitle: 'معرض الصور',
     gallerySub: 'حديقتنا البيئية',
     galleryDesc: 'جميع الصور الملتقطة من حديقتنا والتي توضح مراحل نمو شتلاتنا وموقع الزراعة العضوية (إجمالي {count} صورة).',
+    galleryViewAll: 'عرض جميع الصور',
     modalOrigin: 'المنشأ / المطور',
     modalGrowth: 'طريقة النمو',
     modalFruitSize: 'حجم الثمرة',

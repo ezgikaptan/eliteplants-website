@@ -487,7 +487,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
 
               {/* Action Info overlay */}
               <div className="gallery-action-info" onClick={() => setShowAllPhotos(true)}>
-                <span>{language === 'tr' ? 'Tüm Fotoğrafları Gör' : 'View All Photos'} ({gardenImages.length})</span>
+                <span>{t.galleryViewAll} ({gardenImages.length})</span>
                 <Eye size={14} />
               </div>
             </div>
