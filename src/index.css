@@ -3556,80 +3556,94 @@ h1, h2, h3, h4 {
     font-size: 1.8rem !important;
   }
   .section-title {
-    font-size: 1.7rem !important;
+    font-size: 1.45rem !important;
     word-break: break-word !important;
+  }
+  .about-desc {
+    font-size: 0.82rem !important;
+    line-height: 1.45 !important;
   }
   .about-tabs-nav {
     flex-wrap: wrap !important;
     flex-direction: column !important;
-    border-radius: 16px !important;
-    padding: 8px !important;
-    gap: 6px !important;
+    border-radius: 12px !important;
+    padding: 6px !important;
+    gap: 4px !important;
   }
   .about-tabs-nav .about-tab-btn {
     width: 100% !important;
     flex: none !important;
-    padding: 12px !important;
-    font-size: 0.8rem !important;
-    border-radius: 12px !important;
+    padding: 10px !important;
+    font-size: 0.75rem !important;
+    border-radius: 8px !important;
   }
   .varieties-category-tabs {
     flex-wrap: wrap !important;
-    gap: 8px !important;
+    gap: 6px !important;
     justify-content: center !important;
   }
   .varieties-category-tabs .tab-btn {
     flex: 1 1 40% !important;
-    padding: 10px !important;
-    font-size: 0.8rem !important;
+    padding: 8px !important;
+    font-size: 0.75rem !important;
     text-align: center !important;
   }
   
   /* Additional tight-screen fit rules */
   .variety-bento-header {
-    padding: 16px 20px !important;
+    padding: 12px 16px !important;
   }
   .variety-bento-content {
-    padding: 0 20px !important;
+    padding: 0 16px !important;
   }
   .variety-bento-content > div {
-    padding-bottom: 20px !important;
+    padding-bottom: 16px !important;
   }
   .bento-item {
-    padding: 12px 14px !important;
+    padding: 10px 12px !important;
   }
   .modal-title {
-    font-size: 1.45rem !important;
+    font-size: 1.35rem !important;
   }
   .variety-photo-name {
-    font-size: 1.4rem !important;
+    font-size: 1.25rem !important;
   }
   .variety-sticky-3d {
-    height: 180px !important;
+    height: 160px !important;
   }
   .gallery-main-viewport {
-    aspect-ratio: 1 / 1 !important;
-    border-radius: 16px !important;
+    aspect-ratio: 16 / 10 !important;
+    border-radius: 12px !important;
+    max-height: 220px !important;
   }
   .modal-content {
-    padding: 16px !important;
+    padding: 14px !important;
   }
   .about-section {
-    gap: 15px !important;
-  }
-  .about-tab-content {
-    padding: 16px !important;
-    margin-bottom: 16px !important;
-  }
-  .gallery-showcase-container {
     gap: 12px !important;
   }
+  .about-tab-content {
+    padding: 14px !important;
+    margin-bottom: 12px !important;
+    border-radius: 16px !important;
+  }
+  .gallery-showcase-container {
+    gap: 8px !important;
+  }
   .slideshow-frame {
-    height: 200px !important;
+    height: 180px !important;
+  }
+  .gallery-thumbnails-strip {
+    padding: 6px !important;
+    gap: 6px !important;
+  }
+  .gallery-thumb-btn {
+    width: 38px !important;
+    height: 38px !important;
   }
   .about-pane-title {
-    font-size: 0.75rem !important;
-    margin-bottom: 10px !important;
+    font-size: 0.72rem !important;
+    margin-bottom: 8px !important;
   }
 }
 
