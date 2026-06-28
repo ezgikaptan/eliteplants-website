@@ -477,6 +477,7 @@ h1, h2, h3, h4 {
   align-items: center;
   padding: 80px 6%;
   z-index: 10;
+  box-sizing: border-box;
 }
 
 /* ============================================================
@@ -3434,161 +3435,21 @@ h1, h2, h3, h4 {
 }
 
 /* Comprehensive Mobile Responsive Polish Overrides */
+/* ==========================================
+   COMPREHENSIVE MOBILE RESPONSIVE — ABOUT
+   ========================================== */
+
+/* 768px — tablets & large phones */
 @media (max-width: 768px) {
-  /* Scale Typography & Headers */
+  /* ── Global section spacing ── */
+  .scroll-section {
+    padding: 50px 4% 40px !important;
+    min-height: auto !important;
+  }
+
+  /* ── Modal scroll fix ── */
   .modal-content {
     overflow-y: auto !important;
-  }
-  .footer-bottom {
-    flex-direction: column !important;
-    gap: 12px !important;
-    text-align: center !important;
-  }
-  .footer-certifications {
-    justify-content: center !important;
-    flex-wrap: wrap !important;
-    gap: 10px !important;
-  }
-  .scroll-section {
-    padding: 60px 4% !important;
-  }
-  h1.hero-vintage-title {
-    font-size: 2.2rem !important;
-    line-height: 1.3 !important;
-  }
-  .section-title {
-    font-size: 1.8rem !important;
-    overflow-wrap: break-word !important;
-    word-wrap: break-word !important;
-    white-space: normal !important;
-    hyphens: auto;
-  }
-  .about-tabs-nav {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    border-radius: 30px !important;
-    padding: 4px !important;
-    gap: 4px !important;
-    width: 100% !important;
-    max-width: 360px !important;
-    margin: 0 auto 16px !important;
-    background: rgba(255, 255, 255, 0.08) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  }
-  .about-tabs-nav .about-tab-btn {
-    width: auto !important;
-    flex: 1 1 50% !important;
-    padding: 8px 16px !important;
-    font-size: 0.78rem !important;
-    border-radius: 26px !important;
-    white-space: nowrap !important;
-  }
-  .hero-vintage-desc, .products-vintage-container p, .varieties-header p, .about-desc {
-    font-size: 0.9rem !important;
-    line-height: 1.5 !important;
-  }
-
-  /* Navigation Bar Adjustments */
-  .navbar-vintage-container {
-    height: 60px !important;
-  }
-  .lang-selector-btn {
-    padding: 4px 10px !important;
-    font-size: 0.72rem !important;
-  }
-  .lang-dropdown {
-    top: calc(100% + 4px) !important;
-  }
-
-  /* Hero Section spacing */
-  .hero-vintage-section {
-    padding: 100px 20px 50px !important;
-    min-height: auto !important;
-  }
-  .hero-vintage-actions {
-    flex-direction: column !important;
-    gap: 12px !important;
-    width: 100% !important;
-  }
-  .hero-vintage-actions button {
-    width: 100% !important;
-    padding: 12px 20px !important;
-    font-size: 0.85rem !important;
-  }
-  .hero-vintage-stats {
-    flex-direction: column !important;
-    gap: 15px !important;
-    margin-top: 40px !important;
-  }
-  .stat-vintage-divider {
-    display: none !important;
-  }
-
-  /* Grid Layouts Stacked */
-  .products-grid-vintage {
-    grid-template-columns: 1fr !important;
-    gap: 20px !important;
-  }
-  .about-section {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-    padding: 0 10px !important;
-  }
-  .varieties-split-layout {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-
-  /* SlideShow & Thumbnails sizes */
-  .about-text-col,
-  .about-media-col {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-  .about-tab-content {
-    min-height: auto !important;
-    padding: 20px !important;
-    margin-bottom: 20px !important;
-    border-radius: 16px !important;
-    text-align: left !important;
-  }
-  .gallery-showcase-container {
-    width: 100% !important;
-    max-width: 480px !important;
-    margin: 0 auto !important;
-    gap: 12px !important;
-  }
-  .gallery-main-viewport {
-    aspect-ratio: 16 / 9 !important;
-    max-height: 250px !important;
-    border-radius: 16px !important;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3) !important;
-  }
-  .gallery-thumbnails-strip {
-    padding: 4px 0 !important;
-    gap: 6px !important;
-    justify-content: flex-start !important;
-  }
-  .gallery-thumb-btn {
-    flex: 0 0 44px !important;
-    width: 44px !important;
-    height: 44px !important;
-    border-radius: 8px !important;
-  }
-
-  /* Varieties section left image sticky frame height */
-  .variety-sticky-3d {
-    height: 300px !important;
-  }
-
-  /* Hide sidebar on screens that are too narrow */
-  .social-sidebar {
-    display: none !important;
-  }
-
-  /* Modal Dialog Polish */
-  .modal-content {
     width: 95% !important;
     max-height: 85vh !important;
     padding: 20px !important;
@@ -3605,22 +3466,115 @@ h1, h2, h3, h4 {
     grid-template-columns: 1fr !important;
     gap: 10px !important;
   }
-}
 
-@media (max-width: 480px) {
+  /* ── Footer ── */
+  .footer-bottom {
+    flex-direction: column !important;
+    gap: 12px !important;
+    text-align: center !important;
+  }
+  .footer-certifications {
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+  }
+  .footer-content {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  /* ── Typography ── */
   h1.hero-vintage-title {
-    font-size: 1.8rem !important;
+    font-size: 2rem !important;
+    line-height: 1.25 !important;
   }
   .section-title {
-    font-size: 1.45rem !important;
+    font-size: 1.5rem !important;
+    line-height: 1.25 !important;
     overflow-wrap: break-word !important;
     word-wrap: break-word !important;
     white-space: normal !important;
+    hyphens: auto !important;
+    margin-bottom: 14px !important;
   }
+  .section-tag {
+    font-size: 0.72rem !important;
+    margin-bottom: 8px !important;
+  }
+  .hero-vintage-desc,
+  .products-vintage-container p,
+  .varieties-header p,
   .about-desc {
-    font-size: 0.82rem !important;
-    line-height: 1.45 !important;
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
   }
+
+  /* ── Navbar ── */
+  .navbar-vintage-container {
+    height: 56px !important;
+  }
+  .lang-selector-btn {
+    padding: 4px 8px !important;
+    font-size: 0.7rem !important;
+  }
+  .lang-dropdown {
+    top: calc(100% + 4px) !important;
+  }
+
+  /* ── Hero ── */
+  .hero-vintage-section {
+    padding: 90px 16px 40px !important;
+    min-height: auto !important;
+  }
+  .hero-vintage-actions {
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+  .hero-vintage-actions button {
+    width: 100% !important;
+    padding: 12px 20px !important;
+    font-size: 0.85rem !important;
+  }
+  .hero-vintage-stats {
+    flex-direction: column !important;
+    gap: 14px !important;
+    margin-top: 32px !important;
+  }
+  .stat-vintage-divider {
+    display: none !important;
+  }
+
+  /* ── Products grid ── */
+  .products-grid-vintage {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  /* ── About section grid → single column ── */
+  .about-scroll-section {
+    overflow: visible !important; /* allow gallery to breathe */
+  }
+  .about-section {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    width: 100% !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .about-text-col,
+  .about-media-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .about-text-col {
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  /* ── About tabs ── */
   .about-tabs-nav {
     display: flex !important;
     flex-direction: row !important;
@@ -3629,16 +3583,141 @@ h1, h2, h3, h4 {
     padding: 4px !important;
     gap: 4px !important;
     width: 100% !important;
-    max-width: 300px !important;
-    margin: 0 auto 16px !important;
+    max-width: 320px !important;
+    margin: 0 auto 12px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
   }
   .about-tabs-nav .about-tab-btn {
-    width: auto !important;
     flex: 1 !important;
-    padding: 7px 10px !important;
-    font-size: 0.72rem !important;
-    border-radius: 25px !important;
+    padding: 8px 12px !important;
+    font-size: 0.75rem !important;
+    border-radius: 26px !important;
     white-space: nowrap !important;
+  }
+
+  /* ── About tab content ── */
+  .about-tab-content {
+    min-height: auto !important;
+    padding: 16px !important;
+    margin-bottom: 16px !important;
+    border-radius: 14px !important;
+    text-align: left !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .about-desc {
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+  }
+  .about-pane-title {
+    font-size: 0.72rem !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* ── Gallery: fully visible on mobile ── */
+  .about-media-col {
+    gap: 10px !important;
+  }
+  .gallery-showcase-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    gap: 8px !important;
+    box-sizing: border-box !important;
+  }
+  .gallery-main-viewport {
+    width: 100% !important;
+    aspect-ratio: 4 / 3 !important;
+    max-height: 240px !important;
+    border-radius: 14px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+    box-sizing: border-box !important;
+  }
+  .gallery-thumbnails-strip {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    padding: 4px 0 !important;
+    gap: 6px !important;
+    width: 100% !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .gallery-thumb-btn {
+    flex: 0 0 50px !important;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 8px !important;
+    aspect-ratio: 1 / 1 !important;
+  }
+  .gallery-page-chip {
+    font-size: 0.65rem !important;
+    padding: 3px 8px !important;
+  }
+  .gallery-action-info {
+    font-size: 0.68rem !important;
+    padding: 4px 8px !important;
+  }
+  .gallery-side-arrow {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  /* ── Varieties ── */
+  .varieties-split-layout {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .variety-sticky-3d {
+    height: 260px !important;
+  }
+
+  /* ── Sidebar ── */
+  .social-sidebar {
+    display: none !important;
+  }
+}
+
+/* 480px — small phones */
+@media (max-width: 480px) {
+  .scroll-section {
+    padding: 45px 3% 35px !important;
+  }
+  h1.hero-vintage-title {
+    font-size: 1.65rem !important;
+  }
+  .section-title {
+    font-size: 1.25rem !important;
+  }
+  .about-desc {
+    font-size: 0.8rem !important;
+    line-height: 1.45 !important;
+  }
+  .about-tabs-nav {
+    max-width: 280px !important;
+  }
+  .about-tabs-nav .about-tab-btn {
+    padding: 6px 8px !important;
+    font-size: 0.68rem !important;
+  }
+
+  /* Gallery tighter on very small phones */
+  .gallery-main-viewport {
+    aspect-ratio: 4 / 3 !important;
+    max-height: 200px !important;
+    border-radius: 10px !important;
+  }
+  .gallery-thumb-btn {
+    flex: 0 0 40px !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 6px !important;
+  }
+
+  /* Varieties */
+  .variety-sticky-3d {
+    height: 160px !important;
   }
   .varieties-category-tabs {
     flex-wrap: wrap !important;
@@ -3648,70 +3727,34 @@ h1, h2, h3, h4 {
   .varieties-category-tabs .tab-btn {
     flex: 1 1 40% !important;
     padding: 8px !important;
-    font-size: 0.75rem !important;
+    font-size: 0.72rem !important;
     text-align: center !important;
   }
-  
-  /* Additional tight-screen fit rules */
+
+  /* Bento cards */
   .variety-bento-header {
-    padding: 12px 16px !important;
+    padding: 10px 14px !important;
   }
   .variety-bento-content {
-    padding: 0 16px !important;
-  }
-  .variety-bento-content > div {
-    padding-bottom: 16px !important;
+    padding: 0 14px !important;
   }
   .bento-item {
-    padding: 10px 12px !important;
+    padding: 9px 10px !important;
   }
   .modal-title {
-    font-size: 1.35rem !important;
-  }
-  .variety-photo-name {
     font-size: 1.25rem !important;
   }
-  .variety-sticky-3d {
-    height: 160px !important;
+  .variety-photo-name {
+    font-size: 1.1rem !important;
   }
-  .gallery-main-viewport {
-    aspect-ratio: 16 / 10 !important;
-    border-radius: 12px !important;
-    max-height: 220px !important;
-  }
+
+  /* Modal */
   .modal-content {
-    padding: 14px !important;
+    padding: 12px !important;
+    border-radius: 16px !important;
   }
-  .about-section {
-    gap: 16px !important;
-  }
-  .about-tab-content {
-    padding: 14px !important;
-    margin-bottom: 12px !important;
-    border-radius: 12px !important;
-  }
-  .gallery-showcase-container {
-    max-width: 100% !important;
-    gap: 8px !important;
-  }
-  .gallery-main-viewport {
-    aspect-ratio: 16 / 9 !important;
-    max-height: 170px !important;
-    border-radius: 10px !important;
-  }
-  .gallery-thumbnails-strip {
-    padding: 4px 0 !important;
-    gap: 5px !important;
-  }
-  .gallery-thumb-btn {
-    flex: 0 0 38px !important;
-    width: 38px !important;
-    height: 38px !important;
-    border-radius: 6px !important;
-  }
-  .about-pane-title {
-    font-size: 0.72rem !important;
-    margin-bottom: 8px !important;
+  .modal-hero {
+    height: 160px !important;
   }
 }
 
