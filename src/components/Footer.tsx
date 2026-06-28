@@ -49,7 +49,7 @@ export const Footer: React.FC = () => {
             <div className="footer-contact-icon-wrap">
               <Mail size={18} />
             </div>
-            <span className="footer-contact-text">info@eliteplantstr.com</span>
+            <span className="footer-contact-text">info@eliteplants.com.tr</span>
           </div>
         </div>
       </div>
