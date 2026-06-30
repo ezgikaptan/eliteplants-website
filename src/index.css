@@ -4154,13 +4154,13 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     width: 44px;
     height: 44px;
     border-radius: 12px;
-    background: var(--color-forest); /* solid dark green - maximum contrast on cream */
+    background: #1c3224 !important; /* hardcoded dark green - always visible on cream */
     border: none;
-    color: var(--color-forest);
+    color: #1c3224;
     cursor: pointer;
     z-index: 2001;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 4px 12px rgba(28, 50, 36, 0.25);
+    box-shadow: 0 4px 12px rgba(28, 50, 36, 0.3);
     padding: 0;
     justify-self: start;
   }
@@ -4252,14 +4252,14 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     width: 44px;
     height: 44px;
     border-radius: 12px;
-    background: var(--color-forest); /* solid dark green - maximum contrast */
+    background: #1c3224 !important; /* hardcoded dark green - always visible */
     border: none;
-    color: #ffffff; /* white text on dark green */
+    color: #ffffff !important; /* always white text on dark green */
     font-family: var(--font-body);
     font-weight: 700;
     font-size: 0.8rem;
     padding: 0;
-    box-shadow: 0 4px 12px rgba(28, 50, 36, 0.25);
+    box-shadow: 0 4px 12px rgba(28, 50, 36, 0.3);
   }
 
   .lang-selector-container.mobile-only .lang-selector-btn span {
@@ -4277,9 +4277,9 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     padding: 6px;
   }
 
-  /* High contrast dropdown option buttons (no white on cream!) */
+  /* High contrast dropdown option buttons — hardcoded dark green, no CSS vars */
   .lang-selector-container.mobile-only .lang-dropdown .lang-option-btn {
-    color: var(--color-forest) !important; /* dark forest green text */
+    color: #1c3224 !important; /* hardcoded dark forest green - always visible */
     padding: 8px 10px;
     border-radius: 8px;
     font-size: 0.8rem;
@@ -4288,21 +4288,29 @@ html[dir="rtl"] .gallery-thumbnails-strip {
 
   .lang-selector-container.mobile-only .lang-dropdown .lang-option-btn:hover {
     background: rgba(28, 50, 36, 0.08) !important;
-    color: var(--color-forest) !important;
+    color: #1c3224 !important;
   }
 
   .lang-selector-container.mobile-only .lang-dropdown .lang-option-btn.active {
-    background: var(--color-primary) !important; /* theme fruit color */
-    color: #ffffff !important; /* white text on theme background is perfect contrast! */
+    background: #1c3224 !important; /* solid dark green active bg */
+    color: #ffffff !important;
   }
 
   .lang-selector-container.mobile-only .lang-dropdown .lang-code-tag {
-    background: rgba(28, 50, 36, 0.1) !important;
-    color: var(--color-forest) !important;
+    background: rgba(28, 50, 36, 0.12) !important;
+    color: #1c3224 !important;
   }
 
   .lang-selector-container.mobile-only .lang-dropdown .lang-option-btn.active .lang-code-tag {
-    background: rgba(255, 255, 255, 0.25) !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+  }
+
+  .lang-selector-container.mobile-only .lang-dropdown .lang-full-name {
+    color: #1c3224 !important;
+  }
+
+  .lang-selector-container.mobile-only .lang-dropdown .lang-option-btn.active .lang-full-name {
     color: #ffffff !important;
   }
 
@@ -4364,7 +4372,7 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     font-family: var(--font-vintage);
     font-size: 1.6rem;
     font-weight: 800;
-    color: var(--color-forest); /* dark green titles - 100% visible on cream! */
+    color: #1c3224 !important; /* hardcoded dark forest green - always visible on cream */
     text-transform: uppercase;
     letter-spacing: 0.05em;
     line-height: 1.2;
@@ -4375,21 +4383,22 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     font-family: var(--font-body);
     font-size: 0.82rem;
     font-weight: 500;
-    color: rgba(28, 50, 36, 0.65); /* dark green secondary text - 100% visible! */
-    opacity: 0.85;
+    color: rgba(28, 50, 36, 0.7) !important; /* hardcoded dark green secondary */
+    opacity: 1;
     transition: all 0.3s ease;
   }
 
-  /* Active & Hover States */
+  /* Active & Hover States - use a distinct dark accent, NOT var(--color-primary) */
   .mobile-menu-link-item:hover .menu-link-title,
   .mobile-menu-link-item.active .menu-link-title {
-    color: var(--color-primary);
+    color: #1c3224 !important;
+    opacity: 0.6;
     transform: translateX(4px);
   }
 
   .mobile-menu-link-item:hover .menu-link-subtitle,
   .mobile-menu-link-item.active .menu-link-subtitle {
-    color: var(--color-primary);
+    color: rgba(28, 50, 36, 0.5) !important;
     opacity: 1;
     transform: translateX(4px);
   }
