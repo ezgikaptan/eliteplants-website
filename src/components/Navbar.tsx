@@ -1,10 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { Globe, Menu, X } from 'lucide-react';
+import { Globe } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
 import type { Language } from '../i18n';
 
 const BASE = import.meta.env.BASE_URL || '/';
 const cizimImg = `${BASE.endsWith('/') ? BASE : BASE + '/'}images/çizim.png`;
+
+const homeTranslations: Record<string, string> = {
+  tr: 'Ana Sayfa',
+  en: 'Home',
+  es: 'Inicio',
+  fr: 'Accueil',
+  de: 'Startseite',
+  ru: 'Главная',
+  zh: '首页',
+  ja: 'ホーム',
+  ar: 'الرئيسية'
+};
 
 interface NavbarProps {
   activeSection: string;
@@ -14,6 +26,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t, language, setLanguage } = useTranslation();
+  const homeT = homeTranslations[language] || homeTranslations['en'];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -115,15 +128,27 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
           </div>
         </div>
 
-        {/* Mobile Hamburger Menu Toggle Trigger */}
-        <div className="mobile-menu-trigger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
-        </div>
+        {/* Mobile Hamburger Menu Toggle Trigger (CSS Animated) */}
+        <button 
+          className={`mobile-menu-trigger ${isMenuOpen ? 'active' : ''}`}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Menu"
+        >
+          <div className="hamburger-box">
+            <div className="hamburger-inner"></div>
+          </div>
+        </button>
       </div>
 
       {/* Mobile Slide-Down Menu Panel */}
       <div className={`mobile-menu-panel ${isMenuOpen ? 'open' : ''}`}>
         <div className="mobile-menu-links">
+          <a 
+            onClick={() => { scrollToSection('home'); setIsMenuOpen(false); }} 
+            className={activeSection === 'home' ? 'active' : ''}
+          >
+            {homeT}
+          </a>
           <a 
             onClick={() => { scrollToSection('about'); setIsMenuOpen(false); }} 
             className={activeSection === 'about' ? 'active' : ''}
