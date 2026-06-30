@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Award, Sparkles, Mail, Globe, Sprout } from 'lucide-react';
+import { Globe, Menu, X } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
 import type { Language } from '../i18n';
 import { certTranslations } from './ContentOverlay';
@@ -13,6 +13,7 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t, language, setLanguage } = useTranslation();
   const certT = certTranslations[language] || certTranslations['en'];
 
@@ -56,27 +57,27 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
   };
 
   return (
-    <nav className={`navbar-vintage ${isScrolled ? 'scrolled' : ''}`}>
+    <nav className={`navbar-vintage ${isScrolled ? 'scrolled' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
       <div className="navbar-vintage-container">
-        {/* Left Side Navigation Links */}
-        <div className="nav-col nav-col-left">
+        {/* Left Side Navigation Links (Desktop Only) */}
+        <div className="nav-col nav-col-left desktop-only">
           <a 
             onClick={() => scrollToSection('about')} 
             className={activeSection === 'about' ? 'active' : ''}
           >
-            <Sparkles size={14} /> {t.navAbout}
+            {t.navAbout}
           </a>
           <a 
             onClick={() => scrollToSection('certificates')} 
             className={activeSection === 'certificates' ? 'active' : ''}
           >
-            <Award size={14} /> {certT.navCertificates}
+            {certT.navCertificates}
           </a>
         </div>
 
         {/* Centered Logo */}
         <div className="nav-col nav-col-center">
-          <div className="logo-vintage" onClick={() => scrollToSection('home')}>
+          <div className="logo-vintage" onClick={() => { scrollToSection('home'); setIsMenuOpen(false); }}>
             <span className="logo-vintage-icon" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '22px', height: '22px' }}>
               <img src={cizimImg} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
             </span>
@@ -86,19 +87,19 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
           </div>
         </div>
 
-        {/* Right Side Navigation Links */}
-        <div className="nav-col nav-col-right">
+        {/* Right Side Navigation Links (Desktop Only) */}
+        <div className="nav-col nav-col-right desktop-only">
           <a 
             onClick={() => scrollToSection('varieties')} 
             className={activeSection === 'varieties' ? 'active' : ''}
           >
-            <Sprout size={14} /> {t.navVarieties}
+            {t.navVarieties}
           </a>
           <a 
             onClick={() => scrollToSection('contact')} 
             className={activeSection === 'contact' ? 'active' : ''}
           >
-            <Mail size={14} /> {t.navContact}
+            {t.navContact}
           </a>
 
           {/* Premium Language Dropdown */}
@@ -119,6 +120,59 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
                 </button>
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* Mobile Hamburger Menu Toggle Trigger */}
+        <div className="mobile-menu-trigger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+        </div>
+      </div>
+
+      {/* Mobile Slide-Down Menu Panel */}
+      <div className={`mobile-menu-panel ${isMenuOpen ? 'open' : ''}`}>
+        <div className="mobile-menu-links">
+          <a 
+            onClick={() => { scrollToSection('about'); setIsMenuOpen(false); }} 
+            className={activeSection === 'about' ? 'active' : ''}
+          >
+            {t.navAbout}
+          </a>
+          <a 
+            onClick={() => { scrollToSection('certificates'); setIsMenuOpen(false); }} 
+            className={activeSection === 'certificates' ? 'active' : ''}
+          >
+            {certT.navCertificates}
+          </a>
+          <a 
+            onClick={() => { scrollToSection('varieties'); setIsMenuOpen(false); }} 
+            className={activeSection === 'varieties' ? 'active' : ''}
+          >
+            {t.navVarieties}
+          </a>
+          <a 
+            onClick={() => { scrollToSection('contact'); setIsMenuOpen(false); }} 
+            className={activeSection === 'contact' ? 'active' : ''}
+          >
+            {t.navContact}
+          </a>
+        </div>
+
+        {/* Language Selection inside Drawer */}
+        <div className="mobile-menu-languages">
+          <span className="lang-section-title">
+            {language === 'tr' ? 'Dil Seçimi' : 'Language'}
+          </span>
+          <div className="mobile-lang-grid">
+            {(['tr', 'en', 'es', 'fr', 'de', 'ru', 'zh', 'ja', 'ar'] as Language[]).map((lang) => (
+              <button
+                key={lang}
+                onClick={() => { setLanguage(lang); setIsMenuOpen(false); }}
+                className={`mobile-lang-btn ${language === lang ? 'active' : ''}`}
+              >
+                {lang.toUpperCase()}
+              </button>
+            ))}
           </div>
         </div>
       </div>
