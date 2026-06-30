@@ -66,7 +66,7 @@ export const certTranslations: Record<string, {
     title: 'Our Organic Agriculture Certificates',
     sub: 'All saplings and fruits grown in our facilities are audited by authorized bodies and certified with the Official Organic Agriculture Certificate.',
     cert1: 'Organic Product Certificate',
-    cert2: 'Organic Operator Certificate (Elite Plants Facilities)',
+    cert2: 'Organic Operator Certificate',
     zoom: 'Click to enlarge'
   },
   es: {
