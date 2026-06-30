@@ -4145,29 +4145,29 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     display: block !important;
   }
 
-  /* 1. Left Column: Hamburger Menu Button (High Contrast on Cream) */
+  /* 1. Left Column: Hamburger Menu Button */
   .mobile-menu-trigger {
     grid-column: 1;
     display: flex !important;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    background: #1c3224 !important; /* hardcoded dark green - always visible on cream */
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: #222222 !important;
     border: none;
-    color: #1c3224;
+    color: #222222;
     cursor: pointer;
     z-index: 2001;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 4px 12px rgba(28, 50, 36, 0.3);
+    box-shadow: 0 3px 10px rgba(34, 34, 34, 0.2);
     padding: 0;
     justify-self: start;
   }
 
   .mobile-menu-trigger:hover,
   .mobile-menu-trigger:active {
-    background: rgba(28, 50, 36, 0.85);
+    background: #333333 !important;
     transform: scale(1.05);
   }
 
@@ -4237,7 +4237,7 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     gap: 8px !important;
   }
 
-  /* 3. Right Column: Mobile Language Selector (High Contrast) */
+  /* 3. Right Column: Mobile Language Selector */
   .lang-selector-container.mobile-only {
     grid-column: 3;
     display: block !important;
@@ -4249,17 +4249,17 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     display: flex !important;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    background: #1c3224 !important; /* hardcoded dark green - always visible */
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: #222222 !important;
     border: none;
-    color: #ffffff !important; /* always white text on dark green */
+    color: #ffffff !important;
     font-family: var(--font-body);
     font-weight: 700;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     padding: 0;
-    box-shadow: 0 4px 12px rgba(28, 50, 36, 0.3);
+    box-shadow: 0 3px 10px rgba(34, 34, 34, 0.2);
   }
 
   .lang-selector-container.mobile-only .lang-selector-btn span {
