@@ -59,7 +59,7 @@ export const certTranslations: Record<string, {
     title: 'Organik Tarım Sertifikalarımız',
     sub: 'Tesislerimizde yetiştirilen tüm fidan ve meyvelerimiz, yetkilendirilmiş kuruluşlar tarafından denetlenerek T.C. Organik Tarım Sertifikası ile belgelendirilmiştir.',
     cert1: 'Organik Ürün Sertifikası',
-    cert2: 'Müteşebbis Sertifikası (Elite Plants Tesisleri)',
+    cert2: 'Müteşebbis Sertifikası',
     zoom: 'Büyütmek için tıklayın'
   },
   en: {
