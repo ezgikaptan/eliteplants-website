@@ -4049,8 +4049,8 @@ html[dir="rtl"] .gallery-thumbnails-strip {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(28, 50, 36, 0.85); /* dark green background for high contrast */
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -4058,6 +4058,7 @@ html[dir="rtl"] .gallery-thumbnails-strip {
   cursor: pointer;
   transition: all 0.3s ease;
   z-index: 2100;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
 }
 
 .cert-slider-btn:hover {
@@ -4112,8 +4113,16 @@ html[dir="rtl"] .gallery-thumbnails-strip {
   border-radius: 20px;
 }
 
-/* Mobile Header Layout (No Hamburger Menu) */
+/* Mobile Hamburger Trigger, Grid Header & Menu Drawer */
+.mobile-menu-trigger {
+  display: none;
+}
+
 .lang-selector-container.mobile-only {
+  display: none;
+}
+
+.mobile-menu-panel {
   display: none;
 }
 
@@ -4136,7 +4145,84 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     display: block !important;
   }
 
-  /* Center Column: Logo */
+  /* 1. Left Column: Hamburger Menu Button (High Contrast on Cream) */
+  .mobile-menu-trigger {
+    grid-column: 1;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px; /* standard 12px rounding */
+    background: rgba(28, 50, 36, 0.06); /* light forest green tint */
+    border: 1.5px solid rgba(28, 50, 36, 0.18); /* distinct green border for contrast */
+    color: var(--color-forest);
+    cursor: pointer;
+    z-index: 2001; /* floats on top of menu overlay */
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 10px rgba(28, 50, 36, 0.04);
+    padding: 0;
+    justify-self: start;
+  }
+
+  .mobile-menu-trigger:hover,
+  .mobile-menu-trigger:active {
+    background: rgba(28, 50, 36, 0.12);
+    border-color: rgba(28, 50, 36, 0.3);
+    transform: scale(1.05);
+  }
+
+  /* Custom CSS Hamburger Lines */
+  .hamburger-box {
+    width: 20px;
+    height: 14px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    width: 20px;
+    height: 2px;
+    background-color: var(--color-forest); /* dark green lines */
+    position: absolute;
+    border-radius: 2px;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+  }
+
+  .hamburger-inner {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .hamburger-inner::before {
+    content: '';
+    top: -6px;
+    left: 0;
+  }
+
+  .hamburger-inner::after {
+    content: '';
+    bottom: -6px;
+    left: 0;
+  }
+
+  /* Morphing to X animation when menu active */
+  .mobile-menu-trigger.active .hamburger-inner {
+    transform: rotate(45deg);
+  }
+
+  .mobile-menu-trigger.active .hamburger-inner::before {
+    transform: translateY(6px) rotate(-90deg);
+    opacity: 0;
+  }
+
+  .mobile-menu-trigger.active .hamburger-inner::after {
+    transform: translateY(-6px) rotate(-90deg);
+  }
+
+  /* 2. Center Column: Logo */
   .nav-col-center {
     grid-column: 2;
     display: flex !important;
@@ -4152,7 +4238,7 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     gap: 8px !important;
   }
 
-  /* Right Column: Mobile Language Selector */
+  /* 3. Right Column: Mobile Language Selector (High Contrast) */
   .lang-selector-container.mobile-only {
     grid-column: 3;
     display: block !important;
@@ -4167,8 +4253,8 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     width: 44px;
     height: 44px;
     border-radius: 12px;
-    background: rgba(28, 50, 36, 0.05);
-    border: 1px solid rgba(28, 50, 36, 0.15);
+    background: rgba(28, 50, 36, 0.06);
+    border: 1.5px solid rgba(28, 50, 36, 0.18);
     color: var(--color-forest);
     font-family: var(--font-body);
     font-weight: 700;
@@ -4184,11 +4270,129 @@ html[dir="rtl"] .gallery-thumbnails-strip {
   .lang-selector-container.mobile-only .lang-dropdown {
     right: 0;
     left: auto;
-    min-width: 120px;
-    background: rgba(245, 237, 224, 0.98);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(28, 50, 36, 0.1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    min-width: 130px;
+    background: #f5ede0 !important; /* solid vintage paper cream */
+    border: 1.5px solid rgba(28, 50, 36, 0.15) !important;
+    box-shadow: 0 10px 30px rgba(28, 50, 36, 0.12);
+    border-radius: 12px;
+    padding: 6px;
+  }
+
+  /* High contrast dropdown option buttons (no white on cream!) */
+  .lang-selector-container.mobile-only .lang-dropdown .lang-option-btn {
+    color: var(--color-forest) !important; /* dark forest green text */
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    background: transparent !important;
+  }
+
+  .lang-selector-container.mobile-only .lang-dropdown .lang-option-btn:hover {
+    background: rgba(28, 50, 36, 0.08) !important;
+    color: var(--color-forest) !important;
+  }
+
+  .lang-selector-container.mobile-only .lang-dropdown .lang-option-btn.active {
+    background: var(--color-primary) !important; /* theme fruit color */
+    color: #ffffff !important; /* white text on theme background is perfect contrast! */
+  }
+
+  .lang-selector-container.mobile-only .lang-dropdown .lang-code-tag {
+    background: rgba(28, 50, 36, 0.1) !important;
+    color: var(--color-forest) !important;
+  }
+
+  .lang-selector-container.mobile-only .lang-dropdown .lang-option-btn.active .lang-code-tag {
+    background: rgba(255, 255, 255, 0.25) !important;
+    color: #ffffff !important;
+  }
+
+  /* Mobile Slide-Down Menu Panel (Drawer) - Clean, minimalist and no white on cream! */
+  .mobile-menu-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #f5ede0; /* solid vintage paper cream, no transparency leaks */
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    z-index: 190;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mobile-menu-panel.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Minimalist left-aligned links inside mobile drawer */
+  .mobile-menu-links {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 48px;
+    gap: 32px;
+    align-items: flex-start; /* Left-aligned for minimalist look */
+  }
+
+  .mobile-menu-link-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(28, 50, 36, 0.08); /* subtle dividing line */
+    padding-bottom: 12px;
+  }
+
+  .mobile-menu-link-item:last-child {
+    border-bottom: none;
+  }
+
+  .menu-link-title {
+    font-family: var(--font-vintage);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--color-forest); /* dark green titles - 100% visible on cream! */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    transition: all 0.3s ease;
+  }
+
+  .menu-link-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: rgba(28, 50, 36, 0.65); /* dark green secondary text - 100% visible! */
+    opacity: 0.85;
+    transition: all 0.3s ease;
+  }
+
+  /* Active & Hover States */
+  .mobile-menu-link-item:hover .menu-link-title,
+  .mobile-menu-link-item.active .menu-link-title {
+    color: var(--color-primary);
+    transform: translateX(4px);
+  }
+
+  .mobile-menu-link-item:hover .menu-link-subtitle,
+  .mobile-menu-link-item.active .menu-link-subtitle {
+    color: var(--color-primary);
+    opacity: 1;
+    transform: translateX(4px);
   }
 }
 
