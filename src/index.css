@@ -1365,52 +1365,6 @@ h1, h2, h3, h4 {
   transition: all 0.3s ease;
 }
 
-/* Floating dynamic fruit styles */
-.tab-bg-fruits {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
-}
-
-.bg-fruit-item {
-  animation: floatFruit 8s ease-in-out infinite alternate;
-}
-
-/* Add staggered animation delays for a natural look */
-.bg-fruit-item:nth-child(2) {
-  animation-delay: -2s;
-  animation-duration: 9s;
-}
-
-.bg-fruit-item:nth-child(3) {
-  animation-delay: -4s;
-  animation-duration: 7s;
-}
-
-.bg-fruit-item:nth-child(4) {
-  animation-delay: -1.5s;
-  animation-duration: 10s;
-}
-
-.bg-fruit-item:nth-child(5) {
-  animation-delay: -5s;
-  animation-duration: 8.5s;
-}
-
-@keyframes floatFruit {
-  0% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  100% {
-    transform: translate(10px, -15px) rotate(8deg);
-  }
-}
-
 @media (max-width: 580px) {
   .about-tabs-nav {
     flex-direction: column;
@@ -2309,7 +2263,7 @@ h1, h2, h3, h4 {
   font-size: 0.95rem;
   font-weight: 600;
   padding: 12px 32px;
-  border-radius: 30px;
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
@@ -2586,7 +2540,7 @@ h1, h2, h3, h4 {
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--color-earth-sand);
   cursor: pointer;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
@@ -2597,13 +2551,13 @@ h1, h2, h3, h4 {
   background: rgba(255, 255, 255, 0.6);
   transform: translateY(-2px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
-  border-color: rgba(255, 255, 255, 0.8);
+  border-color: var(--color-primary);
 }
 
 .variety-bento-card.expanded {
   background: rgba(255, 255, 255, 0.75);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-  border-color: rgba(255, 255, 255, 1);
+  border-color: var(--color-primary);
   cursor: default;
 }
 

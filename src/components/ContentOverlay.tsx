@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Sprout, ChevronLeft, ChevronRight, Eye, X, BookOpen, MapPin, TrendingUp, Maximize, Utensils, Snowflake, CalendarDays, ShieldCheck } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Eye, X, MapPin, TrendingUp, Maximize, Utensils, Snowflake, CalendarDays, ShieldCheck } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
 import { ProductShowcase } from './ProductShowcase';
 import type { VarietyDetail, FruitType } from '../types';
@@ -242,9 +242,9 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
 
   const thumbnailBarRef = useRef<HTMLDivElement>(null);
 
-  // Reset expanded variety when changing fruit category
+  // Collapse the open variety card whenever the fruit category changes
   useEffect(() => {
-    setExpandedVarietyId(varietyData[activeFruit] && varietyData[activeFruit][0] ? varietyData[activeFruit][0].id : null);
+    setExpandedVarietyId(null);
   }, [activeFruit]);
 
 
@@ -269,57 +269,6 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
 
 
 
-
-  const renderBackgroundBerries = () => {
-    const color = 'var(--color-primary)';
-    
-    const berryStyles = [
-      { top: '10%', right: '8%', transform: 'rotate(15deg) scale(1.8)' },
-      { bottom: '12%', left: '5%', transform: 'rotate(-25deg) scale(1.3)' },
-      { top: '15%', left: '42%', transform: 'rotate(45deg) scale(0.9)' },
-      { bottom: '8%', right: '35%', transform: 'rotate(-10deg) scale(1.4)' },
-      { top: '45%', right: '2%', transform: 'rotate(70deg) scale(1.1)' }
-    ];
-
-    return (
-      <div className="tab-bg-fruits" style={{ color }}>
-        {berryStyles.map((style, idx) => (
-          <div key={idx} className="bg-fruit-item" style={{ ...style, position: 'absolute', opacity: 0.06, pointerEvents: 'none', transition: 'all 0.5s ease' }}>
-            {activeFruit === 'blackberry' && (
-              <svg width="24" height="28" viewBox="0 0 24 28" fill="currentColor">
-                <circle cx="12" cy="8" r="4.5" />
-                <circle cx="8" cy="12" r="4.5" />
-                <circle cx="16" cy="12" r="4.5" />
-                <circle cx="12" cy="16" r="4.5" />
-                <circle cx="8" cy="20" r="4.5" />
-                <circle cx="16" cy="20" r="4.5" />
-                <circle cx="12" cy="24" r="4" />
-                <path d="M12,4 L11,1 M12,4 L13,1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
-            )}
-            {activeFruit === 'raspberry' && (
-              <svg width="24" height="26" viewBox="0 0 24 26" fill="currentColor">
-                <circle cx="12" cy="8" r="4.5" />
-                <circle cx="8" cy="12" r="4.5" />
-                <circle cx="16" cy="12" r="4.5" />
-                <circle cx="12" cy="16" r="4.5" />
-                <circle cx="9" cy="19" r="4" />
-                <circle cx="15" cy="19" r="4" />
-                <circle cx="12" cy="22" r="3.5" />
-                <path d="M12,4 L11,1 M12,4 L13,1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
-            )}
-            {activeFruit === 'blueberry' && (
-              <svg width="26" height="26" viewBox="0 0 26 26" fill="currentColor">
-                <circle cx="13" cy="14" r="10" />
-                <path d="M9,5 L11,7 L13,4 L15,7 L17,5 L16,8 L10,8 Z" fill="currentColor" />
-              </svg>
-            )}
-          </div>
-        ))}
-      </div>
-    );
-  };
 
   return (
     <div style={{ position: 'relative', zIndex: 10 }}>
@@ -390,18 +339,17 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
               className={`about-tab-btn ${aboutTab === 'story' ? 'active' : ''}`}
               onClick={() => setAboutTab('story')}
             >
-              <BookOpen size={15} /> {t.aboutStoryTab}
+              {t.aboutStoryTab}
             </button>
-            <button 
+            <button
               className={`about-tab-btn ${aboutTab === 'organic' ? 'active' : ''}`}
               onClick={() => setAboutTab('organic')}
             >
-              <Sprout size={15} /> {t.aboutOrganicTab}
+              {t.aboutOrganicTab}
             </button>
           </div>
 
           <div className="about-tab-content">
-            {renderBackgroundBerries()}
             {aboutTab === 'story' && (
               <div className="about-tab-pane">
                 <h3 className="about-pane-title">{t.aboutStoryTitle}</h3>
