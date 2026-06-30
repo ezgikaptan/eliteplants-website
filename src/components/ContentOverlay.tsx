@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Sprout, ChevronLeft, ChevronRight, Eye, X, BookOpen, MapPin, TrendingUp, Maximize, Utensils, Snowflake, CalendarDays, ShieldCheck } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
-import type { VarietyDetail } from './DetailModal';
-import type { FruitType } from './FruitSelector';
+import { ProductShowcase } from './ProductShowcase';
+import type { VarietyDetail, FruitType } from '../types';
 import type { TranslationDict } from '../i18n';
 
 const BASE = import.meta.env.BASE_URL;
@@ -11,7 +11,6 @@ const cizimImg = `${BASE}images/çizim.png`;
 interface ContentOverlayProps {
   activeFruit: FruitType;
   setActiveFruit: (fruit: FruitType) => void;
-  onOpenVariety: (variety: VarietyDetail) => void;
 }
 
 // Import all garden images from assets
@@ -128,7 +127,7 @@ export const certTranslations: Record<string, {
   }
 };
 
-export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, setActiveFruit, onOpenVariety: _onOpenVariety }) => {
+export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, setActiveFruit }) => {
   const { t } = useTranslation();
   const [gardenIndex, setGardenIndex] = useState(0);
   const [expandedVarietyId, setExpandedVarietyId] = useState<string | null>(null);
@@ -324,16 +323,10 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
 
   return (
     <div style={{ position: 'relative', zIndex: 10 }}>
-      {/* 1. Hero Section - Vintage Centered Layout */}
+      {/* 1. Hero Section - Full-bleed Photo */}
       <section id="home" className="hero-vintage-section">
-        {/* Left side çizim.jpeg decoration */}
-        <div className="section-side-drawing left cizim-float">
-          <img src={cizimImg} alt="" aria-hidden="true" style={{ width: 180, height: 'auto', opacity: 0.18, mixBlendMode: 'multiply', filter: 'hue-rotate(300deg) saturate(1.4) brightness(1.1)' }} />
-        </div>
-        {/* Right side çizim.jpeg decoration */}
-        <div className="section-side-drawing right cizim-float-r">
-          <img src={cizimImg} alt="" aria-hidden="true" style={{ width: 180, height: 'auto', opacity: 0.18, mixBlendMode: 'multiply', filter: 'hue-rotate(300deg) saturate(1.4) brightness(1.1) scaleX(-1)', transform: 'scaleX(-1)' }} />
-        </div>
+        <img src={farm14} alt="" aria-hidden="true" className="hero-bg-image" />
+        <div className="hero-bg-overlay" />
 
         <div className="hero-vintage-content">
           <h1 className="hero-vintage-title">
@@ -355,7 +348,23 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
         </div>
       </section>
 
-      {/* 2. About/Farm Section */}
+      {/* 2. Signature Varieties Product Showcase */}
+      <ProductShowcase
+        activeFruit={activeFruit}
+        setActiveFruit={setActiveFruit}
+        images={{
+          blackberry: varietyData.blackberry[0].image,
+          raspberry: varietyData.raspberry[0].image,
+          blueberry: varietyData.blueberry[0].image,
+        }}
+        badges={{
+          blackberry: varietyData.blackberry[0].tag,
+          raspberry: varietyData.raspberry[0].tag,
+          blueberry: varietyData.blueberry[0].tag,
+        }}
+      />
+
+      {/* 3. About/Farm Section */}
       <section
         id="about"
         className="scroll-section about-scroll-section"
@@ -491,7 +500,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
 
 
 
-      {/* 3. Varieties Section - With Local 3D Fruit Scene and Tabs */}
+      {/* 4. Varieties Section - Category Tabs + Accordion */}
       <section id="varieties" className="scroll-section varieties-section" style={{ width: '100%' }}>
         {/* çizim.jpeg side decorations for varieties */}
         <div className="section-side-drawing left cizim-float" style={{ opacity: 0.15 }}>

@@ -1,35 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
-import type { FruitType } from './components/FruitSelector';
+import type { FruitType } from './types';
 import { ContentOverlay } from './components/ContentOverlay';
-import { DetailModal } from './components/DetailModal';
-import type { VarietyDetail } from './components/DetailModal';
 import { Footer } from './components/Footer';
 import { ArrowUp } from 'lucide-react';
 
 function App() {
   const [activeFruit, setActiveFruit] = useState<FruitType>('blackberry');
   const [activeSection, setActiveSection] = useState('home');
-  const [selectedVariety, setSelectedVariety] = useState<VarietyDetail | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
-
-  useEffect(() => {
-    const root = document.documentElement;
-    if (activeFruit === 'blackberry') {
-      root.style.setProperty('--color-primary', 'var(--blackberry-primary)');
-      root.style.setProperty('--color-glow', 'var(--blackberry-glow)');
-      root.style.setProperty('--color-accent', 'var(--blackberry-accent)');
-    } else if (activeFruit === 'raspberry') {
-      root.style.setProperty('--color-primary', 'var(--raspberry-primary)');
-      root.style.setProperty('--color-glow', 'var(--raspberry-glow)');
-      root.style.setProperty('--color-accent', 'var(--raspberry-accent)');
-    } else if (activeFruit === 'blueberry') {
-      root.style.setProperty('--color-primary', 'var(--blueberry-primary)');
-      root.style.setProperty('--color-glow', 'var(--blueberry-glow)');
-      root.style.setProperty('--color-accent', 'var(--blueberry-accent)');
-    }
-  }, [activeFruit]);
 
   useEffect(() => {
     let lastSection = 'home';
@@ -69,13 +48,8 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleOpenVariety = (variety: VarietyDetail) => {
-    setSelectedVariety(variety);
-    setIsModalOpen(true);
-  };
-
   return (
-    <div className={`app-container active-sec-${activeSection} active-fruit-${activeFruit}`}>
+    <div className={`app-container active-sec-${activeSection}`}>
       {/* Premium film grain texture */}
       <div className="noise-overlay" />
 
@@ -93,17 +67,9 @@ function App() {
       </div>
 
       {/* Primary Scrollable Content Sections */}
-      <ContentOverlay 
-        activeFruit={activeFruit} 
+      <ContentOverlay
+        activeFruit={activeFruit}
         setActiveFruit={setActiveFruit}
-        onOpenVariety={handleOpenVariety} 
-      />
-
-      {/* Interactive Variety details drawer */}
-      <DetailModal 
-        isOpen={isModalOpen} 
-        variety={selectedVariety} 
-        onClose={() => setIsModalOpen(false)} 
       />
 
       {/* Corporate Footer */}
