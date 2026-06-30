@@ -58,7 +58,7 @@ export const certTranslations: Record<string, {
     navCertificates: 'Sertifikalarımız',
     title: 'Organik Tarım Sertifikalarımız',
     sub: 'Tesislerimizde yetiştirilen tüm fidan ve meyvelerimiz, yetkilendirilmiş kuruluşlar tarafından denetlenerek T.C. Organik Tarım Sertifikası ile belgelendirilmiştir.',
-    cert1: 'Organik Ürün Sertifikası (Gökberry & Alberry)',
+    cert1: 'Organik Ürün Sertifikası',
     cert2: 'Müteşebbis Sertifikası (Elite Plants Tesisleri)',
     zoom: 'Büyütmek için tıklayın'
   },
@@ -66,7 +66,7 @@ export const certTranslations: Record<string, {
     navCertificates: 'Certificates',
     title: 'Our Organic Agriculture Certificates',
     sub: 'All saplings and fruits grown in our facilities are audited by authorized bodies and certified with the Official Organic Agriculture Certificate.',
-    cert1: 'Organic Product Certificate (Gökberry & Alberry)',
+    cert1: 'Organic Product Certificate',
     cert2: 'Organic Operator Certificate (Elite Plants Facilities)',
     zoom: 'Click to enlarge'
   },
