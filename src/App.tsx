@@ -42,7 +42,7 @@ function App() {
       setShowScrollTop(scrollY > 400);
       
       // Active section calculation based on viewport intersection
-      const sections = ['home', 'about', 'certificates', 'varieties', 'contact'];
+      const sections = ['home', 'about', 'varieties', 'contact'];
       let currentSection = 'home';
       
       for (const section of sections) {

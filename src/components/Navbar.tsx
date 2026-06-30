@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Globe, Menu, X } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
 import type { Language } from '../i18n';
-import { certTranslations } from './ContentOverlay';
 
 const BASE = import.meta.env.BASE_URL || '/';
 const cizimImg = `${BASE.endsWith('/') ? BASE : BASE + '/'}images/çizim.png`;
@@ -15,7 +14,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t, language, setLanguage } = useTranslation();
-  const certT = certTranslations[language] || certTranslations['en'];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,10 +66,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             {t.navAbout}
           </a>
           <a 
-            onClick={() => scrollToSection('certificates')} 
-            className={activeSection === 'certificates' ? 'active' : ''}
+            onClick={() => scrollToSection('varieties')} 
+            className={activeSection === 'varieties' ? 'active' : ''}
           >
-            {certT.navCertificates}
+            {t.navVarieties}
           </a>
         </div>
 
@@ -89,12 +87,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
 
         {/* Right Side Navigation Links (Desktop Only) */}
         <div className="nav-col nav-col-right desktop-only">
-          <a 
-            onClick={() => scrollToSection('varieties')} 
-            className={activeSection === 'varieties' ? 'active' : ''}
-          >
-            {t.navVarieties}
-          </a>
           <a 
             onClick={() => scrollToSection('contact')} 
             className={activeSection === 'contact' ? 'active' : ''}
@@ -137,12 +129,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             className={activeSection === 'about' ? 'active' : ''}
           >
             {t.navAbout}
-          </a>
-          <a 
-            onClick={() => { scrollToSection('certificates'); setIsMenuOpen(false); }} 
-            className={activeSection === 'certificates' ? 'active' : ''}
-          >
-            {certT.navCertificates}
           </a>
           <a 
             onClick={() => { scrollToSection('varieties'); setIsMenuOpen(false); }} 

@@ -31,9 +31,7 @@ import farm13 from '../assets/images/farm_13.jpeg';
 import farm14 from '../assets/images/farm_14.jpeg';
 import farm15 from '../assets/images/farm_15.jpeg';
 
-// Import certificate images
-import cert1Img from '../assets/certificate/cert_1.jpg';
-import cert2Img from '../assets/certificate/cert_2.jpg';
+
 
 const gardenImages = [
   farm1, farm2, farm3, farm4, farm5,
@@ -131,8 +129,7 @@ export const certTranslations: Record<string, {
 };
 
 export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, setActiveFruit, onOpenVariety: _onOpenVariety }) => {
-  const { t, language } = useTranslation();
-  const certT = certTranslations[language] || certTranslations['en'];
+  const { t } = useTranslation();
   const [gardenIndex, setGardenIndex] = useState(0);
   const [expandedVarietyId, setExpandedVarietyId] = useState<string | null>('caddo');
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
@@ -491,48 +488,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
         </div>
         </div>{/* end about-section inner */}
       </section>
-      {/* 2.5 Certificates Section */}
-      <section id="certificates" className="scroll-section certificates-section" style={{ position: 'relative', overflow: 'hidden' }}>
-        {/* çizim.jpeg side decorations for certificates */}
-        <div className="section-side-drawing left cizim-float" style={{ opacity: 0.05 }}>
-          <img src={cizimImg} alt="" aria-hidden="true" style={{ width: 140, height: 'auto' }} />
-        </div>
-        <div className="section-side-drawing right cizim-float-r" style={{ opacity: 0.05 }}>
-          <img src={cizimImg} alt="" aria-hidden="true" style={{ width: 140, height: 'auto', transform: 'scaleX(-1)' }} />
-        </div>
 
-        <div className="certificates-inner">
-          <div className="section-header-center">
-            <span className="section-tag">{certT.navCertificates}</span>
-            <h2 className="section-title">{certT.title}</h2>
-            <p className="section-subtitle">{certT.sub}</p>
-          </div>
-
-          <div className="certificates-grid">
-            <div className="certificate-card" onClick={() => setLightboxImage(cert1Img)}>
-              <div className="certificate-img-wrap">
-                <img src={cert1Img} alt={certT.cert1} />
-                <div className="certificate-overlay">
-                  <Maximize size={24} />
-                  <span>{certT.zoom}</span>
-                </div>
-              </div>
-              <h3 className="certificate-card-title">{certT.cert1}</h3>
-            </div>
-
-            <div className="certificate-card" onClick={() => setLightboxImage(cert2Img)}>
-              <div className="certificate-img-wrap">
-                <img src={cert2Img} alt={certT.cert2} />
-                <div className="certificate-overlay">
-                  <Maximize size={24} />
-                  <span>{certT.zoom}</span>
-                </div>
-              </div>
-              <h3 className="certificate-card-title">{certT.cert2}</h3>
-            </div>
-          </div>
-        </div>
-      </section>
 
 
       {/* 3. Varieties Section - With Local 3D Fruit Scene and Tabs */}
