@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
       <div className="footer-content">
         <div className="footer-brand">
           <div className="logo-vintage" style={{ cursor: 'default', marginBottom: '12px' }}>
-            <span className="logo-vintage-text">ELİTE <span>plants</span></span>
+            <span className="logo-vintage-text">ELITE <span>plants</span></span>
           </div>
           <p className="footer-desc">
             {t.footerDesc}
@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
         <div className="footer-links-col">
           <h4>{t.navAbout}</h4>
           <ul>
-            <li><a href="#home">ELİTE plants</a></li>
+            <li><a href="#home">ELITE plants</a></li>
             <li><a href="#about">{t.navAbout}</a></li>
             <li>
               <a 
