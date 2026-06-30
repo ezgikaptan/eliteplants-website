@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Award, Sparkles, Mail, Globe } from 'lucide-react';
+import { Award, Sparkles, Mail, Globe, Sprout } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
 import type { Language } from '../i18n';
+import { certTranslations } from './ContentOverlay';
 
 const BASE = import.meta.env.BASE_URL || '/';
 const cizimImg = `${BASE.endsWith('/') ? BASE : BASE + '/'}images/çizim.png`;
@@ -13,6 +14,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { t, language, setLanguage } = useTranslation();
+  const certT = certTranslations[language] || certTranslations['en'];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,10 +67,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             <Sparkles size={14} /> {t.navAbout}
           </a>
           <a 
-            onClick={() => scrollToSection('varieties')} 
-            className={activeSection === 'varieties' ? 'active' : ''}
+            onClick={() => scrollToSection('certificates')} 
+            className={activeSection === 'certificates' ? 'active' : ''}
           >
-            <Award size={14} /> {t.navVarieties}
+            <Award size={14} /> {certT.navCertificates}
           </a>
         </div>
 
@@ -86,6 +88,12 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
 
         {/* Right Side Navigation Links */}
         <div className="nav-col nav-col-right">
+          <a 
+            onClick={() => scrollToSection('varieties')} 
+            className={activeSection === 'varieties' ? 'active' : ''}
+          >
+            <Sprout size={14} /> {t.navVarieties}
+          </a>
           <a 
             onClick={() => scrollToSection('contact')} 
             className={activeSection === 'contact' ? 'active' : ''}

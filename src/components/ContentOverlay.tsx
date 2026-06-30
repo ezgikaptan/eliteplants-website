@@ -31,6 +31,10 @@ import farm13 from '../assets/images/farm_13.jpeg';
 import farm14 from '../assets/images/farm_14.jpeg';
 import farm15 from '../assets/images/farm_15.jpeg';
 
+// Import certificate images
+import cert1Img from '../assets/certificate/cert_1.jpg';
+import cert2Img from '../assets/certificate/cert_2.jpg';
+
 const gardenImages = [
   farm1, farm2, farm3, farm4, farm5,
   farm6, farm7, farm8, farm9, farm10,
@@ -44,8 +48,91 @@ const getAssetPath = (path: string) => {
   return `${cleanBase}${cleanPath}`;
 };
 
+export const certTranslations: Record<string, {
+  navCertificates: string;
+  title: string;
+  sub: string;
+  cert1: string;
+  cert2: string;
+  zoom: string;
+}> = {
+  tr: {
+    navCertificates: 'Sertifikalarımız',
+    title: 'Organik Tarım Sertifikalarımız',
+    sub: 'Tesislerimizde yetiştirilen tüm fidan ve meyvelerimiz, yetkilendirilmiş kuruluşlar tarafından denetlenerek T.C. Organik Tarım Sertifikası ile belgelendirilmiştir.',
+    cert1: 'Organik Ürün Sertifikası (Gökberry & Alberry)',
+    cert2: 'Müteşebbis Sertifikası (Elite Plants Tesisleri)',
+    zoom: 'Büyütmek için tıklayın'
+  },
+  en: {
+    navCertificates: 'Certificates',
+    title: 'Our Organic Agriculture Certificates',
+    sub: 'All saplings and fruits grown in our facilities are audited by authorized bodies and certified with the Official Organic Agriculture Certificate.',
+    cert1: 'Organic Product Certificate (Gökberry & Alberry)',
+    cert2: 'Organic Operator Certificate (Elite Plants Facilities)',
+    zoom: 'Click to enlarge'
+  },
+  es: {
+    navCertificates: 'Certificados',
+    title: 'Nuestros Certificados de Agricultura Orgánica',
+    sub: 'Todos los plantones y frutos cultivados en nuestras instalaciones están auditados y certificados por organismos oficiales.',
+    cert1: 'Certificado de Producto Orgánico',
+    cert2: 'Certificado de Operador Orgánico',
+    zoom: 'Haga clic para ampliar'
+  },
+  fr: {
+    navCertificates: 'Certificats',
+    title: 'Nos Certificats d\'Agriculture Biologique',
+    sub: 'Tous les plants et fruits cultivés dans nos installations sont contrôlés et certifiés par des organismes officiels.',
+    cert1: 'Certificat de Produit Biologique',
+    cert2: 'Certificat d\'Opérateur Biologique',
+    zoom: 'Cliquez pour agrandir'
+  },
+  de: {
+    navCertificates: 'Zertifikate',
+    title: 'Unsere Bio-Zertifikate',
+    sub: 'Alle in unseren Betrieben angebauten Setzlinge und Früchte sind von offiziellen Stellen geprüft und bio-zertifiziert.',
+    cert1: 'Bio-Produktzertifikat',
+    cert2: 'Bio-Betriebszertifikat',
+    zoom: 'Klicken zum Vergrößern'
+  },
+  ru: {
+    navCertificates: 'Сертификаты',
+    title: 'Наши органические сертификаты',
+    sub: 'Все саженцы и плоды, выращенные в наших питомниках, проверены и сертифицированы официальными органами.',
+    cert1: 'Органический товарный сертификат',
+    cert2: 'Органический эксплуатационный сертификат',
+    zoom: 'Нажмите для увеличения'
+  },
+  zh: {
+    navCertificates: '认证证书',
+    title: '我们的有机农业认证',
+    sub: '我们设施中种植的所有幼苗和水果均经过授权机构审核，并获得官方有机农业认证。',
+    cert1: '有机产品认证',
+    cert2: '有机运营商认证',
+    zoom: '点击放大'
+  },
+  ja: {
+    navCertificates: '証明書',
+    title: '有機農業認定証',
+    sub: '当施設のすべての苗木および果実は、認可機関による監査を受け、公式の有機農業認定を受けています。',
+    cert1: '有機製品認定証',
+    cert2: '有機事業者認定証',
+    zoom: 'クリックして拡大'
+  },
+  ar: {
+    navCertificates: 'شهاداتنا',
+    title: 'شهادات الزراعة العضوية لدينا',
+    sub: 'جميع الشتلات والفواكه المزروعة في مرافقنا تخضع لتدقيق الجهات المعتمدة ومرخصة بشهادة الزراعة العضوية الرسمية.',
+    cert1: 'شهادة المنتج العضوية',
+    cert2: 'شهادة المشغل العضوية',
+    zoom: 'انقر للتكبير'
+  }
+};
+
 export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, setActiveFruit, onOpenVariety: _onOpenVariety }) => {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+  const certT = certTranslations[language] || certTranslations['en'];
   const [gardenIndex, setGardenIndex] = useState(0);
   const [expandedVarietyId, setExpandedVarietyId] = useState<string | null>('caddo');
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
@@ -403,6 +490,48 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
 
         </div>
         </div>{/* end about-section inner */}
+      </section>
+      {/* 2.5 Certificates Section */}
+      <section id="certificates" className="scroll-section certificates-section" style={{ position: 'relative', overflow: 'hidden' }}>
+        {/* çizim.jpeg side decorations for certificates */}
+        <div className="section-side-drawing left cizim-float" style={{ opacity: 0.05 }}>
+          <img src={cizimImg} alt="" aria-hidden="true" style={{ width: 140, height: 'auto' }} />
+        </div>
+        <div className="section-side-drawing right cizim-float-r" style={{ opacity: 0.05 }}>
+          <img src={cizimImg} alt="" aria-hidden="true" style={{ width: 140, height: 'auto', transform: 'scaleX(-1)' }} />
+        </div>
+
+        <div className="certificates-inner">
+          <div className="section-header-center">
+            <span className="section-tag">{certT.navCertificates}</span>
+            <h2 className="section-title">{certT.title}</h2>
+            <p className="section-subtitle">{certT.sub}</p>
+          </div>
+
+          <div className="certificates-grid">
+            <div className="certificate-card" onClick={() => setLightboxImage(cert1Img)}>
+              <div className="certificate-img-wrap">
+                <img src={cert1Img} alt={certT.cert1} />
+                <div className="certificate-overlay">
+                  <Maximize size={24} />
+                  <span>{certT.zoom}</span>
+                </div>
+              </div>
+              <h3 className="certificate-card-title">{certT.cert1}</h3>
+            </div>
+
+            <div className="certificate-card" onClick={() => setLightboxImage(cert2Img)}>
+              <div className="certificate-img-wrap">
+                <img src={cert2Img} alt={certT.cert2} />
+                <div className="certificate-overlay">
+                  <Maximize size={24} />
+                  <span>{certT.zoom}</span>
+                </div>
+              </div>
+              <h3 className="certificate-card-title">{certT.cert2}</h3>
+            </div>
+          </div>
+        </div>
       </section>
 
 

@@ -1,11 +1,13 @@
 import { Phone, Mail, MapPin, ShieldCheck, Leaf } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
+import { certTranslations } from './ContentOverlay';
 
 const BASE = import.meta.env.BASE_URL || '/';
 const cizimImg = `${BASE.endsWith('/') ? BASE : BASE + '/'}images/çizim.png`;
 
 export const Footer: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+  const certT = certTranslations[language] || certTranslations['en'];
 
   return (
     <footer id="contact" className="footer">
@@ -26,8 +28,9 @@ export const Footer: React.FC = () => {
           <h4>{t.navAbout}</h4>
           <ul>
             <li><a href="#home">ELİTE plants</a></li>
-            <li><a href="#varieties">{t.navVarieties}</a></li>
             <li><a href="#about">{t.navAbout}</a></li>
+            <li><a href="#certificates">{certT.navCertificates}</a></li>
+            <li><a href="#varieties">{t.navVarieties}</a></li>
           </ul>
         </div>
 
