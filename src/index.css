@@ -2437,7 +2437,21 @@ h1, h2, h3, h4 {
 /* Animations and Responsive */
 @media (max-width: 1024px) {
   .section-side-drawing {
-    display: none !important;
+    display: block !important;
+    opacity: 0.05 !important;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .section-side-drawing img {
+    width: 90px !important;
+  }
+  .section-side-drawing.left {
+    left: -15px !important;
+    top: 25% !important;
+  }
+  .section-side-drawing.right {
+    right: -15px !important;
+    top: 75% !important;
   }
   .about-section {
     grid-template-columns: 1fr;

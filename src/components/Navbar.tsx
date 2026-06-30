@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Sprout, Award, Sparkles, Mail, Globe } from 'lucide-react';
+import { Award, Sparkles, Mail, Globe } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
 import type { Language } from '../i18n';
+
+const BASE = import.meta.env.BASE_URL || '/';
+const cizimImg = `${BASE.endsWith('/') ? BASE : BASE + '/'}images/çizim.png`;
 
 interface NavbarProps {
   activeSection: string;
@@ -72,8 +75,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
         {/* Centered Logo */}
         <div className="nav-col nav-col-center">
           <div className="logo-vintage" onClick={() => scrollToSection('home')}>
-            <span className="logo-vintage-icon">
-              <Sprout size={16} />
+            <span className="logo-vintage-icon" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '22px', height: '22px' }}>
+              <img src={cizimImg} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
             </span>
             <span className="logo-vintage-text">
               ELİTE <span>plants</span>

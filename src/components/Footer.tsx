@@ -1,6 +1,8 @@
-import React from 'react';
 import { Phone, Mail, MapPin, ShieldCheck, Leaf } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
+
+const BASE = import.meta.env.BASE_URL || '/';
+const cizimImg = `${BASE.endsWith('/') ? BASE : BASE + '/'}images/çizim.png`;
 
 export const Footer: React.FC = () => {
   const { t } = useTranslation();
@@ -10,7 +12,9 @@ export const Footer: React.FC = () => {
       <div className="footer-content">
         <div className="footer-brand">
           <div className="logo-vintage" style={{ cursor: 'default', marginBottom: '12px' }}>
-            <span className="logo-vintage-icon"><Leaf size={16} /></span>
+            <span className="logo-vintage-icon" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '22px', height: '22px' }}>
+              <img src={cizimImg} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+            </span>
             <span className="logo-vintage-text">ELİTE <span>plants</span></span>
           </div>
           <p className="footer-desc">
