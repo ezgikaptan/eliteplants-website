@@ -4,7 +4,6 @@ import { useTranslation } from '../context/LanguageContext';
 import type { VarietyDetail } from './DetailModal';
 import type { FruitType } from './FruitSelector';
 import type { TranslationDict } from '../i18n';
-import { ThreeScene } from './ThreeScene';
 
 const BASE = import.meta.env.BASE_URL;
 const cizimImg = `${BASE}images/çizim.png`;
@@ -46,7 +45,7 @@ const getAssetPath = (path: string) => {
 };
 
 export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, setActiveFruit, onOpenVariety: _onOpenVariety }) => {
-  const { t, language } = useTranslation();
+  const { t } = useTranslation();
   const [gardenIndex, setGardenIndex] = useState(0);
   const [expandedVarietyId, setExpandedVarietyId] = useState<string | null>('caddo');
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
@@ -129,7 +128,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
         type: 'raspberry',
         tag: t.kokanee_tag,
         description: t.kokanee_desc,
-        image: '/images/kokanee_raspberry.jpg',
+        image: '/images/farm_14.jpeg',
         origin: t.kokanee_origin,
         growth: t.kokanee_growth,
         fruitSize: t.kokanee_size,
@@ -140,21 +139,6 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
       }
     ],
     blueberry: [
-      {
-        id: 'miniblues',
-        name: 'Mini Blues Gökberry',
-        type: 'blueberry',
-        tag: t.miniblues_tag,
-        description: t.miniblues_desc,
-        image: '/images/miniblues_blueberry.jpg',
-        origin: t.miniblues_origin,
-        growth: t.miniblues_growth,
-        fruitSize: t.miniblues_size,
-        taste: t.miniblues_taste,
-        chillHours: t.miniblues_chill,
-        harvest: t.miniblues_harvest,
-        shelfLife: t.miniblues_shelf
-      },
       {
         id: 'cupla',
         name: 'Cupla Gökberry',
@@ -279,7 +263,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
           <button 
             className="btn-vintage-outline"
             onClick={() => {
-              document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+              document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
             {t.heroExplore}
@@ -421,104 +405,6 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
         </div>{/* end about-section inner */}
       </section>
 
-      {/* 3. Products Section */}
-      <section id="products" className="scroll-section products-section">
-        {/* çizim.jpeg side decorations - blackberry purple tinted */}
-        <div className="section-side-drawing left cizim-float">
-          <img src={cizimImg} alt="" aria-hidden="true" style={{ width: 160, height: 'auto', opacity: 0.2, mixBlendMode: 'screen', filter: 'hue-rotate(240deg) saturate(1.6) brightness(1.4)' }} />
-        </div>
-        <div className="section-side-drawing right cizim-float-r">
-          <img src={cizimImg} alt="" aria-hidden="true" style={{ width: 160, height: 'auto', opacity: 0.2, mixBlendMode: 'screen', filter: 'hue-rotate(240deg) saturate(1.6) brightness(1.4)', transform: 'scaleX(-1)' }} />
-        </div>
-
-        {/* Decorative background leaf outlines */}
-        <div className="products-leaf-left">
-          <svg width="240" height="300" viewBox="0 0 240 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10,290 C60,250 140,240 180,180 C220,120 180,40 120,20 C60,0 20,60 10,120 C0,180 30,220 10,290 Z" fill="#fff" opacity="0.04" />
-            <path d="M50,260 C90,220 160,210 190,160 C220,110 190,40 140,30" stroke="#fff" strokeWidth="2" strokeDasharray="4 4" opacity="0.08" />
-          </svg>
-        </div>
-
-        <div className="products-leaf-right">
-          <svg width="240" height="300" viewBox="0 0 240 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M230,290 C180,250 100,240 60,180 C20,120 60,40 120,20 C180,0 220,60 230,120 C240,180 210,220 230,290 Z" fill="#fff" opacity="0.04" />
-            <path d="M190,260 C150,220 80,210 50,160 C20,110 50,40 100,30" stroke="#fff" strokeWidth="2" strokeDasharray="4 4" opacity="0.07" />
-          </svg>
-        </div>
-
-        {/* Vintage Header */}
-        <div className="products-header-vintage">
-          <h2 className="products-vintage-cursive">{t.productsCursive}</h2>
-          <p className="products-vintage-typewriter">
-            {t.productsSub}
-          </p>
-        </div>
-
-        <div className="products-vintage-grid">
-          {/* Karaberry Postage Stamp Card */}
-          <div 
-            className="product-stamp-card" 
-            onClick={() => { 
-              setActiveFruit('blackberry'); 
-              document.getElementById('varieties')?.scrollIntoView({ behavior: 'smooth' }); 
-            }}
-          >
-            <div className="product-3d-wrap">
-              <ThreeScene activeFruit="blackberry" disableScrollFade={true} />
-            </div>
-            <h3 className="product-stamp-title">Karaberry</h3>
-            <span className="product-stamp-subtitle">
-              {language === 'tr' ? 'Böğürtlen' : language === 'en' ? 'Blackberry' : language === 'es' ? 'Mora' : language === 'fr' ? 'Mûre' : language === 'de' ? 'Brombeere' : 'Ежевика'}
-            </span>
-            <p className="product-stamp-desc">
-              {t.productsKaraberryDesc}
-            </p>
-            <button className="product-stamp-link">{t.productsExplore} →</button>
-          </div>
-
-          {/* Alberry Postage Stamp Card */}
-          <div 
-            className="product-stamp-card" 
-            onClick={() => { 
-              setActiveFruit('raspberry'); 
-              document.getElementById('varieties')?.scrollIntoView({ behavior: 'smooth' }); 
-            }}
-          >
-            <div className="product-3d-wrap">
-              <ThreeScene activeFruit="raspberry" disableScrollFade={true} />
-            </div>
-            <h3 className="product-stamp-title">Alberry</h3>
-            <span className="product-stamp-subtitle">
-              {language === 'tr' ? 'Ahududu' : language === 'en' ? 'Raspberry' : language === 'es' ? 'Frambuesa' : language === 'fr' ? 'Framboise' : language === 'de' ? 'Himbeere' : 'Малина'}
-            </span>
-            <p className="product-stamp-desc">
-              {t.productsAlberryDesc}
-            </p>
-            <button className="product-stamp-link">{t.productsExplore} →</button>
-          </div>
-
-          {/* Gökberry Postage Stamp Card */}
-          <div 
-            className="product-stamp-card" 
-            onClick={() => { 
-              setActiveFruit('blueberry'); 
-              document.getElementById('varieties')?.scrollIntoView({ behavior: 'smooth' }); 
-            }}
-          >
-            <div className="product-3d-wrap">
-              <ThreeScene activeFruit="blueberry" disableScrollFade={true} />
-            </div>
-            <h3 className="product-stamp-title">Gökberry</h3>
-            <span className="product-stamp-subtitle">
-              {language === 'tr' ? 'Mavi Yemiş' : language === 'en' ? 'Blueberry' : language === 'es' ? 'Arándano' : language === 'fr' ? 'Myrtille' : language === 'de' ? 'Blaubeere' : 'Гоluбика'}
-            </span>
-            <p className="product-stamp-desc">
-              {t.productsGokberryDesc}
-            </p>
-            <button className="product-stamp-link">{t.productsExplore} →</button>
-          </div>
-        </div>
-      </section>
 
       {/* 3. Varieties Section - With Local 3D Fruit Scene and Tabs */}
       <section id="varieties" className="scroll-section varieties-section" style={{ width: '100%' }}>

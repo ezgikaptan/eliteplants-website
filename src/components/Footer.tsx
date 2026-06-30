@@ -22,7 +22,6 @@ export const Footer: React.FC = () => {
           <h4>{t.navAbout}</h4>
           <ul>
             <li><a href="#home">ELİTE plants</a></li>
-            <li><a href="#products">{t.navProducts}</a></li>
             <li><a href="#varieties">{t.navVarieties}</a></li>
             <li><a href="#about">{t.navAbout}</a></li>
           </ul>
@@ -43,7 +42,7 @@ export const Footer: React.FC = () => {
             <div className="footer-contact-icon-wrap">
               <Phone size={18} />
             </div>
-            <span className="footer-contact-text">+90 (505) 385 74 07</span>
+            <span className="footer-contact-text">+90 (533) 416 64 84</span>
           </div>
           <div className="footer-contact-item">
             <div className="footer-contact-icon-wrap">

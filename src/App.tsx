@@ -36,7 +36,7 @@ function App() {
       const viewportHeight = window.innerHeight;
       
       // Active section calculation based on viewport intersection
-      const sections = ['home', 'products', 'varieties', 'about', 'contact'];
+      const sections = ['home', 'varieties', 'about', 'contact'];
       let currentSection = 'home';
       
       for (const section of sections) {

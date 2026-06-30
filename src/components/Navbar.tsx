@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Sprout, ShoppingBag, Award, Sparkles, Mail, Globe } from 'lucide-react';
+import { Sprout, Award, Sparkles, Mail, Globe } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
 import type { Language } from '../i18n';
 
@@ -56,10 +56,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
         {/* Left Side Navigation Links */}
         <div className="nav-col nav-col-left">
           <a 
-            onClick={() => scrollToSection('products')} 
-            className={activeSection === 'products' ? 'active' : ''}
+            onClick={() => scrollToSection('about')} 
+            className={activeSection === 'about' ? 'active' : ''}
           >
-            <ShoppingBag size={14} /> {t.navProducts}
+            <Sparkles size={14} /> {t.navAbout}
           </a>
           <a 
             onClick={() => scrollToSection('varieties')} 
@@ -83,12 +83,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
 
         {/* Right Side Navigation Links */}
         <div className="nav-col nav-col-right">
-          <a 
-            onClick={() => scrollToSection('about')} 
-            className={activeSection === 'about' ? 'active' : ''}
-          >
-            <Sparkles size={14} /> {t.navAbout}
-          </a>
           <a 
             onClick={() => scrollToSection('contact')} 
             className={activeSection === 'contact' ? 'active' : ''}
