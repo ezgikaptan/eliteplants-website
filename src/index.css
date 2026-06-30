@@ -4121,6 +4121,10 @@ html[dir="rtl"] .gallery-thumbnails-strip {
   display: none;
 }
 
+.mobile-menu-panel {
+  display: none;
+}
+
 @media (max-width: 768px) {
   /* Restructure Navbar container on mobile to be a clean 3-column grid */
   .navbar-vintage-container {
