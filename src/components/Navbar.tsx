@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Globe } from 'lucide-react';
+import { Languages } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
 import type { Language } from '../i18n';
-
-const BASE = import.meta.env.BASE_URL || '/';
-const cizimImg = `${BASE.endsWith('/') ? BASE : BASE + '/'}images/çizim.png`;
 
 const homeTranslations: Record<string, string> = {
   tr: 'Ana Sayfa',
@@ -147,9 +144,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
         {/* Centered Logo */}
         <div className="nav-col nav-col-center">
           <div className="logo-vintage" onClick={() => { scrollToSection('home'); setIsMenuOpen(false); }}>
-            <span className="logo-vintage-icon" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '22px', height: '22px' }}>
-              <img src={cizimImg} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
-            </span>
             <span className="logo-vintage-text">
               ELİTE <span>plants</span>
             </span>
@@ -168,7 +162,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
           {/* Premium Language Dropdown (Desktop Only) */}
           <div className="lang-selector-container desktop-only">
             <button className="lang-selector-btn">
-              <Globe size={14} />
+              <Languages size={14} />
               <span>{language.toUpperCase()}</span>
             </button>
             <div className="lang-dropdown">
@@ -189,7 +183,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
         {/* Mobile Language Selector Dropdown (Mobile Only, Far Right) */}
         <div className="lang-selector-container mobile-only">
           <button className="lang-selector-btn">
-            <Globe size={14} />
+            <Languages size={14} />
             <span>{language.toUpperCase()}</span>
           </button>
           <div className="lang-dropdown">

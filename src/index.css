@@ -3562,19 +3562,19 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     width: 36px;
     height: 36px;
     border-radius: 8px;
-    background: #111827 !important;
+    background: var(--color-primary) !important;
     border: none;
     cursor: pointer;
     z-index: 2001;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 8px rgba(6, 27, 14, 0.2);
     padding: 0;
     justify-self: start;
   }
 
   .mobile-menu-trigger:hover,
   .mobile-menu-trigger:active {
-    background: #374151 !important;
+    background: var(--color-secondary) !important;
     transform: scale(1.05);
   }
 
