@@ -5,12 +5,14 @@ import { ContentOverlay } from './components/ContentOverlay';
 import { DetailModal } from './components/DetailModal';
 import type { VarietyDetail } from './components/DetailModal';
 import { Footer } from './components/Footer';
+import { ArrowUp } from 'lucide-react';
 
 function App() {
   const [activeFruit, setActiveFruit] = useState<FruitType>('blackberry');
   const [activeSection, setActiveSection] = useState('home');
   const [selectedVariety, setSelectedVariety] = useState<VarietyDetail | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -34,6 +36,10 @@ function App() {
     
     const handleScroll = () => {
       const viewportHeight = window.innerHeight;
+      const scrollY = window.scrollY;
+
+      // Show scroll-to-top button if scrolled down past 400px
+      setShowScrollTop(scrollY > 400);
       
       // Active section calculation based on viewport intersection
       const sections = ['home', 'varieties', 'about', 'contact'];
@@ -102,6 +108,15 @@ function App() {
 
       {/* Corporate Footer */}
       <Footer />
+
+      {/* Scroll to Top Button */}
+      <button 
+        className={`scroll-to-top ${showScrollTop ? 'visible' : ''}`}
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        aria-label="Scroll to top"
+      >
+        <ArrowUp size={20} />
+      </button>
     </div>
   );
 }
