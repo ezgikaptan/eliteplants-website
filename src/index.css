@@ -4112,16 +4112,8 @@ html[dir="rtl"] .gallery-thumbnails-strip {
   border-radius: 20px;
 }
 
-/* Mobile Hamburger Trigger, Grid Header & Menu Drawer */
-.mobile-menu-trigger {
-  display: none;
-}
-
+/* Mobile Header Layout (No Hamburger Menu) */
 .lang-selector-container.mobile-only {
-  display: none;
-}
-
-.mobile-menu-panel {
   display: none;
 }
 
@@ -4131,7 +4123,6 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     display: grid !important;
     grid-template-columns: 60px 1fr 60px !important;
     align-items: center !important;
-    justify-content: space-between !important;
     padding: 0 16px !important;
     height: 72px !important;
     width: 100% !important;
@@ -4145,84 +4136,7 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     display: block !important;
   }
 
-  /* 1. Left Column: Hamburger */
-  .mobile-menu-trigger {
-    grid-column: 1;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 12px; /* standard 12px rounding */
-    background: rgba(28, 50, 36, 0.05); /* very light green background */
-    border: 1px solid rgba(28, 50, 36, 0.15); /* distinct green border */
-    color: var(--color-forest);
-    cursor: pointer;
-    z-index: 2001; /* floats on top of menu overlay */
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 4px 10px rgba(28, 50, 36, 0.04);
-    padding: 0;
-    justify-self: start;
-  }
-
-  .mobile-menu-trigger:hover,
-  .mobile-menu-trigger:active {
-    background: rgba(28, 50, 36, 0.1);
-    border-color: rgba(28, 50, 36, 0.25);
-    transform: scale(1.05);
-  }
-
-  /* Custom CSS Hamburger Lines */
-  .hamburger-box {
-    width: 20px;
-    height: 14px;
-    position: relative;
-    display: inline-block;
-  }
-
-  .hamburger-inner,
-  .hamburger-inner::before,
-  .hamburger-inner::after {
-    width: 20px;
-    height: 2px;
-    background-color: var(--color-forest);
-    position: absolute;
-    border-radius: 2px;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
-  }
-
-  .hamburger-inner {
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  .hamburger-inner::before {
-    content: '';
-    top: -6px;
-    left: 0;
-  }
-
-  .hamburger-inner::after {
-    content: '';
-    bottom: -6px;
-    left: 0;
-  }
-
-  /* Morphing to X animation when menu active */
-  .mobile-menu-trigger.active .hamburger-inner {
-    transform: rotate(45deg);
-  }
-
-  .mobile-menu-trigger.active .hamburger-inner::before {
-    transform: translateY(6px) rotate(-90deg);
-    opacity: 0;
-  }
-
-  .mobile-menu-trigger.active .hamburger-inner::after {
-    transform: translateY(-6px) rotate(-90deg);
-  }
-
-  /* 2. Center Column: Logo */
+  /* Center Column: Logo */
   .nav-col-center {
     grid-column: 2;
     display: flex !important;
@@ -4238,7 +4152,7 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     gap: 8px !important;
   }
 
-  /* 3. Right Column: Mobile Language Selector */
+  /* Right Column: Mobile Language Selector */
   .lang-selector-container.mobile-only {
     grid-column: 3;
     display: block !important;
@@ -4275,88 +4189,6 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(28, 50, 36, 0.1);
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  }
-
-  /* Mobile Slide-Down Menu Panel (Drawer) */
-  .mobile-menu-panel {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(245, 237, 224, 0.98); /* matching the vintage paper bg */
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    z-index: 190;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-20px);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .mobile-menu-panel.open {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  /* Minimalist left-aligned links inside mobile drawer */
-  .mobile-menu-links {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 0 48px;
-    gap: 32px;
-    align-items: flex-start; /* Left-aligned for minimalist look */
-  }
-
-  .mobile-menu-link-item {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-    width: 100%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-  }
-
-  .menu-link-title {
-    font-family: var(--font-vintage);
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: var(--color-forest);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    line-height: 1.2;
-    transition: all 0.3s ease;
-  }
-
-  .menu-link-subtitle {
-    font-family: var(--font-body);
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-    opacity: 0.65;
-    transition: all 0.3s ease;
-  }
-
-  /* Active & Hover States */
-  .mobile-menu-link-item:hover .menu-link-title,
-  .mobile-menu-link-item.active .menu-link-title {
-    color: var(--color-primary);
-    transform: translateX(4px);
-  }
-
-  .mobile-menu-link-item:hover .menu-link-subtitle,
-  .mobile-menu-link-item.active .menu-link-subtitle {
-    color: var(--color-primary);
-    opacity: 0.9;
-    transform: translateX(4px);
   }
 }
 
