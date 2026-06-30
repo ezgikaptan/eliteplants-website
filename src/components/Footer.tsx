@@ -78,7 +78,7 @@ export const Footer: React.FC = () => {
             onClick={() => { setIsCertModalOpen(true); setActiveCertIndex(0); }} 
             style={{ cursor: 'pointer', marginTop: '12px' }}
           >
-            <div className="footer-contact-icon-wrap" style={{ background: 'var(--color-primary)', color: '#fff' }}>
+            <div className="footer-contact-icon-wrap" style={{ background: 'var(--color-earth-sand)', color: 'var(--color-primary)' }}>
               <ShieldCheck size={18} />
             </div>
             <span className="footer-contact-text" style={{ textDecoration: 'underline', fontWeight: 'bold' }}>
