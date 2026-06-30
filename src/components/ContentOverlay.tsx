@@ -131,7 +131,7 @@ export const certTranslations: Record<string, {
 export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, setActiveFruit, onOpenVariety: _onOpenVariety }) => {
   const { t } = useTranslation();
   const [gardenIndex, setGardenIndex] = useState(0);
-  const [expandedVarietyId, setExpandedVarietyId] = useState<string | null>('caddo');
+  const [expandedVarietyId, setExpandedVarietyId] = useState<string | null>(null);
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
   const [showAllPhotos, setShowAllPhotos] = useState(false);
   const [aboutTab, setAboutTab] = useState<'story' | 'organic' | 'terroir'>('story');
@@ -590,14 +590,18 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
                       <h3 className="modal-title" style={{ fontSize: '1.9rem', marginBottom: '12px' }}>
                         {variety.name}
                       </h3>
-                      <p className="variety-compact-desc" style={{ 
-                         fontSize: '0.92rem', 
-                         color: 'var(--text-secondary)', 
-                         lineHeight: '1.6', 
-                         marginBottom: isExpanded ? '24px' : '0'
-                      }}>
-                        {getTranslated(variety.id, 'desc', variety.description)}
-                      </p>
+                      {isExpanded && (
+                        <p className="variety-compact-desc" style={{ 
+                           fontSize: '0.92rem', 
+                           color: 'var(--text-secondary)', 
+                           lineHeight: '1.6', 
+                           marginBottom: '24px',
+                           marginTop: '8px',
+                           transition: 'all 0.4s ease'
+                        }}>
+                          {getTranslated(variety.id, 'desc', variety.description)}
+                        </p>
+                      )}
                     </div>
 
                     {/* Expandable Content Area */}

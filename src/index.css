@@ -4153,22 +4153,21 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     justify-content: center;
     width: 44px;
     height: 44px;
-    border-radius: 12px; /* standard 12px rounding */
-    background: rgba(28, 50, 36, 0.06); /* light forest green tint */
-    border: 1.5px solid rgba(28, 50, 36, 0.18); /* distinct green border for contrast */
+    border-radius: 12px;
+    background: var(--color-forest); /* solid dark green - maximum contrast on cream */
+    border: none;
     color: var(--color-forest);
     cursor: pointer;
-    z-index: 2001; /* floats on top of menu overlay */
+    z-index: 2001;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 4px 10px rgba(28, 50, 36, 0.04);
+    box-shadow: 0 4px 12px rgba(28, 50, 36, 0.25);
     padding: 0;
     justify-self: start;
   }
 
   .mobile-menu-trigger:hover,
   .mobile-menu-trigger:active {
-    background: rgba(28, 50, 36, 0.12);
-    border-color: rgba(28, 50, 36, 0.3);
+    background: rgba(28, 50, 36, 0.85);
     transform: scale(1.05);
   }
 
@@ -4185,7 +4184,7 @@ html[dir="rtl"] .gallery-thumbnails-strip {
   .hamburger-inner::after {
     width: 20px;
     height: 2px;
-    background-color: var(--color-forest); /* dark green lines */
+    background-color: #ffffff; /* white lines on dark green bg */
     position: absolute;
     border-radius: 2px;
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
@@ -4253,14 +4252,14 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     width: 44px;
     height: 44px;
     border-radius: 12px;
-    background: rgba(28, 50, 36, 0.06);
-    border: 1.5px solid rgba(28, 50, 36, 0.18);
-    color: var(--color-forest);
+    background: var(--color-forest); /* solid dark green - maximum contrast */
+    border: none;
+    color: #ffffff; /* white text on dark green */
     font-family: var(--font-body);
     font-weight: 700;
     font-size: 0.8rem;
     padding: 0;
-    box-shadow: 0 4px 10px rgba(28, 50, 36, 0.04);
+    box-shadow: 0 4px 12px rgba(28, 50, 36, 0.25);
   }
 
   .lang-selector-container.mobile-only .lang-selector-btn span {
