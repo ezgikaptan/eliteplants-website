@@ -95,7 +95,7 @@
   font-size: 0.8rem;
   font-weight: 700;
   padding: 6px 14px;
-  border-radius: 20px;
+  border-radius: 12px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -118,7 +118,7 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
+  border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   padding: 8px;
   display: flex;
@@ -521,7 +521,7 @@ h1, h2, h3, h4 {
   }
   .navbar-container {
     justify-content: center;
-    border-radius: 20px;
+    border-radius: 12px;
     height: 55px;
   }
 }
@@ -1341,7 +1341,7 @@ h1, h2, h3, h4 {
   padding: 16px 20px;
   background: rgba(255, 255, 255, 0.45);
   border: 1px solid rgba(28, 50, 36, 0.06);
-  border-radius: 18px;
+  border-radius: 12px;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
@@ -1372,7 +1372,7 @@ h1, h2, h3, h4 {
   justify-content: center;
   width: 36px;
   height: 36px;
-  border-radius: 10px;
+  border-radius: 12px;
   background: var(--color-glow);
   color: var(--color-primary);
   flex-shrink: 0;
@@ -1530,7 +1530,7 @@ h1, h2, h3, h4 {
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: #fff;
   padding: 6px 14px;
-  border-radius: 20px;
+  border-radius: 12px;
   font-size: 0.85rem;
   font-weight: 600;
   pointer-events: none;
@@ -1546,7 +1546,7 @@ h1, h2, h3, h4 {
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: #fff;
   padding: 6px 14px;
-  border-radius: 20px;
+  border-radius: 12px;
   font-size: 0.85rem;
   font-weight: 500;
   display: flex;
@@ -1639,7 +1639,7 @@ h1, h2, h3, h4 {
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: #fff;
   padding: 3px 8px;
-  border-radius: 20px;
+  border-radius: 12px;
   font-family: var(--font-vintage);
   font-size: 0.92rem;
   font-weight: 700;
@@ -1830,7 +1830,7 @@ h1, h2, h3, h4 {
 @media (max-width: 580px) {
   .about-tabs-nav {
     flex-direction: column;
-    border-radius: 20px;
+    border-radius: 12px;
     gap: 4px;
     padding: 8px;
   }
@@ -1841,7 +1841,7 @@ h1, h2, h3, h4 {
 
 .about-sensor-panel {
   padding: 12px 16px;
-  border-radius: 14px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -2552,7 +2552,7 @@ h1, h2, h3, h4 {
 
   .selector-item-btn {
     padding: 8px 12px;
-    border-radius: 20px;
+    border-radius: 12px;
     font-size: 0.78rem;
     gap: 6px;
   }
