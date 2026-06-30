@@ -48,14 +48,14 @@
   --font-vintage: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-serif: 'Playfair Display', serif;
   --font-script: 'Playfair Display', serif;
-  --color-forest: #2a2a2a;
-  --bg-cream: #f8f4ef;
+  --color-forest: #1a1a1a;
+  --bg-cream: #ffffff;
   
-  /* Color themes - Premium Light Organic */
-  --bg-primary: #f9f5f0;
-  --bg-secondary: #f2ece4;
-  --text-primary: #222222;
-  --text-secondary: #3d5245;
+  /* Clean White Design System */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f4f4f5;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
   
   /* Blackberry (Böğürtlen) Theme */
   --blackberry-primary: #7b2cbf;
@@ -80,7 +80,7 @@
   --transition-smooth: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-fast: all 0.25s ease;
 
-/* Language Selector — styled for dark navbar */
+/* Language Selector — clean dark-on-white for navbar */
 .lang-selector-container {
   position: relative;
   display: inline-block;
@@ -88,45 +88,45 @@
 }
 
 .lang-selector-btn {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(123, 44, 191, 0.4);
-  color: rgba(255, 255, 255, 0.85);
+  background: transparent;
+  border: 1px solid #d1d5db;
+  color: #374151;
   font-family: var(--font-body);
   font-size: 0.78rem;
   font-weight: 700;
-  padding: 6px 14px;
-  border-radius: 10px;
+  padding: 6px 12px;
+  border-radius: 8px;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 6px;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .lang-selector-btn:hover {
-  background: rgba(123, 44, 191, 0.2);
-  border-color: rgba(123, 44, 191, 0.7);
-  color: #ffffff;
+  background: #f9fafb;
+  border-color: #9ca3af;
+  color: #111827;
 }
 
 .lang-dropdown {
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
-  background: #1a1a2e;
-  border: 1px solid rgba(123, 44, 191, 0.3);
-  border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-  padding: 8px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  padding: 6px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  min-width: 140px;
+  gap: 2px;
+  min-width: 150px;
   z-index: 200;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(8px);
+  transition: all 0.2s ease;
 }
 
 .lang-selector-container:hover .lang-dropdown {
@@ -138,42 +138,43 @@
 .lang-option-btn {
   background: transparent;
   border: none;
-  color: rgba(255, 255, 255, 0.7);
+  color: #374151;
   font-family: var(--font-body);
   font-size: 0.82rem;
-  font-weight: 600;
-  padding: 8px 12px;
-  border-radius: 8px;
+  font-weight: 500;
+  padding: 8px 10px;
+  border-radius: 6px;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 8px;
   width: 100%;
   text-align: left;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
 }
 
 .lang-option-btn:hover {
-  background: rgba(123, 44, 191, 0.2);
-  color: #fff;
+  background: #f3f4f6;
+  color: #111827;
 }
 
 .lang-option-btn.active {
-  background: #7b2cbf !important;
-  color: #fff !important;
+  background: #111827 !important;
+  color: #ffffff !important;
 }
 
 .lang-code-tag {
   font-size: 0.65rem;
   font-weight: 800;
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
-  padding: 1px 4px;
+  background: #f3f4f6;
+  color: #374151;
+  padding: 1px 5px;
   border-radius: 4px;
 }
 
 .lang-option-btn.active .lang-code-tag {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255,255,255,0.15);
+  color: #ffffff;
 }
 }
 
@@ -347,23 +348,21 @@ h1, h2, h3, h4 {
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Navigation — Dark Charcoal Premium Bar */
+/* Navigation — Clean White Professional (inspired by Bosch Growers) */
 .navbar-vintage {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  background: #1a1a2e; /* deep dark navy-charcoal */
-  border-bottom: 1px solid rgba(123, 44, 191, 0.2); /* subtle purple border */
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.3s ease;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: none;
 }
 
 .navbar-vintage.scrolled {
-  background: #12121f;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.35);
-  border-bottom-color: rgba(123, 44, 191, 0.3);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
 }
 
 .navbar-vintage-container {
@@ -399,38 +398,39 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: rgba(255, 255, 255, 0.75);
+  color: #374151;
   font-family: var(--font-vintage);
   font-size: 0.78rem;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.12em;
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: color 0.2s ease;
   position: relative;
   padding: 4px 0;
 }
 
 .nav-col a svg {
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition: transform 0.2s ease;
 }
 
 .nav-col a:hover {
-  color: #ffffff;
+  color: #111827;
 }
 
 .nav-col a:hover svg {
-  transform: translateY(-2px) scale(1.15);
-  color: #ffffff;
+  transform: translateY(-1px);
+  color: #111827;
 }
 
 .nav-col a.active {
-  color: #ffffff;
+  color: #111827;
+  font-weight: 700;
 }
 
 .nav-col a.active svg {
-  color: #7b2cbf;
+  color: #111827;
 }
 
 .nav-col a::after {
@@ -440,10 +440,10 @@ h1, h2, h3, h4 {
   left: 0;
   width: 100%;
   height: 1.5px;
-  background: #7b2cbf;
+  background: #111827;
   transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.3s ease;
+  transform-origin: left;
+  transition: transform 0.25s ease;
 }
 
 .nav-col a:hover::after, .nav-col a.active::after {
@@ -461,25 +461,25 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
-  background: #7b2cbf;
+  background: #1a1a1a;
   color: #ffffff;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .logo-vintage:hover .logo-vintage-icon {
-  transform: scale(1.1) rotate(15deg);
-  background: #9d4edd;
+  transform: scale(1.08);
+  background: #374151;
 }
 
 .logo-vintage-text {
   font-family: var(--font-serif);
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 800;
-  color: #ffffff;
-  letter-spacing: 0.06em;
+  color: #111827;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   display: inline-flex;
   align-items: center;
@@ -488,12 +488,12 @@ h1, h2, h3, h4 {
 .logo-vintage-text span {
   font-family: var(--font-vintage);
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.72rem;
+  color: #6b7280;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.22em;
   margin-left: 10px;
-  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid #d1d5db;
   padding-left: 10px;
   line-height: 1;
   display: inline-block;
@@ -561,58 +561,10 @@ h1, h2, h3, h4 {
   100% { transform: translateY(0px) rotate(0deg); }
 }
 
-/* App-level background that transitions on scroll */
+/* App-level background — always clean white */
 .app-container {
-  transition: background-color 1.5s cubic-bezier(0.16, 1, 0.3, 1), color 1.5s ease;
-}
-.app-container.active-sec-home {
-  background-color: #5c0632; /* Rich Deep Raspberry / Ahududu */
-  --text-primary: #FAF6EE;
-  --text-secondary: rgba(250, 246, 238, 0.75);
-  --color-primary: #ff8da1;
-  --color-forest: #FAF6EE;
-}
-.app-container.active-sec-products {
-  background-color: #250933; /* Deep Blackberry / Böğürtlen */
-  --text-primary: #FAF6EE;
-  --text-secondary: rgba(250, 246, 238, 0.75);
-  --color-primary: #e0aaff;
-  --color-forest: #FAF6EE;
-}
-.app-container.active-sec-about {
-  background-color: #0b2240; /* Deep Blueberry / Gökberry */
-  --text-primary: #FAF6EE;
-  --text-secondary: rgba(250, 246, 238, 0.75);
-  --color-primary: #90e0ef;
-  --color-forest: #FAF6EE;
-}
-.app-container.active-sec-varieties.active-fruit-blackberry {
-  background-color: #250933; /* Deep Blackberry Purple */
-  --text-primary: #FAF6EE;
-  --text-secondary: rgba(250, 246, 238, 0.75);
-  --color-primary: #e0aaff;
-  --color-forest: #FAF6EE;
-}
-.app-container.active-sec-varieties.active-fruit-raspberry {
-  background-color: #5c0632; /* Deep Raspberry / Ahududu */
-  --text-primary: #FAF6EE;
-  --text-secondary: rgba(250, 246, 238, 0.75);
-  --color-primary: #ff8da1;
-  --color-forest: #FAF6EE;
-}
-.app-container.active-sec-varieties.active-fruit-blueberry {
-  background-color: #0b2240; /* Deep Blueberry / Gökberry */
-  --text-primary: #FAF6EE;
-  --text-secondary: rgba(250, 246, 238, 0.75);
-  --color-primary: #90e0ef;
-  --color-forest: #FAF6EE;
-}
-.app-container.active-sec-contact {
-  background-color: #FAF6EE; /* Light warm vintage cream for contact */
-  --text-primary: #222222;
-  --text-secondary: #3d5245;
-  --color-primary: var(--blackberry-primary);
-  --color-forest: #222222;
+  background-color: #ffffff;
+  transition: none;
 }
 
 /* Berry background canvas - full-section flowing animation layer */
@@ -3424,25 +3376,30 @@ h1, h2, h3, h4 {
   color: #222222 !important;
 }
 
-/* Navbar is now dark — ensure white text on all elements */
+/* Navbar is white — ensure dark text on all elements */
 .navbar-vintage .logo-vintage-text,
-.navbar-vintage .logo-vintage-text span,
-.navbar-vintage .nav-col a {
-  color: rgba(255, 255, 255, 0.8) !important;
+.navbar-vintage .logo-vintage-text span {
+  color: #111827 !important;
+}
+.navbar-vintage .logo-vintage-text span {
+  color: #6b7280 !important;
 }
 .navbar-vintage .logo-vintage-icon {
-  background: #7b2cbf !important;
+  background: #1a1a1a !important;
   color: #ffffff !important;
+}
+.navbar-vintage .nav-col a {
+  color: #374151 !important;
 }
 .navbar-vintage .nav-col a:hover,
 .navbar-vintage .nav-col a.active {
-  color: #ffffff !important;
+  color: #111827 !important;
 }
 
-/* Force section titles in about and varieties sections to be pure white */
+/* Section titles — dark on white background */
 #about .section-title,
 #varieties .section-title {
-  color: #ffffff !important;
+  color: #111827 !important;
 }
 
 /* Glassmorphism Category selector tabs in Varieties dark mode */
@@ -4130,28 +4087,28 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     display: block !important;
   }
 
-  /* 1. Left Column: Hamburger Menu Button */
+  /* Mobile menu buttons — dark on white navbar */
   .mobile-menu-trigger {
     grid-column: 1;
     display: flex !important;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     border-radius: 8px;
-    background: #7b2cbf !important;
+    background: #111827 !important;
     border: none;
     cursor: pointer;
     z-index: 2001;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(123, 44, 191, 0.3);
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     padding: 0;
     justify-self: start;
   }
 
   .mobile-menu-trigger:hover,
   .mobile-menu-trigger:active {
-    background: #5e1fa3 !important;
+    background: #374151 !important;
     transform: scale(1.05);
   }
 
@@ -4221,7 +4178,7 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     gap: 8px !important;
   }
 
-  /* 3. Right Column: Mobile Language Selector */
+  /* 3. Right Column: Mobile Language Selector — dark on white */
   .lang-selector-container.mobile-only {
     grid-column: 3;
     display: block !important;
@@ -4233,79 +4190,80 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     display: flex !important;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     border-radius: 8px;
-    background: #7b2cbf !important;
+    background: #111827 !important;
     border: none;
     color: #ffffff !important;
     font-family: var(--font-body);
     font-weight: 700;
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     padding: 0;
-    box-shadow: 0 2px 8px rgba(123, 44, 191, 0.3);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   }
 
   .lang-selector-container.mobile-only .lang-selector-btn span {
     margin-left: 2px;
   }
 
+  /* Mobile lang dropdown — white panel */
   .lang-selector-container.mobile-only .lang-dropdown {
     right: 0;
     left: auto;
-    min-width: 140px;
-    background: #1a1a2e !important;
-    border: 1px solid rgba(123, 44, 191, 0.3) !important;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-    border-radius: 12px;
+    min-width: 150px;
+    background: #ffffff !important;
+    border: 1px solid #e5e7eb !important;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    border-radius: 10px;
     padding: 6px;
   }
 
-  /* Dropdown option buttons — white text on dark bg */
+  /* Dropdown option buttons — dark on white */
   .lang-selector-container.mobile-only .lang-dropdown .lang-option-btn {
-    color: rgba(255, 255, 255, 0.75) !important;
+    color: #374151 !important;
     padding: 8px 10px;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 0.8rem;
     background: transparent !important;
   }
 
   .lang-selector-container.mobile-only .lang-dropdown .lang-option-btn:hover {
-    background: rgba(123, 44, 191, 0.2) !important;
-    color: #ffffff !important;
+    background: #f3f4f6 !important;
+    color: #111827 !important;
   }
 
   .lang-selector-container.mobile-only .lang-dropdown .lang-option-btn.active {
-    background: #7b2cbf !important;
+    background: #111827 !important;
     color: #ffffff !important;
   }
 
   .lang-selector-container.mobile-only .lang-dropdown .lang-code-tag {
-    background: rgba(255, 255, 255, 0.1) !important;
-    color: rgba(255, 255, 255, 0.85) !important;
+    background: #f3f4f6 !important;
+    color: #374151 !important;
   }
 
   .lang-selector-container.mobile-only .lang-dropdown .lang-option-btn.active .lang-code-tag {
-    background: rgba(255, 255, 255, 0.25) !important;
+    background: rgba(255,255,255,0.15) !important;
     color: #ffffff !important;
   }
 
   .lang-selector-container.mobile-only .lang-dropdown .lang-full-name {
-    color: rgba(255, 255, 255, 0.75) !important;
+    color: #374151 !important;
   }
 
   .lang-selector-container.mobile-only .lang-dropdown .lang-option-btn.active .lang-full-name {
     color: #ffffff !important;
   }
 
-  /* Mobile Slide-Down Menu Panel (Drawer) — Dark, matches navbar */
+  /* Mobile Slide-Down Menu Panel — clean white */
   .mobile-menu-panel {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: #12121f;
+    background: #ffffff;
     z-index: 190;
     display: flex;
     flex-direction: column;
@@ -4313,8 +4271,8 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     align-items: center;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-20px);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(-16px);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .mobile-menu-panel.open {
@@ -4340,10 +4298,10 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     gap: 4px;
     width: 100%;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     text-decoration: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding-bottom: 12px;
+    border-bottom: 1px solid #f3f4f6;
+    padding-bottom: 16px;
   }
 
   .mobile-menu-link-item:last-child {
@@ -4352,35 +4310,35 @@ html[dir="rtl"] .gallery-thumbnails-strip {
 
   .menu-link-title {
     font-family: var(--font-vintage);
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     font-weight: 800;
-    color: rgba(255, 255, 255, 0.9) !important;
+    color: #111827 !important;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    line-height: 1.2;
-    transition: all 0.3s ease;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+    transition: all 0.2s ease;
   }
 
   .menu-link-subtitle {
     font-family: var(--font-body);
     font-size: 0.82rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.45) !important;
+    font-weight: 400;
+    color: #9ca3af !important;
     opacity: 1;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
   }
 
   /* Active & Hover States */
   .mobile-menu-link-item:hover .menu-link-title,
   .mobile-menu-link-item.active .menu-link-title {
-    color: #ffffff !important;
+    color: #374151 !important;
     opacity: 1;
     transform: translateX(6px);
   }
 
   .mobile-menu-link-item:hover .menu-link-subtitle,
   .mobile-menu-link-item.active .menu-link-subtitle {
-    color: rgba(255, 255, 255, 0.65) !important;
+    color: #6b7280 !important;
     opacity: 1;
     transform: translateX(6px);
   }
