@@ -18,6 +18,53 @@ const homeTranslations: Record<string, string> = {
   ar: 'الرئيسية'
 };
 
+const mobileMenuSubtitles: Record<string, Record<string, string>> = {
+  home: {
+    tr: 'Bahçemizin Girişi',
+    en: 'Entrance of Our Garden',
+    es: 'Entrada de Nuestro Jardín',
+    fr: 'Entrée de Notre Jardin',
+    de: 'Eingang Unseres Gartens',
+    ru: 'Вход в наш сад',
+    zh: '我们的花园入口',
+    ja: 'ガーデンエントランス',
+    ar: 'مدخل بستاننا'
+  },
+  about: {
+    tr: 'Hikayemiz ve Değerlerimiz',
+    en: 'Our Story & Values',
+    es: 'Nuestra Historia y Valores',
+    fr: 'Notre Histoire et Valeurs',
+    de: 'Unsere Geschichte & Werte',
+    ru: 'Наша история и ценности',
+    zh: '我们的故事与价值',
+    ja: 'ストーリー＆バリュー',
+    ar: 'قصتنا وقيمنا'
+  },
+  varieties: {
+    tr: 'Doğal Meyve Koleksiyonumuz',
+    en: 'Our Natural Fruit Collection',
+    es: 'Nuestra Colección de Frutas Naturales',
+    fr: 'Notre Collection de Fruits Naturels',
+    de: 'Unsere Natürliche Fruchtkollektion',
+    ru: 'Наша коллекция натуральных фруктов',
+    zh: '我们的天然水果系列',
+    ja: 'ナチュラルフルーツコレクション',
+    ar: 'مجموعتنا من الفواكه الطبيعية'
+  },
+  contact: {
+    tr: 'Bize Ulaşın ve İletişim',
+    en: 'Get in Touch with Us',
+    es: 'Póngase en Contacto con Nosotros',
+    fr: 'Contactez-nous',
+    de: 'Treffen Sie Uns',
+    ru: 'Свяжитесь с нами',
+    zh: '联系我们',
+    ja: 'お問い合わせ',
+    ar: 'اتصل بنا'
+  }
+};
+
 interface NavbarProps {
   activeSection: string;
 }
@@ -70,6 +117,17 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
   return (
     <nav className={`navbar-vintage ${isScrolled ? 'scrolled' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
       <div className="navbar-vintage-container">
+        {/* Mobile Hamburger Menu Toggle Trigger (CSS Animated, Left on Mobile) */}
+        <button 
+          className={`mobile-menu-trigger ${isMenuOpen ? 'active' : ''}`}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Menu"
+        >
+          <div className="hamburger-box">
+            <div className="hamburger-inner"></div>
+          </div>
+        </button>
+
         {/* Left Side Navigation Links (Desktop Only) */}
         <div className="nav-col nav-col-left desktop-only">
           <a 
@@ -107,8 +165,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             {t.navContact}
           </a>
 
-          {/* Premium Language Dropdown */}
-          <div className="lang-selector-container">
+          {/* Premium Language Dropdown (Desktop Only) */}
+          <div className="lang-selector-container desktop-only">
             <button className="lang-selector-btn">
               <Globe size={14} />
               <span>{language.toUpperCase()}</span>
@@ -128,16 +186,25 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
           </div>
         </div>
 
-        {/* Mobile Hamburger Menu Toggle Trigger (CSS Animated) */}
-        <button 
-          className={`mobile-menu-trigger ${isMenuOpen ? 'active' : ''}`}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Menu"
-        >
-          <div className="hamburger-box">
-            <div className="hamburger-inner"></div>
+        {/* Mobile Language Selector Dropdown (Mobile Only, Far Right) */}
+        <div className="lang-selector-container mobile-only">
+          <button className="lang-selector-btn">
+            <Globe size={14} />
+            <span>{language.toUpperCase()}</span>
+          </button>
+          <div className="lang-dropdown">
+            {(['tr', 'en', 'es', 'fr', 'de', 'ru', 'zh', 'ja', 'ar'] as Language[]).map((lang) => (
+              <button
+                key={lang}
+                onClick={() => setLanguage(lang)}
+                className={`lang-option-btn ${language === lang ? 'active' : ''}`}
+              >
+                <span className="lang-code-tag">{lang.toUpperCase()}</span>
+                <span className="lang-full-name">{getLanguageLabel(lang)}</span>
+              </button>
+            ))}
           </div>
-        </button>
+        </div>
       </div>
 
       {/* Mobile Slide-Down Menu Panel */}
@@ -145,46 +212,32 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
         <div className="mobile-menu-links">
           <a 
             onClick={() => { scrollToSection('home'); setIsMenuOpen(false); }} 
-            className={activeSection === 'home' ? 'active' : ''}
+            className={`mobile-menu-link-item ${activeSection === 'home' ? 'active' : ''}`}
           >
-            {homeT}
+            <span className="menu-link-title">{homeT}</span>
+            <span className="menu-link-subtitle">{mobileMenuSubtitles.home[language] || mobileMenuSubtitles.home['en']}</span>
           </a>
           <a 
             onClick={() => { scrollToSection('about'); setIsMenuOpen(false); }} 
-            className={activeSection === 'about' ? 'active' : ''}
+            className={`mobile-menu-link-item ${activeSection === 'about' ? 'active' : ''}`}
           >
-            {t.navAbout}
+            <span className="menu-link-title">{t.navAbout}</span>
+            <span className="menu-link-subtitle">{mobileMenuSubtitles.about[language] || mobileMenuSubtitles.about['en']}</span>
           </a>
           <a 
             onClick={() => { scrollToSection('varieties'); setIsMenuOpen(false); }} 
-            className={activeSection === 'varieties' ? 'active' : ''}
+            className={`mobile-menu-link-item ${activeSection === 'varieties' ? 'active' : ''}`}
           >
-            {t.navVarieties}
+            <span className="menu-link-title">{t.navVarieties}</span>
+            <span className="menu-link-subtitle">{mobileMenuSubtitles.varieties[language] || mobileMenuSubtitles.varieties['en']}</span>
           </a>
           <a 
             onClick={() => { scrollToSection('contact'); setIsMenuOpen(false); }} 
-            className={activeSection === 'contact' ? 'active' : ''}
+            className={`mobile-menu-link-item ${activeSection === 'contact' ? 'active' : ''}`}
           >
-            {t.navContact}
+            <span className="menu-link-title">{t.navContact}</span>
+            <span className="menu-link-subtitle">{mobileMenuSubtitles.contact[language] || mobileMenuSubtitles.contact['en']}</span>
           </a>
-        </div>
-
-        {/* Language Selection inside Drawer */}
-        <div className="mobile-menu-languages">
-          <span className="lang-section-title">
-            {language === 'tr' ? 'Dil Seçimi' : 'Language'}
-          </span>
-          <div className="mobile-lang-grid">
-            {(['tr', 'en', 'es', 'fr', 'de', 'ru', 'zh', 'ja', 'ar'] as Language[]).map((lang) => (
-              <button
-                key={lang}
-                onClick={() => { setLanguage(lang); setIsMenuOpen(false); }}
-                className={`mobile-lang-btn ${language === lang ? 'active' : ''}`}
-              >
-                {lang.toUpperCase()}
-              </button>
-            ))}
-          </div>
         </div>
       </div>
     </nav>
