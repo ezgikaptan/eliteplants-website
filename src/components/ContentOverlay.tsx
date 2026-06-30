@@ -15,14 +15,28 @@ interface ContentOverlayProps {
   onOpenVariety: (variety: VarietyDetail) => void;
 }
 
-// Dynamically import all images in src/assets/images using Vite glob
-let dynamicGardenImages: string[] = [];
-try {
-  const imagesGlob = import.meta.glob('../assets/images/*.{png,jpg,jpeg,PNG,JPEG,JPG}', { eager: true });
-  dynamicGardenImages = Object.values(imagesGlob).map((img: any) => img.default || img);
-} catch (e) {
-  console.warn("Failed to load dynamic images from src/assets/images", e);
-}
+// Import all garden images from assets
+import farm1 from '../assets/images/farm_1.jpeg';
+import farm2 from '../assets/images/farm_2.jpeg';
+import farm3 from '../assets/images/farm_3.jpeg';
+import farm4 from '../assets/images/farm_4.jpeg';
+import farm5 from '../assets/images/farm_5.jpeg';
+import farm6 from '../assets/images/farm_6.jpeg';
+import farm7 from '../assets/images/farm_7.jpeg';
+import farm8 from '../assets/images/farm_8.jpeg';
+import farm9 from '../assets/images/farm_9.jpeg';
+import farm10 from '../assets/images/farm_10.jpeg';
+import farm11 from '../assets/images/farm_11.jpeg';
+import farm12 from '../assets/images/farm_12.jpeg';
+import farm13 from '../assets/images/farm_13.jpeg';
+import farm14 from '../assets/images/farm_14.jpeg';
+import farm15 from '../assets/images/farm_15.jpeg';
+
+const gardenImages = [
+  farm1, farm2, farm3, farm4, farm5,
+  farm6, farm7, farm8, farm9, farm10,
+  farm11, farm12, farm13, farm14, farm15
+];
 
 const getAssetPath = (path: string) => {
   const base = import.meta.env.BASE_URL || '/';
@@ -30,18 +44,6 @@ const getAssetPath = (path: string) => {
   const cleanPath = path.startsWith('/') ? path.slice(1) : path;
   return `${cleanBase}${cleanPath}`;
 };
-
-// Fallback static array
-const fallbackImages = [
-  getAssetPath('/images/garden_1.jpg'),
-  getAssetPath('/images/garden_2.jpg'),
-  getAssetPath('/images/garden_3.jpg'),
-  getAssetPath('/images/garden_4.jpg'),
-  getAssetPath('/images/garden_5.jpg'),
-  getAssetPath('/images/garden_6.jpg'),
-];
-
-const gardenImages = dynamicGardenImages.length > 0 ? dynamicGardenImages : fallbackImages;
 
 export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, setActiveFruit, onOpenVariety: _onOpenVariety }) => {
   const { t, language } = useTranslation();
@@ -285,110 +287,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
         </div>
       </section>
 
-      {/* 2. Products Section */}
-      <section id="products" className="scroll-section products-section">
-        {/* çizim.jpeg side decorations - blackberry purple tinted */}
-        <div className="section-side-drawing left cizim-float">
-          <img src={cizimImg} alt="" aria-hidden="true" style={{ width: 160, height: 'auto', opacity: 0.2, mixBlendMode: 'screen', filter: 'hue-rotate(240deg) saturate(1.6) brightness(1.4)' }} />
-        </div>
-        <div className="section-side-drawing right cizim-float-r">
-          <img src={cizimImg} alt="" aria-hidden="true" style={{ width: 160, height: 'auto', opacity: 0.2, mixBlendMode: 'screen', filter: 'hue-rotate(240deg) saturate(1.6) brightness(1.4)', transform: 'scaleX(-1)' }} />
-        </div>
-
-
-
-        {/* Decorative background leaf outlines */}
-        <div className="products-leaf-left">
-          <svg width="240" height="300" viewBox="0 0 240 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10,290 C60,250 140,240 180,180 C220,120 180,40 120,20 C60,0 20,60 10,120 C0,180 30,220 10,290 Z" fill="#fff" opacity="0.04" />
-            <path d="M50,260 C90,220 160,210 190,160 C220,110 190,40 140,30" stroke="#fff" strokeWidth="2" strokeDasharray="4 4" opacity="0.08" />
-          </svg>
-        </div>
-
-        <div className="products-leaf-right">
-          <svg width="240" height="300" viewBox="0 0 240 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M230,290 C180,250 100,240 60,180 C20,120 60,40 120,20 C180,0 220,60 230,120 C240,180 210,220 230,290 Z" fill="#fff" opacity="0.04" />
-            <path d="M190,260 C150,220 80,210 50,160 C20,110 50,40 100,30" stroke="#fff" strokeWidth="2" strokeDasharray="4 4" opacity="0.07" />
-          </svg>
-        </div>
-
-        {/* Vintage Header */}
-        <div className="products-header-vintage">
-          <h2 className="products-vintage-cursive">{t.productsCursive}</h2>
-          <p className="products-vintage-typewriter">
-            {t.productsSub}
-          </p>
-        </div>
-
-        <div className="products-vintage-grid">
-          {/* Karaberry Postage Stamp Card */}
-          <div 
-            className="product-stamp-card" 
-            onClick={() => { 
-              setActiveFruit('blackberry'); 
-              document.getElementById('varieties')?.scrollIntoView({ behavior: 'smooth' }); 
-            }}
-          >
-            <div className="product-3d-wrap">
-              <ThreeScene activeFruit="blackberry" disableScrollFade={true} />
-            </div>
-            <h3 className="product-stamp-title">Karaberry</h3>
-            <span className="product-stamp-subtitle">
-              {language === 'tr' ? 'Böğürtlen' : language === 'en' ? 'Blackberry' : language === 'es' ? 'Mora' : language === 'fr' ? 'Mûre' : language === 'de' ? 'Brombeere' : 'Ежевика'}
-            </span>
-            <p className="product-stamp-desc">
-              {t.productsKaraberryDesc}
-            </p>
-            <button className="product-stamp-link">{t.productsExplore} →</button>
-          </div>
-
-          {/* Alberry Postage Stamp Card */}
-          <div 
-            className="product-stamp-card" 
-            onClick={() => { 
-              setActiveFruit('raspberry'); 
-              document.getElementById('varieties')?.scrollIntoView({ behavior: 'smooth' }); 
-            }}
-          >
-            <div className="product-3d-wrap">
-              <ThreeScene activeFruit="raspberry" disableScrollFade={true} />
-            </div>
-            <h3 className="product-stamp-title">Alberry</h3>
-            <span className="product-stamp-subtitle">
-              {language === 'tr' ? 'Ahududu' : language === 'en' ? 'Raspberry' : language === 'es' ? 'Frambuesa' : language === 'fr' ? 'Framboise' : language === 'de' ? 'Himbeere' : 'Малина'}
-            </span>
-            <p className="product-stamp-desc">
-              {t.productsAlberryDesc}
-            </p>
-            <button className="product-stamp-link">{t.productsExplore} →</button>
-          </div>
-
-          {/* Gökberry Postage Stamp Card */}
-          <div 
-            className="product-stamp-card" 
-            onClick={() => { 
-              setActiveFruit('blueberry'); 
-              document.getElementById('varieties')?.scrollIntoView({ behavior: 'smooth' }); 
-            }}
-          >
-            <div className="product-3d-wrap">
-              <ThreeScene activeFruit="blueberry" disableScrollFade={true} />
-            </div>
-            <h3 className="product-stamp-title">Gökberry</h3>
-            <span className="product-stamp-subtitle">
-              {language === 'tr' ? 'Mavi Yemiş' : language === 'en' ? 'Blueberry' : language === 'es' ? 'Arándano' : language === 'fr' ? 'Myrtille' : language === 'de' ? 'Blaubeere' : 'Гоluбика'}
-            </span>
-            <p className="product-stamp-desc">
-              {t.productsGokberryDesc}
-            </p>
-            <button className="product-stamp-link">{t.productsExplore} →</button>
-          </div>
-        </div>
-      </section>
-
-
-
-      {/* 3. About/Farm Section */}
+      {/* 2. About/Farm Section */}
       <section
         id="about"
         className="scroll-section about-scroll-section"
@@ -520,6 +419,105 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
 
         </div>
         </div>{/* end about-section inner */}
+      </section>
+
+      {/* 3. Products Section */}
+      <section id="products" className="scroll-section products-section">
+        {/* çizim.jpeg side decorations - blackberry purple tinted */}
+        <div className="section-side-drawing left cizim-float">
+          <img src={cizimImg} alt="" aria-hidden="true" style={{ width: 160, height: 'auto', opacity: 0.2, mixBlendMode: 'screen', filter: 'hue-rotate(240deg) saturate(1.6) brightness(1.4)' }} />
+        </div>
+        <div className="section-side-drawing right cizim-float-r">
+          <img src={cizimImg} alt="" aria-hidden="true" style={{ width: 160, height: 'auto', opacity: 0.2, mixBlendMode: 'screen', filter: 'hue-rotate(240deg) saturate(1.6) brightness(1.4)', transform: 'scaleX(-1)' }} />
+        </div>
+
+        {/* Decorative background leaf outlines */}
+        <div className="products-leaf-left">
+          <svg width="240" height="300" viewBox="0 0 240 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10,290 C60,250 140,240 180,180 C220,120 180,40 120,20 C60,0 20,60 10,120 C0,180 30,220 10,290 Z" fill="#fff" opacity="0.04" />
+            <path d="M50,260 C90,220 160,210 190,160 C220,110 190,40 140,30" stroke="#fff" strokeWidth="2" strokeDasharray="4 4" opacity="0.08" />
+          </svg>
+        </div>
+
+        <div className="products-leaf-right">
+          <svg width="240" height="300" viewBox="0 0 240 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M230,290 C180,250 100,240 60,180 C20,120 60,40 120,20 C180,0 220,60 230,120 C240,180 210,220 230,290 Z" fill="#fff" opacity="0.04" />
+            <path d="M190,260 C150,220 80,210 50,160 C20,110 50,40 100,30" stroke="#fff" strokeWidth="2" strokeDasharray="4 4" opacity="0.07" />
+          </svg>
+        </div>
+
+        {/* Vintage Header */}
+        <div className="products-header-vintage">
+          <h2 className="products-vintage-cursive">{t.productsCursive}</h2>
+          <p className="products-vintage-typewriter">
+            {t.productsSub}
+          </p>
+        </div>
+
+        <div className="products-vintage-grid">
+          {/* Karaberry Postage Stamp Card */}
+          <div 
+            className="product-stamp-card" 
+            onClick={() => { 
+              setActiveFruit('blackberry'); 
+              document.getElementById('varieties')?.scrollIntoView({ behavior: 'smooth' }); 
+            }}
+          >
+            <div className="product-3d-wrap">
+              <ThreeScene activeFruit="blackberry" disableScrollFade={true} />
+            </div>
+            <h3 className="product-stamp-title">Karaberry</h3>
+            <span className="product-stamp-subtitle">
+              {language === 'tr' ? 'Böğürtlen' : language === 'en' ? 'Blackberry' : language === 'es' ? 'Mora' : language === 'fr' ? 'Mûre' : language === 'de' ? 'Brombeere' : 'Ежевика'}
+            </span>
+            <p className="product-stamp-desc">
+              {t.productsKaraberryDesc}
+            </p>
+            <button className="product-stamp-link">{t.productsExplore} →</button>
+          </div>
+
+          {/* Alberry Postage Stamp Card */}
+          <div 
+            className="product-stamp-card" 
+            onClick={() => { 
+              setActiveFruit('raspberry'); 
+              document.getElementById('varieties')?.scrollIntoView({ behavior: 'smooth' }); 
+            }}
+          >
+            <div className="product-3d-wrap">
+              <ThreeScene activeFruit="raspberry" disableScrollFade={true} />
+            </div>
+            <h3 className="product-stamp-title">Alberry</h3>
+            <span className="product-stamp-subtitle">
+              {language === 'tr' ? 'Ahududu' : language === 'en' ? 'Raspberry' : language === 'es' ? 'Frambuesa' : language === 'fr' ? 'Framboise' : language === 'de' ? 'Himbeere' : 'Малина'}
+            </span>
+            <p className="product-stamp-desc">
+              {t.productsAlberryDesc}
+            </p>
+            <button className="product-stamp-link">{t.productsExplore} →</button>
+          </div>
+
+          {/* Gökberry Postage Stamp Card */}
+          <div 
+            className="product-stamp-card" 
+            onClick={() => { 
+              setActiveFruit('blueberry'); 
+              document.getElementById('varieties')?.scrollIntoView({ behavior: 'smooth' }); 
+            }}
+          >
+            <div className="product-3d-wrap">
+              <ThreeScene activeFruit="blueberry" disableScrollFade={true} />
+            </div>
+            <h3 className="product-stamp-title">Gökberry</h3>
+            <span className="product-stamp-subtitle">
+              {language === 'tr' ? 'Mavi Yemiş' : language === 'en' ? 'Blueberry' : language === 'es' ? 'Arándano' : language === 'fr' ? 'Myrtille' : language === 'de' ? 'Blaubeere' : 'Гоluбика'}
+            </span>
+            <p className="product-stamp-desc">
+              {t.productsGokberryDesc}
+            </p>
+            <button className="product-stamp-link">{t.productsExplore} →</button>
+          </div>
+        </div>
       </section>
 
       {/* 3. Varieties Section - With Local 3D Fruit Scene and Tabs */}

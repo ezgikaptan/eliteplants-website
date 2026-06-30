@@ -1,5 +1,5 @@
 # Elite Plants Website
-[Canlı Yayındaki URL](https://sudenazisci.github.io/eliteplants-website/)
+[Canlı Yayındaki URL](https://eliteplants.com.tr/)
 
 # React + TypeScript + Vite
 
