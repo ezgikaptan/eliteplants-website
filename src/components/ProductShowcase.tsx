@@ -1,4 +1,5 @@
 import React from 'react';
+import { MapPin } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
 import type { FruitType } from '../types';
 
@@ -49,7 +50,15 @@ export const ProductShowcase: React.FC<ProductShowcaseProps> = ({ setActiveFruit
           >
             <div className="product-showcase-img-wrap">
               <img src={getAssetPath(images[card.id])} alt={card.name} className="product-showcase-img" />
-              <span className={`product-showcase-badge ${card.accentClass}`}>{badges[card.id]}</span>
+              
+              <div className="product-showcase-badge-container">
+                <span className={`product-showcase-badge-item ${card.accentClass}`}>{badges[card.id]}</span>
+                {card.id === 'blueberry' && (
+                  <span className="product-showcase-badge-item location">
+                    <MapPin size={10} /> Huelva - Spain
+                  </span>
+                )}
+              </div>
             </div>
             <div className="product-showcase-body">
               <h3 className="product-showcase-title">{card.name}</h3>

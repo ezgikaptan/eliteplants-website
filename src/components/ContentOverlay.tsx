@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { ChevronLeft, ChevronRight, Eye, X, MapPin, TrendingUp, Maximize, Utensils, Snowflake, CalendarDays, ShieldCheck } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
 import { ProductShowcase } from './ProductShowcase';
@@ -29,13 +30,33 @@ import farm12 from '../assets/images/farm_12.jpeg';
 import farm13 from '../assets/images/farm_13.jpeg';
 import farm14 from '../assets/images/farm_14.jpeg';
 import farm15 from '../assets/images/farm_15.jpeg';
-
-
+import farm16 from '../assets/images/farm_16.jpeg';
+import farm17 from '../assets/images/farm_17.jpeg';
+import farm18 from '../assets/images/farm_18.jpeg';
+import farm19 from '../assets/images/farm_19.jpeg';
+import farm20 from '../assets/images/farm_20.jpeg';
 
 const gardenImages = [
-  farm1, farm2, farm3, farm4, farm5,
-  farm6, farm7, farm8, farm9, farm10,
-  farm11, farm12, farm13, farm14, farm15
+  { src: farm1, type: 'general' },
+  { src: farm2, type: 'general' },
+  { src: farm3, type: 'general' },
+  { src: farm4, type: 'general' },
+  { src: farm5, type: 'general' },
+  { src: farm6, type: 'general' },
+  { src: farm7, type: 'general' },
+  { src: farm8, type: 'general' },
+  { src: farm9, type: 'general' },
+  { src: farm10, type: 'general' },
+  { src: farm11, type: 'general' },
+  { src: farm12, type: 'general' },
+  { src: farm13, type: 'general' },
+  { src: farm14, type: 'general' },
+  { src: farm15, type: 'general' },
+  { src: farm16, type: 'blueberry', location: 'Huelva - Spain' },
+  { src: farm17, type: 'blueberry', location: 'Huelva - Spain' },
+  { src: farm18, type: 'blueberry', location: 'Huelva - Spain' },
+  { src: farm19, type: 'blueberry', location: 'Huelva - Spain' },
+  { src: farm20, type: 'blueberry', location: 'Huelva - Spain' }
 ];
 
 const getAssetPath = (path: string) => {
@@ -377,11 +398,18 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
             {/* Main Preview Container */}
             <div className="gallery-main-viewport">
               <img
-                src={gardenImages[gardenIndex]}
+                src={gardenImages[gardenIndex].src}
                 alt={`Dereçine Organik Bahçemiz - Fotoğraf ${gardenIndex + 1}`}
                 className="gallery-main-slide"
-                onClick={() => setLightboxImage(gardenImages[gardenIndex])}
+                onClick={() => setLightboxImage(gardenImages[gardenIndex].src)}
               />
+              
+              {/* Floating Huelva Spain location badge for gallery */}
+              {gardenImages[gardenIndex]?.location && (
+                <div className="blueberry-location-badge">
+                  <MapPin size={12} /> {gardenImages[gardenIndex].location}
+                </div>
+              )}
               
               {/* Overlaid Navigation Arrows */}
               <button 
@@ -394,7 +422,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
               >
                 <ChevronLeft size={20} />
               </button>
-
+ 
               <button 
                 className="gallery-side-arrow next"
                 onClick={() => {
@@ -405,31 +433,31 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
               >
                 <ChevronRight size={20} />
               </button>
-
+ 
               {/* Floating Page Chip */}
               <div className="gallery-page-chip">
                 {gardenIndex + 1} / {gardenImages.length}
               </div>
-
+ 
               {/* Action Info overlay */}
               <div className="gallery-action-info" onClick={() => setShowAllPhotos(true)}>
-                <span>{t.galleryViewAll} ({gardenImages.length})</span>
+                <span>{t.galleryViewAll}</span>
                 <Eye size={14} />
               </div>
             </div>
-
+ 
             {/* Aligned Scrollable Thumbnail Strip */}
             <div className="gallery-thumbnails-strip" ref={thumbnailBarRef}>
-              {gardenImages.map((src, idx) => (
+              {gardenImages.map((imgObj, idx) => (
                 <button
-                  key={src}
+                  key={imgObj.src}
                   className={`gallery-thumb-btn garden-thumb-item ${idx === gardenIndex ? 'active' : ''}`}
                   onClick={() => {
                     setGardenIndex(idx);
                     setIsAutoplay(false);
                   }}
                 >
-                  <img src={src} alt={`Küçük Görsel ${idx + 1}`} />
+                  <img src={imgObj.src} alt={`Küçük Görsel ${idx + 1}`} />
                 </button>
               ))}
             </div>
@@ -510,6 +538,12 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
                     />
                     <div className="variety-image-overlay" />
 
+                    {activeFruit === 'blueberry' && (
+                      <div className="blueberry-location-badge">
+                        <MapPin size={12} /> Huelva - Spain
+                      </div>
+                    )}
+
                     {/* HUD — bottom info */}
                     <div className="variety-photo-hud">
                       <div className="variety-photo-hud-inner">
@@ -517,8 +551,8 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
                         <h3 className="variety-photo-name">{activeVariety.name}</h3>
                         <div className="variety-photo-divider" />
                         <div className="variety-photo-meta">
-                          <span>🌿 {activeVariety.origin?.split('/')[0]?.trim()}</span>
-                          <span>📅 {activeVariety.harvest?.split(':')[1]?.trim() || activeVariety.harvest}</span>
+                          <span><MapPin size={12} style={{ opacity: 0.9 }} /> {activeVariety.origin?.split('/')[0]?.trim()}</span>
+                          <span><CalendarDays size={12} style={{ opacity: 0.9 }} /> {activeVariety.harvest?.split(':')[1]?.trim() || activeVariety.harvest}</span>
                         </div>
                       </div>
                     </div>
@@ -535,8 +569,28 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
                 return (
                   <div 
                     key={variety.id} 
+                    id={`bento-card-${variety.id}`}
                     className={`variety-bento-card glass-panel-glow ${isExpanded ? 'expanded' : ''}`}
-                    onClick={() => setExpandedVarietyId(isExpanded ? null : variety.id)}
+                    onClick={() => {
+                      const newId = isExpanded ? null : variety.id;
+                      setExpandedVarietyId(newId);
+                      if (newId) {
+                        setTimeout(() => {
+                          const el = document.getElementById(`bento-card-${variety.id}`);
+                          if (el) {
+                            const offset = 100; // Offset below glassmorphic navbar
+                            const bodyRect = document.body.getBoundingClientRect().top;
+                            const elementRect = el.getBoundingClientRect().top;
+                            const elementPosition = elementRect - bodyRect;
+                            const offsetPosition = elementPosition - offset;
+                            window.scrollTo({
+                              top: offsetPosition,
+                              behavior: 'smooth'
+                            });
+                          }
+                        }, 500);
+                      }
+                    }}
                   >
                     <div className="variety-bento-header">
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
@@ -550,7 +604,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
                         {variety.name}
                       </h3>
                       {isExpanded && (
-                        <p className="variety-compact-desc" style={{ 
+                        <p className="variety-expanded-desc" style={{ 
                            fontSize: '0.92rem', 
                            color: 'var(--text-secondary)', 
                            lineHeight: '1.6', 
@@ -639,17 +693,56 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
         )}
       </section>
 
-      {/* Garden Lightbox Modal */}
-      <div className={`lightbox-overlay ${lightboxImage ? 'open' : ''}`} onClick={() => setLightboxImage(null)}>
-        {lightboxImage && (
+      {/* Garden Lightbox Modal rendered via Portal directly under document.body to bypass z-index context issues */}
+      {lightboxImage && createPortal(
+        <div className="lightbox-overlay open" onClick={() => setLightboxImage(null)}>
+          <button 
+            className="lightbox-arrow prev" 
+            onClick={(e) => {
+              e.stopPropagation();
+              const currentIdx = gardenImages.findIndex(img => img.src === lightboxImage);
+              if (currentIdx !== -1) {
+                const prevIdx = (currentIdx - 1 + gardenImages.length) % gardenImages.length;
+                setLightboxImage(gardenImages[prevIdx].src);
+              }
+            }}
+            aria-label="Önceki"
+          >
+            <ChevronLeft size={24} />
+          </button>
+
+          <button 
+            className="lightbox-arrow next" 
+            onClick={(e) => {
+              e.stopPropagation();
+              const currentIdx = gardenImages.findIndex(img => img.src === lightboxImage);
+              if (currentIdx !== -1) {
+                const nextIdx = (currentIdx + 1) % gardenImages.length;
+                setLightboxImage(gardenImages[nextIdx].src);
+              }
+            }}
+            aria-label="Sonraki"
+          >
+            <ChevronRight size={24} />
+          </button>
+
+          <button className="lightbox-close-overlay" onClick={() => setLightboxImage(null)} aria-label="Kapat">
+            <X size={24} />
+          </button>
+
           <div className="lightbox-img-wrap" onClick={(e) => e.stopPropagation()}>
-            <button className="lightbox-close" onClick={() => setLightboxImage(null)}>
-              <X size={20} />
-            </button>
             <img src={lightboxImage} alt="Bahçemizden Büyük Görsel" />
+            
+            {/* Show badge in lightbox if it has location */}
+            {gardenImages.find(img => img.src === lightboxImage)?.location && (
+              <div className="blueberry-location-badge" style={{ position: 'absolute', bottom: '20px', right: '20px', top: 'auto' }}>
+                <MapPin size={12} /> {gardenImages.find(img => img.src === lightboxImage)?.location}
+              </div>
+            )}
           </div>
-        )}
-      </div>
+        </div>,
+        document.body
+      )}
 
       {/* Grid Gallery Modal to view ALL garden photos */}
       <div className={`modal-overlay ${showAllPhotos ? 'open' : ''}`} onClick={() => setShowAllPhotos(false)}>
@@ -682,11 +775,11 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
             gap: '12px',
             paddingTop: '10px'
           }}>
-            {gardenImages.map((src, idx) => (
+            {gardenImages.map((imgObj, idx) => (
               <div 
-                key={src}
+                key={imgObj.src}
                 onClick={() => {
-                  setLightboxImage(src);
+                  setLightboxImage(imgObj.src);
                 }}
                 style={{ 
                   borderRadius: '12px', 
@@ -699,11 +792,18 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
                 className="glass-panel"
               >
                 <img 
-                  src={src} 
+                  src={imgObj.src} 
                   alt={`Bahçe Fotoğrafı ${idx + 1}`} 
                   style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'all 0.3s ease' }}
                   className="gallery-grid-img"
                 />
+                
+                {/* Location overlay badge on grid thumbnail if exists */}
+                {imgObj.location && (
+                  <div className="blueberry-location-badge" style={{ position: 'absolute', top: '10px', right: '10px', padding: '3px 8px', fontSize: '0.62rem', zIndex: 5 }}>
+                    <MapPin size={10} /> {imgObj.location}
+                  </div>
+                )}
                 <div style={{
                   position: 'absolute',
                   top: 0,
