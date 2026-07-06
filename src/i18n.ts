@@ -157,7 +157,7 @@ export const translations: Record<Language, TranslationDict> = {
     productsExplore: 'İncele',
     productsKaraberryDesc: 'Yüksek aromalı dikensiz primocane ve floricane böğürtlenler. EMCO CAL\'in üstün meyve kalitesi, uzun raf ömrü ve benzersiz tatlılık sunan tescilli dünya lideri çeşitleri.',
     productsAlberryDesc: 'Taze pazar ve sanayiye uygun yüksek verimli ahududular. Parlak kırmızı renk, yüksek sıkılık ve organik üretime tam uyum sağlayan tescilli EMCO CAL klonları.',
-    productsGokberryDesc: 'Geleneksel aromaya sahip çıtır ve bol mumsu mavi yemişler. Yüksek antioksidan, üstün dayanıklılık ve benzersiz tat profili sunan yeni nesil EMCO CAL seçkileri.',
+    productsGokberryDesc: 'Geleneksel aromaya sahip çıtır ve bol mumsu mavi yemişler. Yüksek antioksidan, üstün dayanıklılık ve benzersiz tat profili sunan yeni nesil EMCO CAL çeşitleri.',
     aboutTitle: 'Topraktan Sofraya Hikayemiz',
     aboutCursive: 'Hikayemiz',
     aboutDesc1: 'Afyonkarahisar Sultandağı\'nın bereketli eteklerinde, sürdürülebilir tarım ve üstün meyve kalitesi ilkeleriyle 2022 yılında yola çıktık. Amacımız, Türkiye genelindeki yerli tüketicilerimizi yüksek verimli, tescilli ve lisanslı lezzetlerle buluşturarak taze meyve üretimini desteklemektir.',
@@ -201,7 +201,7 @@ export const translations: Record<Language, TranslationDict> = {
     caddo_size: 'Büyük Meyveli (Ortalama 8-10g)',
     caddo_taste: 'Çok Tatlı, Mükemmel Aromatik (%10.5 Brix)',
     caddo_chill: 'Yaklaşık 300 Saat Soğuklama',
-    caddo_harvest: 'Haziran - Temmuz (Floricane)',
+    caddo_harvest: 'Ağustos Ortası (15 Ağustos) - Eylül Ortası (Floricane)',
     caddo_shelf: 'Mükemmel Taşıma ve Depolama Dayanıklılığı',
 
     a2526t_tag: 'Deneysel Elit Seçki',
@@ -211,7 +211,7 @@ export const translations: Record<Language, TranslationDict> = {
     a2526t_size: 'İri, Yuvarlak-Oval Meyve Yapısı',
     a2526t_taste: 'Damak zevkine son derece uygun, tatlı ve hafif asitli (Şeker/Asit oranı: 10–13)',
     a2526t_chill: '300-400 Saat',
-    a2526t_harvest: 'Temmuz Başı ve Ortası',
+    a2526t_harvest: 'Temmuz Ortası ve Ağustos Ortası',
     a2526t_shelf: 'Mükemmel Raf Ömrü (Avrupa ve Türkiye pazarlarında yoğun ilgi)',
 
     traveler_tag: 'Primocane / Çift Hasat',
@@ -221,7 +221,7 @@ export const translations: Record<Language, TranslationDict> = {
     traveler_size: 'Orta-İri, Tutarlı İyi Şekil (6-8g)',
     traveler_taste: 'Çok İyi Lezzet ve Aroma, Düşük Asit (%10-12 Brix)',
     traveler_chill: 'Güzlük Üretim İçin Soğuklama Gerekmez',
-    traveler_harvest: 'Çift Hasat: Haziran & Ağustos-Donlara Kadar',
+    traveler_harvest: 'Çift Hasat: Temmuz ve Eylül Aylarında İki Sefer ve Donlara Kadar',
     traveler_shelf: 'Mükemmel Taşıma Dayanıklılığı, Renk Kaybı Düşük',
 
     kokanee_tag: 'Primocane / Güzlük',
@@ -245,7 +245,7 @@ export const translations: Record<Language, TranslationDict> = {
     miniblues_shelf: 'Çok Yüksek, Soğuk Muhafazaya Çok Uygun',
 
     cupla_tag: 'Cuna de Platero / Gelecek Planı',
-    cupla_desc: 'Cupla, EMCO CAL lisanslı, erken dönem hasadına uygun ve son derece verimli bir Gökberry (mavi yemiş) çeşididir. Çok sulu, aromatik ve lezzetli meyvelere sahiptir. Dereçine ikliminde erken bahar hasadı için gelecek planlarımız arasındadır.',
+    cupla_desc: 'İspanya Huelva\'da bulunan üretim alanlarımızdan fotoğraflar. Cupla, EMCO CAL lisanslı, erken dönem hasadına uygun ve son derece verimli bir Gökberry (mavi yemiş) çeşididir. Çok sulu, aromatik ve lezzetli meyvelere sahiptir. Dereçine ikliminde erken bahar hasadı için gelecek planlarımız arasındadır.',
     cupla_origin: 'Cuna de Platero, İspanya / EMCO CAL',
     cupla_growth: 'Dik ve Yarı Yayvan, Kolay Hasat Edilebilir',
     cupla_size: 'İri ve Üniform Meyve Yapısı',
@@ -319,7 +319,7 @@ export const translations: Record<Language, TranslationDict> = {
     caddo_size: 'Large fruits (avg 8-10g)',
     caddo_taste: 'Very sweet, excellent aroma (10.5% Brix)',
     caddo_chill: 'Approx. 300 chilling hours',
-    caddo_harvest: 'June - July (Floricane)',
+    caddo_harvest: 'Mid-August (August 15) - Mid-September (Floricane)',
     caddo_shelf: 'Excellent transport and storage life',
 
     a2526t_tag: 'Experimental Elite Selection',
@@ -329,7 +329,7 @@ export const translations: Record<Language, TranslationDict> = {
     a2526t_size: 'Large, round-oval fruit shape',
     a2526t_taste: 'Highly palatable, sweet, and sub-acid (Sugar-to-acid ratio: 10–13)',
     a2526t_chill: '300-400 hours',
-    a2526t_harvest: 'Early to mid July',
+    a2526t_harvest: 'Mid-July to Mid-August',
     a2526t_shelf: 'Excellent shelf life (Generates high interest in European & Turkish markets)',
 
     traveler_tag: 'Primocane / Double Harvest',
@@ -339,7 +339,7 @@ export const translations: Record<Language, TranslationDict> = {
     traveler_size: 'Medium-large, consistent good shape (6-8g)',
     traveler_taste: 'Very good flavor and aroma, low acid (10-12% Brix)',
     traveler_chill: 'No winter chill required for primocane production',
-    traveler_harvest: 'Double Harvest: June & August-Frost',
+    traveler_harvest: 'Double Harvest: Two times in July and September, and until frost',
     traveler_shelf: 'Excellent transport durability, low color loss',
 
     kokanee_tag: 'Primocane / Fall',
@@ -363,7 +363,7 @@ export const translations: Record<Language, TranslationDict> = {
     miniblues_shelf: 'Very high, highly suitable for cold storage',
 
     cupla_tag: 'Cuna de Platero / Future Plan',
-    cupla_desc: 'Cupla is a highly productive blueberry variety licensed by EMCO CAL, suitable for early harvest. Fruits are evenly distributed on branches for easy picking. Very juicy, aromatic and delicious.',
+    cupla_desc: 'Photos from our production areas in Huelva, Spain. Cupla is a highly productive blueberry variety licensed by EMCO CAL, suitable for early harvest. Fruits are evenly distributed on branches for easy picking. Very juicy, aromatic and delicious.',
     cupla_origin: 'Cuna de Platero, Spain / EMCO CAL',
     cupla_growth: 'Erect and semi-spreading, easy to harvest',
     cupla_size: 'Large and uniform fruit structure',
@@ -437,7 +437,7 @@ export const translations: Record<Language, TranslationDict> = {
     caddo_size: 'Frutos grandes (promedio 8-10g)',
     caddo_taste: 'Muy dulce, excelente aroma (10.5% Brix)',
     caddo_chill: 'Aprox. 300 horas frío',
-    caddo_harvest: 'Junio - Julio (Floricane)',
+    caddo_harvest: 'Mediados de agosto (15 de agosto) - Mediados de septiembre (Floricane)',
     caddo_shelf: 'Excelente transporte y conservación',
 
     a2526t_tag: 'Selección Élite Experimental',
@@ -447,7 +447,7 @@ export const translations: Record<Language, TranslationDict> = {
     a2526t_size: 'Grande, forma redonda-ovalada',
     a2526t_taste: 'Aroma perfumado intenso, balance gourmet',
     a2526t_chill: '300-400 horas',
-    a2526t_harvest: 'Principios a mediados de julio',
+    a2526t_harvest: 'Mediados de julio a mediados de agosto',
     a2526t_shelf: 'Bueno, ideal para consumo local gourmet fresco',
 
     traveler_tag: 'Primocane / Doble Cosecha',
@@ -457,7 +457,7 @@ export const translations: Record<Language, TranslationDict> = {
     traveler_size: 'Mediano-grande, forma uniforme (6-8g)',
     traveler_taste: 'Sabor y aroma muy buenos, acidez baja (10-12% Brix)',
     traveler_chill: 'Sin frío invernal para primocanes',
-    traveler_harvest: 'Doble cosecha: Junio y Agosto-Heladas',
+    traveler_harvest: 'Doble cosecha: Dos veces en julio y septiembre, y hasta las heladas',
     traveler_shelf: 'Excelente durabilidad de transporte, baja pérdida de color',
 
     kokanee_tag: 'Primocane / Otoño',
@@ -481,7 +481,7 @@ export const translations: Record<Language, TranslationDict> = {
     miniblues_shelf: 'Muy alta, excelente para almacenamiento en frío',
 
     cupla_tag: 'Cuna de Platero / Plan Futuro',
-    cupla_desc: 'Cupla is a highly productive blueberry variety licensed by EMCO CAL, suitable for early harvest. Fruits are evenly distributed on branches for easy picking. Very juicy, aromatic and delicious.',
+    cupla_desc: 'Fotos de nuestras áreas de producción en Huelva, España. Cupla is a highly productive blueberry variety licensed by EMCO CAL, suitable for early harvest. Fruits are evenly distributed on branches for easy picking. Very juicy, aromatic and delicious.',
     cupla_origin: 'Cuna de Platero, España / EMCO CAL',
     cupla_growth: 'Erecto y semi-abierto, fácil cosecha',
     cupla_size: 'Estructura grande y uniforme',
@@ -555,7 +555,7 @@ export const translations: Record<Language, TranslationDict> = {
     caddo_size: 'Gros fruits (moyenne 8-10g)',
     caddo_taste: 'Très sucré, arôme excellent (10.5% Brix)',
     caddo_chill: 'Env. 300 heures de froid',
-    caddo_harvest: 'Juin - Juillet (Floricane)',
+    caddo_harvest: 'Mi-août (15 août) - Mi-septembre (Floricane)',
     caddo_shelf: 'Excellente tenue au transport et stockage',
 
     a2526t_tag: 'Sélection Élite Expérimentelle',
@@ -565,7 +565,7 @@ export const translations: Record<Language, TranslationDict> = {
     a2526t_size: 'Gros, forme ronde-ovale',
     a2526t_taste: 'Arôme parfumé intense, équilibre gustatif supérieur',
     a2526t_chill: '300-400 heures',
-    a2526t_harvest: 'Début à mi-juillet',
+    a2526t_harvest: 'Mi-juillet à mi-août',
     a2526t_shelf: 'Bonne, idéale pour circuit court gourmet local',
 
     traveler_tag: 'Primocane / Double Récolte',
@@ -575,7 +575,7 @@ export const translations: Record<Language, TranslationDict> = {
     traveler_size: 'Moyen-gros, forme régulière (6-8g)',
     traveler_taste: 'Très bon goût, faible acidité (10-12% Brix)',
     traveler_chill: 'Pas de froid hivernal requis pour primocanes',
-    traveler_harvest: 'Double récolte: Juin & Août-Gelées',
+    traveler_harvest: 'Double récolte: Deux fois en juillet et septembre, et jusqu\'aux gelées',
     traveler_shelf: 'Excellente aptitude au transport, faible perte de couleur',
 
     kokanee_tag: 'Primocane / Automne',
@@ -599,7 +599,7 @@ export const translations: Record<Language, TranslationDict> = {
     miniblues_shelf: 'Très élevée, excellente pour le stockage au froid',
 
     cupla_tag: 'Cuna de Platero / Projet',
-    cupla_desc: 'Cupla est une myrtille très productive sous licence EMCO CAL, pour récolte précoce. Fruits juteux et savoureux, parfaits pour le marché frais.',
+    cupla_desc: 'Photos de nos zones de production à Huelva, Espagne. Cupla est une myrtille très productive sous licence EMCO CAL, pour récolte précoce. Fruits juteux et savoureux, parfaits pour le marché frais.',
     cupla_origin: 'Cuna de Platero, Espagne / EMCO CAL',
     cupla_growth: 'Érigé et semi-ouvert, cueillette facile',
     cupla_size: 'Calibre gros et homogène',
@@ -673,7 +673,7 @@ export const translations: Record<Language, TranslationDict> = {
     caddo_size: 'Große Früchte (durchschnittlich 8-10g)',
     caddo_taste: 'Sehr süß, hervorragendes Aroma (10.5% Brix)',
     caddo_chill: 'Ca. 300 Kälteschutzstunden',
-    caddo_harvest: 'Juni - Juli (Floricane)',
+    caddo_harvest: 'Mitte August (15. August) - Mitte September (Floricane)',
     caddo_shelf: 'Exzellente Transport- und Lagerfähigkeit',
 
     a2526t_tag: 'Experimentelle Elite-Auswahl',
@@ -683,7 +683,7 @@ export const translations: Record<Language, TranslationDict> = {
     a2526t_size: 'Groß, rund-oval',
     a2526t_taste: 'Intensives Aroma, erstklassige Geschmacksausgewogenheit',
     a2526t_chill: '300-400 Stunden',
-    a2526t_harvest: 'Anfang bis Mitte Juli',
+    a2526t_harvest: 'Mitte Juli bis Mitte August',
     a2526t_shelf: 'Gut, geeignet für lokale Direktvermarktung',
 
     traveler_tag: 'Primocane / Zweimaltragend',
@@ -693,7 +693,7 @@ export const translations: Record<Language, TranslationDict> = {
     traveler_size: 'Mittelschein-groß, gleichmäßige Form (6-8g)',
     traveler_taste: 'Sehr guter Geschmack, säurearm (10-12% Brix)',
     traveler_chill: 'Kein Kältebedarf für Primocane-Ernte',
-    traveler_harvest: 'Doppelte Ernte: Juni & August-Frost',
+    traveler_harvest: 'Doppelte Ernte: Zweimal im Juli und September und bis zum Frost',
     traveler_shelf: 'Hervorragende Transportfähigkeit, geringer Farbverlust',
 
     kokanee_tag: 'Primocane / Herbst',
@@ -717,7 +717,7 @@ export const translations: Record<Language, TranslationDict> = {
     miniblues_shelf: 'Sehr hoch, bestens für Kühllagerung geeignet',
 
     cupla_tag: 'Cuna de Platero / Zukunftsplan',
-    cupla_desc: 'Cupla ist eine ertragreiche Blaubeere mit EMCO CAL-Lizenz, ideal für die Frühernte. Sehr saftig, aromatisch und süß, bestens für Frischmarkt geeignet.',
+    cupla_desc: 'Fotos von unseren Produktionsflächen in Huelva, Spanien. Cupla ist eine ertragreiche Blaubeere mit EMCO CAL-Lizenz, ideal für die Frühernte. Sehr saftig, aromatisch und süß, bestens für Frischmarkt geeignet.',
     cupla_origin: 'Cuna de Platero, Spanien / EMCO CAL',
     cupla_growth: 'Aufrecht und halb-ausladend, leicht zu ernten',
     cupla_size: 'Große und gleichmäßige Fruchtstruktur',
@@ -791,7 +791,7 @@ export const translations: Record<Language, TranslationDict> = {
     caddo_size: 'Крупные ягоды (в среднем 8-10 г)',
     caddo_taste: 'Очень сладкий, отличный аромат (10,5% Brix)',
     caddo_chill: 'Около 300 часов охлаждения',
-    caddo_harvest: 'Июнь - Июль (Floricane)',
+    caddo_harvest: 'Середина августа (15 августа) - Середина сентября (Floricane)',
     caddo_shelf: 'Отличная транспортабельность и лежкость',
 
     a2526t_tag: 'Экспериментальный элитный клон',
@@ -801,7 +801,7 @@ export const translations: Record<Language, TranslationDict> = {
     a2526t_size: 'Крупная ягода округло-овальной формы',
     a2526t_taste: 'Интенсивный парфюмерный аромат, гурманский баланс',
     a2526t_chill: '300-400 часов',
-    a2526t_harvest: 'Начало-середина июля',
+    a2526t_harvest: 'Середина июля - середина августа',
     a2526t_shelf: 'Хороший, идеален для местного свежего потребления',
 
     traveler_tag: 'Primocane / Двойной урожай',
@@ -811,7 +811,7 @@ export const translations: Record<Language, TranslationDict> = {
     traveler_size: 'Средне-крупный, однородный (6-8 г)',
     traveler_taste: 'Очень хороший вкус и аромат, низкая кислотность (10-12% Brix)',
     traveler_chill: 'Не требует зимнего охлаждения для побегов текущего года',
-    traveler_harvest: 'Двойной сбор: Июнь и Август-Заморозки',
+    traveler_harvest: 'Двойной сбор: Дважды в июле и сентябре, и до заморозков',
     traveler_shelf: 'Отличная транспортабельность, малая потеря цвета',
 
     kokanee_tag: 'Primocane / Осенний',
@@ -835,7 +835,7 @@ export const translations: Record<Language, TranslationDict> = {
     miniblues_shelf: 'Очень высокая, отлично переносит холодное хранение',
 
     cupla_tag: 'Cuna de Platero / Перспектива',
-    cupla_desc: 'Cupla — высокоурожайный сорт голубики по лицензии EMCO CAL для раннего сбора. Ягоды очень сочные, ароматные и сладкие, идеальны для свежего рынка.',
+    cupla_desc: 'Фотографии с наших производственных площадей в Уэльве, Испания. Cupla — высокоурожайный сорт голубики по лицензии EMCO CAL для раннего сбора. Ягоды очень сочные, ароматные и сладкие, идеальны для свежего рынка.',
     cupla_origin: 'Cuna de Platero, Испания / EMCO CAL',
     cupla_growth: 'Прямостоячий куст, легкий сбор ягод',
     cupla_size: 'Крупный размер ягоды, однородная структура',
@@ -909,7 +909,7 @@ export const translations: Record<Language, TranslationDict> = {
     caddo_size: '大果型（平均 8-10 克）',
     caddo_taste: '非常甜，极佳香气（10.5% 糖度）',
     caddo_chill: '约 300 小时蓄冷量',
-    caddo_harvest: '6月 - 7月',
+    caddo_harvest: '8月中旬（8月15日）- 9月中旬',
     caddo_shelf: '极佳的运输和储存寿命',
 
     a2526t_tag: '试验精英选系',
@@ -919,7 +919,7 @@ export const translations: Record<Language, TranslationDict> = {
     a2526t_size: '大，圆形至椭圆形果实',
     a2526t_taste: '非常可口，甜且微酸（糖酸比：10-13）',
     a2526t_chill: '300-400 小时',
-    a2526t_harvest: '7月上旬至中旬',
+    a2526t_harvest: '7月中旬至8月中旬',
     a2526t_shelf: '极佳货架期（在欧洲和土耳其市场广受关注）',
 
     traveler_tag: 'Primocane / 一年生枝结果 / 双季收获',
@@ -929,7 +929,7 @@ export const translations: Record<Language, TranslationDict> = {
     traveler_size: '中大，形状均匀良好（6-8 克）',
     traveler_taste: '非常好的风味与香气，低酸度（10-12% 糖度）',
     traveler_chill: '一年生枝生产无需冬季蓄冷',
-    traveler_harvest: '双季收获：6月 & 8月至霜降',
+    traveler_harvest: '双季收获：7月和9月两次收获，直至霜降',
     traveler_shelf: '极佳的运输耐久性，变色率低',
 
     kokanee_tag: 'Primocane / 一年生枝结果 / 秋季型',
@@ -953,7 +953,7 @@ export const translations: Record<Language, TranslationDict> = {
     miniblues_shelf: '极高，非常适合冷藏',
 
     cupla_tag: 'Cuna de Platero / 未来计划',
-    cupla_desc: 'Cupla 是一款获得 EMCO CAL 授权的高产、特早熟蓝莓品种。果实多汁、香甜，非常适合鲜食市场。这是我们针对德雷奇内气候早春采收制定的未来规划品种。',
+    cupla_desc: '我们在西班牙韦尔瓦（Huelva）生产基地的照片。Cupla 是一款获得 EMCO CAL 授权的高产、特早熟蓝莓品种。果实多汁、香甜，非常适合鲜食市场。这是我们针对德雷奇内气候早春采收制定的未来规划品种。',
     cupla_origin: '西班牙 Cuna de Platero / EMCO CAL',
     cupla_growth: '直立至半开张，易于采收',
     cupla_size: '果实大且均匀',
@@ -1027,7 +1027,7 @@ export const translations: Record<Language, TranslationDict> = {
     caddo_size: '大粒（平均 8-10g）',
     caddo_taste: '非常に甘く、素晴らしい香り（糖度 10.5%）',
     caddo_chill: '約 300 低温要求時間',
-    caddo_harvest: '6月 - 7月',
+    caddo_harvest: '8月中旬（8月15日）〜9月中旬',
     caddo_shelf: '優れた輸送性と貯蔵寿命',
 
     a2526t_tag: '試験エリート選抜系統',
@@ -1037,7 +1037,7 @@ export const translations: Record<Language, TranslationDict> = {
     a2526t_size: '大、円形から楕円形の果実',
     a2526t_taste: '非常に美味しく、甘みと穏やかな酸味の調和（糖酸比：10-13）',
     a2526t_chill: '300-400 時間',
-    a2526t_harvest: '7月上旬〜中旬',
+    a2526t_harvest: '7月中旬〜8月中旬',
     a2526t_shelf: '優れた保存性（欧州およびトルコ市場で注目）',
 
     traveler_tag: 'Primocane / 二季成り',
@@ -1047,7 +1047,7 @@ export const translations: Record<Language, TranslationDict> = {
     traveler_size: '中〜大、均一で優れた果形（6-8g）',
     traveler_taste: '優れた食味と香り、低酸性（糖度 10-12%）',
     traveler_chill: '当年枝生産では冬の休眠（低温）要求なし',
-    traveler_harvest: '二季成り: 6月 & 8月〜霜が降りるまで',
+    traveler_harvest: '二季成り：7月と9月の2回、および霜が降りるまで',
     traveler_shelf: '優れた輸送耐久性、色戻りしにくい',
 
     kokanee_tag: 'Primocane / 秋採り',
@@ -1071,7 +1071,7 @@ export const translations: Record<Language, TranslationDict> = {
     miniblues_shelf: '極めて高い、冷蔵保存に非常に適する',
 
     cupla_tag: 'Cuna de Platero / 将来計画',
-    cupla_desc: 'Cupla は、EMCO CAL ライセンスの、高収量かつ極めて早生のブルーベリー品種です。ジューシーで甘く香り高い果実を持ち、生鮮市場に最適です。デレチネの気候において春の早期収穫を目指す将来計画品種です。',
+    cupla_desc: 'スペイン・ウエルバ（Huelva）にある当社の生産エリアの写真。Cupla は、EMCO CAL ライセンスの、高収量かつ極めて早生のブルーベリー品種です。ジューシーで甘く香り高い果実を持ち、生鮮市場に最適です。デレチネの気候において春の早期収穫を目指す将来計画品種です。',
     cupla_origin: 'スペイン Cuna de Platero / EMCO CAL',
     cupla_growth: '直立〜半開張性、収穫容易',
     cupla_size: '大粒で均一',
@@ -1145,7 +1145,7 @@ export const translations: Record<Language, TranslationDict> = {
     caddo_size: 'ثمار كبيرة الحجم (بمتوسط 8-10 غ)',
     caddo_taste: 'حلو جداً، نكهة عطرية ممتازة (10.5% بريكس)',
     caddo_chill: 'حوالي 300 ساعة برودة',
-    caddo_harvest: 'يونيو - يوليو',
+    caddo_harvest: 'منتصف أغسطس (15 أغسطس) - منتصف سبتمبر',
     caddo_shelf: 'قدرة ممتازة على النقل والتخزين المبرد',
 
     a2526t_tag: 'سلالة تجريبية نخبوية',
@@ -1155,7 +1155,7 @@ export const translations: Record<Language, TranslationDict> = {
     a2526t_size: 'كبير، ثمار ذات شكل دائري بيضاوي',
     a2526t_taste: 'مستساغ للغاية، حلو وحموضة خفيفة (نسبة السكر إلى الحمض: 10-13)',
     a2526t_chill: '300-400 ساعة برودة',
-    a2526t_harvest: 'أوائل إلى منتصف يوليو',
+    a2526t_harvest: 'منتصف يوليو إلى منتصف أغسطس',
     a2526t_shelf: 'صلاحية ممتازة (اهتمام واسع في أسواق أوروبا وتركيا)',
 
     traveler_tag: 'Primocane / محصول مزدوج',
@@ -1165,7 +1165,7 @@ export const translations: Record<Language, TranslationDict> = {
     traveler_size: 'متوسط إلى كبير، شكل متناسق جيد (6-8 غ)',
     traveler_taste: 'طعم ونكهة ممتازة، حموضة منخفضة (10-12% بريكس)',
     traveler_chill: 'لا يتطلب ساعات برودة شتوية للإنتاج الخريفي',
-    traveler_harvest: 'محصول مزدوج: يونيو & أغسطس حتى الصقيع',
+    traveler_harvest: 'محصول مزدوج: مرتين في يوليو وسبتمبر، وحتى الصقيع',
     traveler_shelf: 'متانة نقل ممتازة، فقدان لون منخفض جداً',
 
     kokanee_tag: 'Primocane / خريفي',
@@ -1189,7 +1189,7 @@ export const translations: Record<Language, TranslationDict> = {
     miniblues_shelf: 'عالية جداً، ممتاز للحفظ المبرد الطويل',
 
     cupla_tag: 'Cuna de Platero / خطة مستقبلية',
-    cupla_desc: 'Cupla هو صنف عنب بري مبكر جداً وغزير الإنتاج مرخص من EMCO CAL. ثماره مليئة بالعصير وحلوة ومثالية للسوق الطازج. نخطط لزراعته في ديريتشينه للحصاد في أوائل الربيع.',
+    cupla_desc: 'صور من مناطق الإنتاج لدينا في ويلفا، إسبانيا. Cupla هو صنف عنب بري مبكر جداً وغزير الإنتاج مرخص من EMCO CAL. ثماره مليئة بالعصير وحلوة ومثالية للسوق الطازج. نخطط لزراعته في ديريتشينه للحصاد في أوائل الربيع.',
     cupla_origin: 'سيونا دي بلاتيرو، إسبانيا / EMCO CAL',
     cupla_growth: 'رأسي إلى شبه منتشر، سهل الجني',
     cupla_size: 'ثمار كبيرة الحجم ومتناسقة الشكل',

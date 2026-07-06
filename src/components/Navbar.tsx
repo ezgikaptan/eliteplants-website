@@ -69,6 +69,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
   const { t, language, setLanguage } = useTranslation();
   const homeT = homeTranslations[language] || homeTranslations['en'];
 
@@ -78,6 +79,18 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close language dropdown if clicked outside
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.lang-selector-container')) {
+        setIsLangOpen(false);
+      }
+    };
+    document.addEventListener('click', handleOutsideClick);
+    return () => document.removeEventListener('click', handleOutsideClick);
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -160,8 +173,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
           </a>
 
           {/* Premium Language Dropdown (Desktop Only) */}
-          <div className="lang-selector-container desktop-only">
-            <button className="lang-selector-btn">
+          <div className={`lang-selector-container desktop-only ${isLangOpen ? 'open' : ''}`}>
+            <button className="lang-selector-btn" onClick={(e) => { e.stopPropagation(); setIsLangOpen(!isLangOpen); }}>
               <Languages size={14} />
               <span>{language.toUpperCase()}</span>
             </button>
@@ -169,7 +182,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
               {(['tr', 'en', 'es', 'fr', 'de', 'ru', 'zh', 'ja', 'ar'] as Language[]).map((lang) => (
                 <button
                   key={lang}
-                  onClick={() => setLanguage(lang)}
+                  onClick={() => { setLanguage(lang); setIsLangOpen(false); }}
                   className={`lang-option-btn ${language === lang ? 'active' : ''}`}
                 >
                   <span className="lang-code-tag">{lang.toUpperCase()}</span>
@@ -181,8 +194,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
         </div>
 
         {/* Mobile Language Selector Dropdown (Mobile Only, Far Right) */}
-        <div className="lang-selector-container mobile-only">
-          <button className="lang-selector-btn">
+        <div className={`lang-selector-container mobile-only ${isLangOpen ? 'open' : ''}`}>
+          <button className="lang-selector-btn" onClick={(e) => { e.stopPropagation(); setIsLangOpen(!isLangOpen); }}>
             <Languages size={14} />
             <span>{language.toUpperCase()}</span>
           </button>
@@ -190,7 +203,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             {(['tr', 'en', 'es', 'fr', 'de', 'ru', 'zh', 'ja', 'ar'] as Language[]).map((lang) => (
               <button
                 key={lang}
-                onClick={() => setLanguage(lang)}
+                onClick={() => { setLanguage(lang); setIsLangOpen(false); }}
                 className={`lang-option-btn ${language === lang ? 'active' : ''}`}
               >
                 <span className="lang-code-tag">{lang.toUpperCase()}</span>
@@ -232,6 +245,9 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             <span className="menu-link-title">{t.navContact}</span>
             <span className="menu-link-subtitle">{mobileMenuSubtitles.contact[language] || mobileMenuSubtitles.contact['en']}</span>
           </a>
+        </div>
+        <div className="mobile-menu-footer">
+          <span className="mobile-menu-logo-text">ELITE <span>plants</span></span>
         </div>
       </div>
     </nav>

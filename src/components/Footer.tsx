@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
   const certImages = [cert1Img, cert2Img];
 
   return (
-    <footer id="contact" className="footer">
+    <footer id="contact" className={`footer ${isCertModalOpen ? 'cert-modal-open' : ''}`}>
       <div className="footer-content">
         <div className="footer-brand">
           <div className="logo-vintage" style={{ cursor: 'default', marginBottom: '12px' }}>
