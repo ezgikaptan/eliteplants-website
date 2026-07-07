@@ -181,7 +181,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
     blackberry: [
       {
         id: 'caddo',
-        name: 'Caddo® Karaberry',
+        name: `Caddo® ${t.productsKaraberryName}`,
         type: 'blackberry',
         tag: t.caddo_tag,
         description: t.caddo_desc,
@@ -196,7 +196,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
       },
       {
         id: 'a2526t',
-        name: 'A-2526T Karaberry',
+        name: `A-2526T ${t.productsKaraberryName}`,
         type: 'blackberry',
         tag: t.a2526t_tag,
         description: t.a2526t_desc,
@@ -211,7 +211,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
       },
       {
         id: 'traveler',
-        name: 'Traveler™ Karaberry',
+        name: `Traveler™ ${t.productsKaraberryName}`,
         type: 'blackberry',
         tag: t.traveler_tag,
         description: t.traveler_desc,
@@ -228,7 +228,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
     raspberry: [
       {
         id: 'kokanee',
-        name: 'Kokanee cv. Alberry',
+        name: `Kokanee cv. ${t.productsAlberryName}`,
         type: 'raspberry',
         tag: t.kokanee_tag,
         description: t.kokanee_desc,
@@ -245,7 +245,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
     blueberry: [
       {
         id: 'cupla',
-        name: 'Cupla Gökberry',
+        name: `Cupla ${t.productsGokberryName}`,
         type: 'blueberry',
         tag: t.cupla_tag,
         description: t.cupla_desc,
@@ -497,23 +497,26 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
         </div>
 
         <div className="varieties-category-tabs">
-          <button 
+          <button
             className={`tab-btn blackberry ${activeFruit === 'blackberry' ? 'active' : ''}`}
             onClick={() => setActiveFruit('blackberry')}
           >
-            Karaberry
+            <span className="tab-generic-name">{t.productsKaraberryName}</span>
+            <span className="tab-brand-name">Karaberry</span>
           </button>
-          <button 
+          <button
             className={`tab-btn raspberry ${activeFruit === 'raspberry' ? 'active' : ''}`}
             onClick={() => setActiveFruit('raspberry')}
           >
-            Alberry
+            <span className="tab-generic-name">{t.productsAlberryName}</span>
+            <span className="tab-brand-name">Alberry</span>
           </button>
-          <button 
+          <button
             className={`tab-btn blueberry ${activeFruit === 'blueberry' ? 'active' : ''}`}
             onClick={() => setActiveFruit('blueberry')}
           >
-            Gökberry
+            <span className="tab-generic-name">{t.productsGokberryName}</span>
+            <span className="tab-brand-name">Gökberry</span>
             <span className="tab-soon-badge">{t.varietiesSoon}</span>
           </button>
         </div>

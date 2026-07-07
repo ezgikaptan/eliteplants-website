@@ -20,10 +20,10 @@ const getAssetPath = (path: string) => {
 export const ProductShowcase: React.FC<ProductShowcaseProps> = ({ setActiveFruit, images, badges }) => {
   const { t } = useTranslation();
 
-  const cards: { id: FruitType; name: string; desc: string; accentClass: string }[] = [
-    { id: 'blackberry', name: 'Karaberry', desc: t.productsKaraberryDesc, accentClass: 'accent-karaberry' },
-    { id: 'raspberry', name: 'Alberry', desc: t.productsAlberryDesc, accentClass: 'accent-alberry' },
-    { id: 'blueberry', name: 'Gökberry', desc: t.productsGokberryDesc, accentClass: 'accent-gokberry' },
+  const cards: { id: FruitType; name: string; brand: string; desc: string; accentClass: string }[] = [
+    { id: 'blackberry', name: t.productsKaraberryName, brand: 'Karaberry', desc: t.productsKaraberryDesc, accentClass: 'accent-karaberry' },
+    { id: 'raspberry', name: t.productsAlberryName, brand: 'Alberry', desc: t.productsAlberryDesc, accentClass: 'accent-alberry' },
+    { id: 'blueberry', name: t.productsGokberryName, brand: 'Gökberry', desc: t.productsGokberryDesc, accentClass: 'accent-gokberry' },
   ];
 
   const handleSelect = (fruit: FruitType) => {
@@ -62,6 +62,7 @@ export const ProductShowcase: React.FC<ProductShowcaseProps> = ({ setActiveFruit
             </div>
             <div className="product-showcase-body">
               <h3 className="product-showcase-title">{card.name}</h3>
+              <span className={`product-showcase-brand-tag ${card.accentClass}`}>{card.brand}</span>
               <p className="product-showcase-desc">{card.desc}</p>
               <span className="product-showcase-link">{t.productsExplore} →</span>
             </div>

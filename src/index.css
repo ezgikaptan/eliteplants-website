@@ -859,6 +859,21 @@ h1, h2, h3, h4 {
   margin-bottom: 8px;
 }
 
+.product-showcase-brand-tag {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 14px;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.product-showcase-brand-tag.accent-karaberry { color: var(--accent-karaberry); }
+.product-showcase-brand-tag.accent-alberry { color: var(--accent-alberry); }
+.product-showcase-brand-tag.accent-gokberry { color: var(--accent-gokberry); }
+
 .product-showcase-desc {
   font-family: var(--font-body);
   font-size: 0.92rem;
@@ -2331,12 +2346,29 @@ h1, h2, h3, h4 {
   font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 600;
-  padding: 12px 32px;
+  padding: 10px 32px;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   letter-spacing: 0.04em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.tab-generic-name {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.tab-brand-name {
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.65;
 }
 
 .tab-btn:hover {
