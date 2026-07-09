@@ -158,7 +158,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
         <div className="nav-col nav-col-center">
           <div className="logo-vintage" onClick={() => { scrollToSection('home'); setIsMenuOpen(false); }}>
             <span className="logo-vintage-text">
-              ELITE <span>plants</span>
+              SULTAN <span>berry</span>
             </span>
           </div>
         </div>
@@ -247,7 +247,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
           </a>
         </div>
         <div className="mobile-menu-footer">
-          <span className="mobile-menu-logo-text">ELITE <span>plants</span></span>
+          <span className="mobile-menu-logo-text">SULTAN <span>berry</span></span>
         </div>
       </div>
     </nav>

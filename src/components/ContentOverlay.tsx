@@ -295,7 +295,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
     <div style={{ position: 'relative', zIndex: 10 }}>
       {/* 1. Hero Section - Full-bleed Photo */}
       <section id="home" className="hero-vintage-section">
-        <img src={getAssetPath('/images/hero_blackberry.png')} alt="" aria-hidden="true" className="hero-bg-image" />
+        <img src={farm2} alt="" aria-hidden="true" className="hero-bg-image" />
         <div className="hero-bg-overlay" />
 
 

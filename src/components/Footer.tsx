@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
       <div className="footer-content">
         <div className="footer-brand">
           <div className="logo-vintage" style={{ cursor: 'default', marginBottom: '12px' }}>
-            <span className="logo-vintage-text">ELITE <span>plants</span></span>
+            <span className="logo-vintage-text">SULTAN <span>berry</span></span>
           </div>
           <p className="footer-desc">
             {t.footerDesc}
@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
         <div className="footer-links-col">
           <h4>{t.navAbout}</h4>
           <ul>
-            <li><a href="#home">ELITE plants</a></li>
+            <li><a href="#home">Sultanberry</a></li>
             <li><a href="#about">{t.navAbout}</a></li>
             <li>
               <a 
@@ -65,7 +65,7 @@ export const Footer: React.FC = () => {
             <div className="footer-contact-icon-wrap">
               <Mail size={18} />
             </div>
-            <span className="footer-contact-text">info@eliteplants.com.tr</span>
+            <span className="footer-contact-text">info@sultanberry.com</span>
           </div>
           <div 
             className="footer-contact-item" 
@@ -83,7 +83,7 @@ export const Footer: React.FC = () => {
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} Elite Plants. {t.footerRights}</p>
+        <p>&copy; {new Date().getFullYear()} Sultanberry. {t.footerRights}</p>
         <div className="footer-certifications">
           <span className="footer-cert-item">
             <ShieldCheck size={16} /> {t.footerCert}
