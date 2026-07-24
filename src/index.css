@@ -3460,6 +3460,110 @@ html[dir="rtl"] .gallery-thumbnails-strip {
   direction: ltr; /* keeps the scroll swipe direction natural for users */
 }
 
+/* Floating grower-mascot social widget */
+.social-widget {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.social-widget-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.social-widget-item {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  opacity: 0;
+  transform: translateY(14px) scale(0.5);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.social-widget.open .social-widget-item {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.social-widget-item:hover {
+  transform: translateY(-3px) scale(1.08);
+}
+
+.social-widget-item.fb { background: #1877f2; }
+.social-widget-item.ig { background: radial-gradient(circle at 30% 110%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
+.social-widget-item.wa { background: #25d366; }
+
+.social-widget-toggle {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid var(--accent-karaberry, #160b28);
+  box-shadow: 0 10px 26px rgba(6, 27, 14, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  color: var(--accent-karaberry, #160b28);
+  animation: socialBounce 3.4s ease-in-out infinite;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.social-widget-toggle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+}
+
+.social-widget-toggle:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 30px rgba(6, 27, 14, 0.35);
+  animation-play-state: paused;
+}
+
+.social-widget.open .social-widget-toggle {
+  animation: none;
+  transform: rotate(90deg);
+}
+
+@keyframes socialBounce {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-10px) rotate(4deg); }
+}
+
+@media (max-width: 768px) {
+  .social-widget {
+    left: 16px;
+    bottom: 16px;
+  }
+  .social-widget-toggle {
+    width: 56px;
+    height: 56px;
+  }
+  .social-widget-item {
+    width: 42px;
+    height: 42px;
+  }
+}
+
 /* Premium Scroll to Top Button */
 .scroll-to-top {
   position: fixed;
