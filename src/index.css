@@ -742,9 +742,62 @@ h1, h2, h3, h4 {
 
 /* Signature Varieties Product Showcase */
 .product-showcase-section {
+  position: relative;
+  overflow: hidden;
   padding: 80px 6%;
   max-width: var(--container-max, 1280px);
   margin: 0 auto;
+}
+
+.product-showcase-bg-icons {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.product-showcase-bg-icons .bg-icon {
+  position: absolute;
+  opacity: 0.5;
+  animation: berryDrift 26s ease-in-out infinite;
+}
+
+.bg-icon-1 {
+  top: -50px;
+  left: -40px;
+  width: 240px;
+  animation-duration: 25s;
+}
+
+.bg-icon-2 {
+  bottom: -30px;
+  right: -30px;
+  width: 210px;
+  opacity: 0.45;
+  animation-duration: 30s;
+  animation-delay: -8s;
+}
+
+.bg-icon-3 {
+  top: 38%;
+  right: 6%;
+  width: 130px;
+  opacity: 0.3;
+  animation-duration: 21s;
+  animation-delay: -4s;
+}
+
+@keyframes berryDrift {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(10px, -14px) rotate(3deg); }
+  66% { transform: translate(-8px, 10px) rotate(-2deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@media (max-width: 1024px) {
+  .product-showcase-bg-icons {
+    display: none;
+  }
 }
 
 .product-showcase-header {

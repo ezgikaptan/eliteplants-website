@@ -33,6 +33,11 @@ export const ProductShowcase: React.FC<ProductShowcaseProps> = ({ setActiveFruit
 
   return (
     <section className="product-showcase-section">
+      <div className="product-showcase-bg-icons" aria-hidden="true">
+        <img src={getAssetPath('/images/icons/blackberry-icon-pale.png')} alt="" className="bg-icon bg-icon-1" />
+        <img src={getAssetPath('/images/icons/raspberry-icon-pale.png')} alt="" className="bg-icon bg-icon-2" />
+        <img src={getAssetPath('/images/icons/blueberry-icon-pale.png')} alt="" className="bg-icon bg-icon-3" />
+      </div>
       <div className="product-showcase-header">
         <span className="section-tag">{t.navProducts}</span>
         <h2 className="section-title">{t.productsCursive}</h2>
