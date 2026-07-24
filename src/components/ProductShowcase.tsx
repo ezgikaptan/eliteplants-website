@@ -20,10 +20,10 @@ const getAssetPath = (path: string) => {
 export const ProductShowcase: React.FC<ProductShowcaseProps> = ({ setActiveFruit, images, badges }) => {
   const { t } = useTranslation();
 
-  const cards: { id: FruitType; name: string; brand: string; desc: string; accentClass: string }[] = [
-    { id: 'blackberry', name: t.productsKaraberryName, brand: 'Karaberry', desc: t.productsKaraberryDesc, accentClass: 'accent-karaberry' },
-    { id: 'raspberry', name: t.productsAlberryName, brand: 'Alberry', desc: t.productsAlberryDesc, accentClass: 'accent-alberry' },
-    { id: 'blueberry', name: t.productsGokberryName, brand: 'Gökberry', desc: t.productsGokberryDesc, accentClass: 'accent-gokberry' },
+  const cards: { id: FruitType; name: string; brand: string; desc: string; accentClass: string; icon: string }[] = [
+    { id: 'blackberry', name: t.productsKaraberryName, brand: 'Karaberry', desc: t.productsKaraberryDesc, accentClass: 'accent-karaberry', icon: '/images/icons/blackberry-icon.png' },
+    { id: 'raspberry', name: t.productsAlberryName, brand: 'Alberry', desc: t.productsAlberryDesc, accentClass: 'accent-alberry', icon: '/images/icons/raspberry-icon.png' },
+    { id: 'blueberry', name: t.productsGokberryName, brand: 'Gökberry', desc: t.productsGokberryDesc, accentClass: 'accent-gokberry', icon: '/images/icons/blueberry-icon.png' },
   ];
 
   const handleSelect = (fruit: FruitType) => {
@@ -62,7 +62,10 @@ export const ProductShowcase: React.FC<ProductShowcaseProps> = ({ setActiveFruit
             </div>
             <div className="product-showcase-body">
               <h3 className="product-showcase-title">{card.name}</h3>
-              <span className={`product-showcase-brand-tag ${card.accentClass}`}>{card.brand}</span>
+              <span className={`product-showcase-brand-tag ${card.accentClass}`}>
+                <img src={getAssetPath(card.icon)} alt="" aria-hidden="true" className="product-showcase-brand-icon" />
+                {card.brand}
+              </span>
               <p className="product-showcase-desc">{card.desc}</p>
               <span className="product-showcase-link">{t.productsExplore} →</span>
             </div>

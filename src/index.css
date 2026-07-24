@@ -26,9 +26,9 @@
   --color-accent: var(--color-tertiary);
 
   /* Per-category accent (Karaberry / Alberry / Gökberry) */
-  --accent-karaberry: #061b0e;
-  --accent-alberry: #8B1E2B;
-  --accent-gokberry: #2B4B7C;
+  --accent-karaberry: #160b28;
+  --accent-alberry: #a6222b;
+  --accent-gokberry: #14468e;
 
   --transition-smooth: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-fast: all 0.25s ease;
@@ -860,7 +860,9 @@ h1, h2, h3, h4 {
 }
 
 .product-showcase-brand-tag {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   width: fit-content;
   margin: 0 auto 14px;
   font-family: var(--font-body);
@@ -873,6 +875,13 @@ h1, h2, h3, h4 {
 .product-showcase-brand-tag.accent-karaberry { color: var(--accent-karaberry); }
 .product-showcase-brand-tag.accent-alberry { color: var(--accent-alberry); }
 .product-showcase-brand-tag.accent-gokberry { color: var(--accent-gokberry); }
+
+.product-showcase-brand-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
 
 .product-showcase-desc {
   font-family: var(--font-body);
