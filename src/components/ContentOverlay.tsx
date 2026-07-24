@@ -7,14 +7,7 @@ import type { VarietyDetail, FruitType } from '../types';
 import type { TranslationDict } from '../i18n';
 
 const BASE = import.meta.env.BASE_URL;
-const blackberryMascotImg = `${BASE}images/icons/blackberry-mascot-pale.png`;
-const raspberryMascotImg = `${BASE}images/icons/raspberry-mascot-pale.png`;
-const blueberryMascotImg = `${BASE}images/icons/blueberry-mascot-pale.png`;
-const mascotByFruit: Record<FruitType, string> = {
-  blackberry: blackberryMascotImg,
-  raspberry: raspberryMascotImg,
-  blueberry: blueberryMascotImg,
-};
+const cizimImg = `${BASE}images/çizim.png`;
 
 interface ContentOverlayProps {
   activeFruit: FruitType;
@@ -349,12 +342,12 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
         className="scroll-section about-scroll-section"
         style={{ position: 'relative', overflow: 'hidden' }}
       >
-        {/* Sultanberry grower mascot side decorations, pale ghost tone */}
+        {/* çizim.jpeg side decorations - blue tinted */}
         <div className="section-side-drawing left cizim-float">
-          <img src={blackberryMascotImg} alt="" aria-hidden="true" style={{ width: 180, height: 'auto', opacity: 0.55 }} />
+          <img src={cizimImg} alt="" aria-hidden="true" style={{ width: 170, height: 'auto', opacity: 0.22, mixBlendMode: 'multiply', filter: 'hue-rotate(180deg) saturate(1.5) brightness(1.1)' }} />
         </div>
         <div className="section-side-drawing right cizim-float-r">
-          <img src={raspberryMascotImg} alt="" aria-hidden="true" style={{ width: 180, height: 'auto', opacity: 0.55, transform: 'scaleX(-1)' }} />
+          <img src={cizimImg} alt="" aria-hidden="true" style={{ width: 170, height: 'auto', opacity: 0.22, mixBlendMode: 'multiply', filter: 'hue-rotate(180deg) saturate(1.5) brightness(1.1)', transform: 'scaleX(-1)' }} />
         </div>
 
         {/* About section inner content */}
@@ -487,12 +480,12 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
 
       {/* 4. Varieties Section - Category Tabs + Accordion */}
       <section id="varieties" className="scroll-section varieties-section" style={{ width: '100%' }}>
-        {/* Grower mascot side decorations, matches the active variety tab */}
-        <div className="section-side-drawing left cizim-float" style={{ opacity: 0.4 }}>
-          <img src={mascotByFruit[activeFruit]} alt="" aria-hidden="true" style={{ width: 155, height: 'auto' }} />
+        {/* çizim.jpeg side decorations for varieties */}
+        <div className="section-side-drawing left cizim-float" style={{ opacity: 0.15 }}>
+          <img src={cizimImg} alt="" aria-hidden="true" style={{ width: 155, height: 'auto', filter: 'saturate(1.3) brightness(0.95)' }} />
         </div>
-        <div className="section-side-drawing right cizim-float-r" style={{ opacity: 0.4 }}>
-          <img src={mascotByFruit[activeFruit]} alt="" aria-hidden="true" style={{ width: 155, height: 'auto', transform: 'scaleX(-1)' }} />
+        <div className="section-side-drawing right cizim-float-r" style={{ opacity: 0.15 }}>
+          <img src={cizimImg} alt="" aria-hidden="true" style={{ width: 155, height: 'auto', filter: 'saturate(1.3) brightness(0.95)', transform: 'scaleX(-1)' }} />
         </div>
 
         <div className="varieties-header">
