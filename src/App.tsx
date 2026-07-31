@@ -3,7 +3,6 @@ import { Navbar } from './components/Navbar';
 import type { FruitType } from './types';
 import { ContentOverlay } from './components/ContentOverlay';
 import { Footer } from './components/Footer';
-import { SocialWidget } from './components/SocialWidget';
 import { ArrowUp } from 'lucide-react';
 
 function App() {
@@ -67,9 +66,6 @@ function App() {
 
       {/* Corporate Footer */}
       <Footer />
-
-      {/* Floating grower mascot — social links */}
-      <SocialWidget />
 
       {/* Scroll to Top Button */}
       <button 
