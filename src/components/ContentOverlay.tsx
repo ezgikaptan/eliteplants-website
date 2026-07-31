@@ -7,7 +7,6 @@ import type { VarietyDetail, FruitType } from '../types';
 import type { TranslationDict } from '../i18n';
 
 const BASE = import.meta.env.BASE_URL;
-const heroMascotImg = `${BASE}images/icons/blackberry-mascot-full.png`;
 const cizimImg = `${BASE}images/çizim.png`;
 
 interface ContentOverlayProps {
@@ -298,9 +297,6 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
       <section id="home" className="hero-vintage-section">
         <img src={farm2} alt="" aria-hidden="true" className="hero-bg-image" />
         <div className="hero-bg-overlay" />
-        <div className="hero-mascot-wrap">
-          <img src={heroMascotImg} alt="" aria-hidden="true" className="hero-mascot" />
-        </div>
 
 
 
