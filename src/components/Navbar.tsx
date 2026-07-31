@@ -3,6 +3,9 @@ import { Languages } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
 import type { Language } from '../i18n';
 
+const BASE = import.meta.env.BASE_URL;
+const mascotImg = `${BASE}images/icons/blackberry-mascot-full.png`;
+
 const homeTranslations: Record<string, string> = {
   tr: 'Ana Sayfa',
   en: 'Home',
@@ -216,6 +219,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
 
       {/* Mobile Slide-Down Menu Panel */}
       <div className={`mobile-menu-panel ${isMenuOpen ? 'open' : ''}`}>
+        <img src={mascotImg} alt="" aria-hidden="true" className="mobile-menu-mascot" />
         <div className="mobile-menu-links">
           <a 
             onClick={() => { scrollToSection('home'); setIsMenuOpen(false); }} 
