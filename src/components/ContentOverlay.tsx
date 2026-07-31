@@ -8,6 +8,25 @@ import type { TranslationDict } from '../i18n';
 
 const BASE = import.meta.env.BASE_URL;
 const cizimImg = `${BASE}images/çizim.png`;
+const heroMascotImg = `${BASE}images/icons/blackberry-mascot-full.png`;
+
+const mascotByFruit: Record<FruitType, string> = {
+  blackberry: `${BASE}images/icons/blackberry-mascot-full.png`,
+  raspberry: `${BASE}images/icons/raspberry-mascot-full.png`,
+  blueberry: `${BASE}images/icons/blueberry-mascot-full.png`,
+};
+
+const wordmarkByFruit: Record<FruitType, string> = {
+  blackberry: `${BASE}images/logos/karaberry-wordmark.png`,
+  raspberry: `${BASE}images/logos/alberry-wordmark.png`,
+  blueberry: `${BASE}images/logos/gokberry-wordmark.png`,
+};
+
+const wordmarkWhiteByFruit: Record<FruitType, string> = {
+  blackberry: `${BASE}images/logos/karaberry-wordmark-white.png`,
+  raspberry: `${BASE}images/logos/alberry-wordmark-white.png`,
+  blueberry: `${BASE}images/logos/gokberry-wordmark-white.png`,
+};
 
 interface ContentOverlayProps {
   activeFruit: FruitType;
@@ -297,6 +316,9 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
       <section id="home" className="hero-vintage-section">
         <img src={farm2} alt="" aria-hidden="true" className="hero-bg-image" />
         <div className="hero-bg-overlay" />
+        <div className="hero-mascot-wrap">
+          <img src={heroMascotImg} alt="" aria-hidden="true" className="hero-mascot" />
+        </div>
 
 
 
@@ -480,12 +502,12 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
 
       {/* 4. Varieties Section - Category Tabs + Accordion */}
       <section id="varieties" className="scroll-section varieties-section" style={{ width: '100%' }}>
-        {/* çizim.jpeg side decorations for varieties */}
-        <div className="section-side-drawing left cizim-float" style={{ opacity: 0.15 }}>
-          <img src={cizimImg} alt="" aria-hidden="true" style={{ width: 155, height: 'auto', filter: 'saturate(1.3) brightness(0.95)' }} />
+        {/* Grower mascot side decorations, matches the active variety tab */}
+        <div className="section-side-drawing left cizim-float varieties-mascot-drawing">
+          <img src={mascotByFruit[activeFruit]} alt="" aria-hidden="true" />
         </div>
-        <div className="section-side-drawing right cizim-float-r" style={{ opacity: 0.15 }}>
-          <img src={cizimImg} alt="" aria-hidden="true" style={{ width: 155, height: 'auto', filter: 'saturate(1.3) brightness(0.95)', transform: 'scaleX(-1)' }} />
+        <div className="section-side-drawing right cizim-float-r varieties-mascot-drawing">
+          <img src={mascotByFruit[activeFruit]} alt="" aria-hidden="true" style={{ transform: 'scaleX(-1)' }} />
         </div>
 
         <div className="varieties-header">
@@ -502,21 +524,33 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
             onClick={() => setActiveFruit('blackberry')}
           >
             <span className="tab-generic-name">{t.productsKaraberryName}</span>
-            <span className="tab-brand-name">Karaberry</span>
+            <img
+              className="tab-brand-logo"
+              src={activeFruit === 'blackberry' ? wordmarkWhiteByFruit.blackberry : wordmarkByFruit.blackberry}
+              alt="Karaberry"
+            />
           </button>
           <button
             className={`tab-btn raspberry ${activeFruit === 'raspberry' ? 'active' : ''}`}
             onClick={() => setActiveFruit('raspberry')}
           >
             <span className="tab-generic-name">{t.productsAlberryName}</span>
-            <span className="tab-brand-name">Alberry</span>
+            <img
+              className="tab-brand-logo"
+              src={activeFruit === 'raspberry' ? wordmarkWhiteByFruit.raspberry : wordmarkByFruit.raspberry}
+              alt="Alberry"
+            />
           </button>
           <button
             className={`tab-btn blueberry ${activeFruit === 'blueberry' ? 'active' : ''}`}
             onClick={() => setActiveFruit('blueberry')}
           >
             <span className="tab-generic-name">{t.productsGokberryName}</span>
-            <span className="tab-brand-name">Gökberry</span>
+            <img
+              className="tab-brand-logo"
+              src={activeFruit === 'blueberry' ? wordmarkWhiteByFruit.blueberry : wordmarkByFruit.blueberry}
+              alt="Gökberry"
+            />
             <span className="tab-soon-badge">{t.varietiesSoon}</span>
           </button>
         </div>
