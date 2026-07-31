@@ -954,7 +954,10 @@ h1, h2, h3, h4 {
 }
 
 .product-showcase-link {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   text-align: center;
   font-family: var(--font-body);
   font-size: 0.8rem;
@@ -962,6 +965,13 @@ h1, h2, h3, h4 {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--color-primary);
+}
+
+.product-showcase-link-icon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 /* Buttons */
