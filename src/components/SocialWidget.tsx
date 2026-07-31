@@ -3,7 +3,13 @@ import { X } from 'lucide-react';
 import { InstagramIcon, FacebookIcon, WhatsAppIcon } from './SocialIcons';
 
 const BASE = import.meta.env.BASE_URL;
-const mascotImg = `${BASE}images/icons/blackberry-mascot-avatar.png`;
+
+const MASCOTS = [
+  `${BASE}images/icons/blackberry-mascot-avatar.png`,
+  `${BASE}images/icons/raspberry-mascot-avatar.png`,
+  `${BASE}images/icons/blueberry-mascot-avatar.png`,
+];
+const ACCENTS = ['#160b28', '#a6222b', '#14468e'];
 
 const INSTAGRAM_URL = 'https://www.instagram.com/hdogancukuru/';
 const FACEBOOK_URL = 'https://www.facebook.com/huseyin.dogancukuru?locale=tr_TR';
@@ -11,6 +17,7 @@ const WHATSAPP_URL = 'https://wa.me/905334166484';
 
 export const SocialWidget: React.FC = () => {
   const [open, setOpen] = useState(false);
+  const [mascotIndex] = useState(() => Math.floor(Math.random() * MASCOTS.length));
 
   return (
     <div className={`social-widget ${open ? 'open' : ''}`}>
@@ -56,8 +63,9 @@ export const SocialWidget: React.FC = () => {
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? 'Menüyü kapat' : 'Bize ulaşın'}
         aria-expanded={open}
+        style={{ ['--mascot-accent' as string]: ACCENTS[mascotIndex] }}
       >
-        {open ? <X size={22} /> : <img src={mascotImg} alt="" aria-hidden="true" />}
+        {open ? <X size={22} /> : <img src={MASCOTS[mascotIndex]} alt="" aria-hidden="true" />}
       </button>
     </div>
   );
