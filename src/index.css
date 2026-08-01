@@ -12,7 +12,7 @@
   --bg-primary: #f9f9f9;
   --bg-secondary: #f3f3f3;
   --text-primary: #1a1c1c;
-  --text-secondary: #434843;
+  --text-secondary: #514860;
 
   /* Static palette (DESIGN.md) — replaces the old per-fruit runtime theme swap */
   --color-primary: #160b28;
@@ -21,8 +21,8 @@
   --color-berry-red: #8B1E2B;
   --color-berry-blue: #2B4B7C;
   --color-earth-sand: #D4C2AD;
-  --color-outline-variant: #c3c8c1;
-  --color-glow: rgba(6, 27, 14, 0.08);
+  --color-outline-variant: #d6d1dd;
+  --color-glow: rgba(22, 11, 40, 0.08);
   --color-accent: var(--color-tertiary);
 
   /* Per-category accent (Karaberry / Alberry / Gökberry) */
@@ -62,7 +62,7 @@
   border-color: var(--color-primary);
   color: #111827;
   transform: translateY(-1px) scale(1.03);
-  box-shadow: 0 4px 12px rgba(28, 50, 36, 0.08);
+  box-shadow: 0 4px 12px rgba(22, 11, 40, 0.08);
 }
 
 .lang-selector-btn:active {
@@ -79,7 +79,7 @@
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 16px;
   box-shadow: 
-    0 15px 35px rgba(28, 50, 36, 0.08), 
+    0 15px 35px rgba(22, 11, 40, 0.08), 
     0 5px 15px rgba(0, 0, 0, 0.02);
   padding: 8px;
   display: flex;
@@ -303,7 +303,7 @@ h1, h2, h3, h4 {
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 12px 40px rgba(28, 50, 36, 0.03), 0 1px 2px rgba(28, 50, 36, 0.02);
+  box-shadow: 0 12px 40px rgba(22, 11, 40, 0.03), 0 1px 2px rgba(22, 11, 40, 0.02);
   border-radius: 12px;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -313,7 +313,7 @@ h1, h2, h3, h4 {
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
   border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 18px 50px rgba(28, 50, 36, 0.04), 0 0 45px var(--color-glow);
+  box-shadow: 0 18px 50px rgba(22, 11, 40, 0.04), 0 0 45px var(--color-glow);
   border-radius: 12px;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -452,7 +452,7 @@ h1, h2, h3, h4 {
   font-family: var(--font-serif);
   font-size: 1.35rem; /* slightly larger and more readable */
   font-weight: 700;
-  color: #1c2e24; /* deep warm botanical green */
+  color: #160b28; /* deep blackberry */
   letter-spacing: 0.08em; /* wider spacing for luxury feel */
   text-transform: uppercase;
   display: inline-flex;
@@ -463,12 +463,12 @@ h1, h2, h3, h4 {
 .logo-vintage-text span {
   font-family: var(--font-vintage);
   font-weight: 500;
-  color: #6b8273; /* botanical sage green */
+  color: #6b5c7e; /* blackberry grey/purple */
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.26em; /* wider tracking for elite touch */
   margin-left: 12px;
-  border-left: 1px solid rgba(28, 46, 36, 0.15); /* matching green border line */
+  border-left: 1px solid rgba(22, 11, 40, 0.15); /* matching border line */
   padding-left: 12px;
   line-height: 1;
   display: inline-block;
@@ -476,13 +476,13 @@ h1, h2, h3, h4 {
 }
 
 .logo-vintage:hover .logo-vintage-text {
-  color: #11281a;
+  color: #160b28;
   transform: translateY(-0.5px);
 }
 
 .logo-vintage:hover .logo-vintage-text span {
-  color: #123d22;
-  border-color: rgba(28, 46, 36, 0.3);
+  color: #160b28;
+  border-color: rgba(22, 11, 40, 0.3);
 }
 
 @media (max-width: 768px) {
@@ -642,7 +642,7 @@ h1, h2, h3, h4 {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(180deg, rgba(6, 27, 14, 0.45) 0%, rgba(6, 27, 14, 0.62) 100%);
+  background: linear-gradient(180deg, rgba(22, 11, 40, 0.45) 0%, rgba(22, 11, 40, 0.62) 100%);
 }
 
 .hero-mascot-wrap {
@@ -804,7 +804,7 @@ h1, h2, h3, h4 {
 
 .product-showcase-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 30px rgba(27, 48, 36, 0.08);
+  box-shadow: 0 10px 30px rgba(22, 11, 40, 0.08);
 }
 
 .product-showcase-img-wrap {
@@ -857,7 +857,7 @@ h1, h2, h3, h4 {
 .product-showcase-badge-item.accent-gokberry { background: var(--accent-gokberry); }
 
 .product-showcase-badge-item.location {
-  background: rgba(10, 54, 30, 0.85);
+  background: rgba(22, 11, 40, 0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1018,6 +1018,13 @@ h1, h2, h3, h4 {
   width: 100%;
   margin-top: 0 !important;
   padding-top: 0 !important;
+  align-self: flex-start !important;
+}
+
+.about-media-col {
+  align-self: flex-start !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 .section-tag {
@@ -1061,7 +1068,7 @@ h1, h2, h3, h4 {
   gap: 16px;
   padding: 16px 20px;
   background: rgba(255, 255, 255, 0.45);
-  border: 1px solid rgba(28, 50, 36, 0.06);
+  border: 1px solid rgba(22, 11, 40, 0.06);
   border-radius: 12px;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
@@ -1083,8 +1090,8 @@ h1, h2, h3, h4 {
 .stat-mini-item:hover {
   transform: translateY(-3px) scale(1.02);
   background: rgba(255, 255, 255, 0.85);
-  border-color: rgba(28, 50, 36, 0.12);
-  box-shadow: 0 10px 25px rgba(28, 50, 36, 0.04), 0 0 15px var(--color-glow);
+  border-color: rgba(22, 11, 40, 0.12);
+  box-shadow: 0 10px 25px rgba(22, 11, 40, 0.04), 0 0 15px var(--color-glow);
 }
 
 .stat-mini-icon-wrap {
@@ -1413,11 +1420,11 @@ h1, h2, h3, h4 {
   display: flex;
   gap: 4px;
   margin-bottom: 24px;
-  background: rgba(28, 50, 36, 0.04);
+  background: rgba(22, 11, 40, 0.04);
   border-radius: 12px;
   padding: 6px;
   width: 100%;
-  border: 1px solid rgba(28, 50, 36, 0.06);
+  border: 1px solid rgba(22, 11, 40, 0.06);
 }
 
 .about-tab-btn {
@@ -1442,7 +1449,7 @@ h1, h2, h3, h4 {
 
 .about-tab-btn:hover {
   color: var(--color-forest);
-  background: rgba(28, 50, 36, 0.04);
+  background: rgba(22, 11, 40, 0.04);
 }
 
 .about-tab-btn.active {
@@ -1456,7 +1463,7 @@ h1, h2, h3, h4 {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 10px 30px rgba(28, 50, 36, 0.02), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  box-shadow: 0 10px 30px rgba(22, 11, 40, 0.02), inset 0 1px 0 rgba(255, 255, 255, 0.4);
   border-radius: 12px;
   padding: 24px;
   margin-bottom: 24px;
@@ -2445,7 +2452,7 @@ h1, h2, h3, h4 {
 
 .tab-btn.blackberry.active {
   background: var(--accent-karaberry);
-  box-shadow: 0 8px 24px rgba(6, 27, 14, 0.3);
+  box-shadow: 0 8px 24px rgba(22, 11, 40, 0.3);
 }
 
 .tab-btn.raspberry.active {
@@ -2514,12 +2521,12 @@ h1, h2, h3, h4 {
   width: 100%;
   height: 440px;
   border-radius: 12px;
-  background: #0d1a10;
+  background: #160b28;
   position: relative;
   overflow: hidden;
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.07),
-    0 28px 70px rgba(10, 20, 12, 0.2);
+    0 28px 70px rgba(22, 11, 40, 0.2);
 }
 
 @media (min-width: 960px) {
@@ -3013,20 +3020,20 @@ h1, h2, h3, h4 {
 
 /* Navbar is white — ensure dark text on all elements */
 .navbar-vintage .logo-vintage-text {
-  color: #1c2e24 !important;
+  color: #160b28 !important;
   transition: all 0.3s ease;
 }
 .navbar-vintage .logo-vintage-text span {
-  color: #6b8273 !important;
-  border-color: rgba(28, 46, 36, 0.15) !important;
+  color: #6b5c7e !important;
+  border-color: rgba(22, 11, 40, 0.15) !important;
   transition: all 0.3s ease;
 }
 .navbar-vintage .logo-vintage:hover .logo-vintage-text {
-  color: #11281a !important;
+  color: #160b28 !important;
 }
 .navbar-vintage .logo-vintage:hover .logo-vintage-text span {
-  color: #123d22 !important;
-  border-color: rgba(28, 46, 36, 0.3) !important;
+  color: #160b28 !important;
+  border-color: rgba(22, 11, 40, 0.3) !important;
 }
 .navbar-vintage .logo-vintage-icon {
   background: #1a1a1a !important;
@@ -3467,7 +3474,7 @@ html[dir="rtl"] .logo-vintage-text span {
   margin-left: 0;
   margin-right: 10px;
   border-left: none;
-  border-right: 1px solid rgba(28, 50, 36, 0.18);
+  border-right: 1px solid rgba(22, 11, 40, 0.18);
   padding-left: 0;
   padding-right: 10px;
 }
@@ -3516,7 +3523,7 @@ html[dir="rtl"] .gallery-thumbnails-strip {
   right: 30px;
   width: 48px;
   height: 48px;
-  background: rgba(28, 50, 36, 0.45); /* Forest green base tint */
+  background: rgba(22, 11, 40, 0.45); /* Forest green base tint */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -3778,8 +3785,8 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     width: 38px;
     height: 38px;
     border-radius: 50%; /* Modern circular shape */
-    background: rgba(28, 50, 36, 0.03) !important;
-    border: 1px solid rgba(28, 50, 36, 0.08) !important;
+    background: rgba(22, 11, 40, 0.03) !important;
+    border: 1px solid rgba(22, 11, 40, 0.08) !important;
     cursor: pointer;
     z-index: 2001;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -3789,10 +3796,10 @@ html[dir="rtl"] .gallery-thumbnails-strip {
 
   .mobile-menu-trigger:hover,
   .mobile-menu-trigger:active {
-    background: rgba(28, 50, 36, 0.08) !important;
+    background: rgba(22, 11, 40, 0.08) !important;
     border-color: var(--color-primary) !important;
     transform: scale(1.08);
-    box-shadow: 0 4px 12px rgba(28, 50, 36, 0.1);
+    box-shadow: 0 4px 12px rgba(22, 11, 40, 0.1);
   }
 
   .mobile-menu-trigger:active {
@@ -3880,8 +3887,8 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     width: auto; /* changed from 36px to let content fit */
     height: 38px;
     border-radius: 20px; /* pill shape */
-    background: rgba(28, 50, 36, 0.03) !important;
-    border: 1px solid rgba(28, 50, 36, 0.08) !important;
+    background: rgba(22, 11, 40, 0.03) !important;
+    border: 1px solid rgba(22, 11, 40, 0.08) !important;
     color: #374151 !important;
     font-family: var(--font-body);
     font-weight: 700;
@@ -3893,11 +3900,11 @@ html[dir="rtl"] .gallery-thumbnails-strip {
 
   .lang-selector-container.mobile-only .lang-selector-btn:hover,
   .lang-selector-container.mobile-only .lang-selector-btn:active {
-    background: rgba(28, 50, 36, 0.08) !important;
+    background: rgba(22, 11, 40, 0.08) !important;
     border-color: var(--color-primary) !important;
     color: #111827 !important;
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(28, 50, 36, 0.1);
+    box-shadow: 0 4px 12px rgba(22, 11, 40, 0.1);
   }
 
   .lang-selector-container.mobile-only .lang-selector-btn:active {
@@ -3935,7 +3942,7 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(0, 0, 0, 0.05) !important;
     box-shadow: 
-      0 15px 35px rgba(28, 50, 36, 0.08), 
+      0 15px 35px rgba(22, 11, 40, 0.08), 
       0 5px 15px rgba(0, 0, 0, 0.02) !important;
     border-radius: 16px !important;
     padding: 8px;
@@ -4068,7 +4075,7 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     font-family: var(--font-serif);
     font-size: 1.6rem;
     font-weight: 600;
-    color: #1c2e24 !important; /* deep warm botanical green */
+    color: #160b28 !important; /* deep blackberry */
     text-transform: uppercase;
     letter-spacing: 0.04em;
     line-height: 1.1;
@@ -4079,7 +4086,7 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     font-family: var(--font-body);
     font-size: 0.78rem;
     font-weight: 500;
-    color: #6b8273 !important; /* botanical sage green */
+    color: #6b5c7e !important; /* blackberry grey/purple */
     opacity: 0.85;
     transition: all 0.25s ease;
   }
@@ -4087,13 +4094,13 @@ html[dir="rtl"] .gallery-thumbnails-strip {
   /* Active & Hover States */
   .mobile-menu-link-item:hover .menu-link-title,
   .mobile-menu-link-item.active .menu-link-title {
-    color: #123d22 !important; /* deep forest green */
+    color: #160b28 !important;
     transform: translateX(8px);
   }
 
   .mobile-menu-link-item:hover .menu-link-subtitle,
   .mobile-menu-link-item.active .menu-link-subtitle {
-    color: #1c2e24 !important;
+    color: #160b28 !important;
     opacity: 0.9;
     transform: translateX(8px);
   }
@@ -4111,7 +4118,7 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     font-family: var(--font-serif);
     font-size: 1.1rem;
     font-weight: 700;
-    color: #1c2e24; /* deep green */
+    color: #160b28; /* deep blackberry */
     letter-spacing: 0.08em;
     text-transform: uppercase;
     display: inline-flex;
@@ -4121,7 +4128,7 @@ html[dir="rtl"] .gallery-thumbnails-strip {
   .mobile-menu-logo-text span {
     font-family: var(--font-vintage);
     font-size: 0.65rem;
-    color: #6b8273; /* sage green */
+    color: #6b5c7e; /* blackberry grey/purple */
     letter-spacing: 0.2em;
     margin-left: 8px;
     border-left: 1px solid rgba(0, 0, 0, 0.15);
@@ -4135,7 +4142,7 @@ html[dir="rtl"] .gallery-thumbnails-strip {
   top: 20px;
   right: 20px;
   z-index: 12;
-  background: rgba(10, 54, 30, 0.85);
+  background: rgba(22, 11, 40, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -4158,7 +4165,7 @@ html[dir="rtl"] .gallery-thumbnails-strip {
   top: 12px;
   left: 12px;
   z-index: 5;
-  background: rgba(10, 54, 30, 0.85);
+  background: rgba(22, 11, 40, 0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.2);

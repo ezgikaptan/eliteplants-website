@@ -376,14 +376,17 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
           <img src={cizimImg} alt="" aria-hidden="true" style={{ width: 170, height: 'auto', opacity: 0.22, mixBlendMode: 'multiply', filter: 'hue-rotate(180deg) saturate(1.5) brightness(1.1)', transform: 'scaleX(-1)' }} />
         </div>
 
+        {/* About Section Header - spans full width above the split layout */}
+        <div className="about-header" style={{ width: '100%', maxWidth: '1200px', margin: '0 auto 40px', padding: '0', boxSizing: 'border-box' }}>
+          <span className="section-tag">{t.navAbout}</span>
+          <h2 className="section-title" style={{ marginBottom: 0 }}>{t.aboutTitle}</h2>
+        </div>
+
         {/* About section inner content */}
-        <div className="about-section">
+        <div className="about-section" style={{ marginTop: '0' }}>
           {/* Left Column: Text & Tabs & Stats */}
           <div className="about-text-col">
-            <span className="section-tag">{t.navAbout}</span>
-            <h2 className="section-title">{t.aboutTitle}</h2>
-          
-          <div className="about-tabs-nav">
+            <div className="about-tabs-nav" style={{ marginTop: '0' }}>
             <button 
               className={`about-tab-btn ${aboutTab === 'story' ? 'active' : ''}`}
               onClick={() => setAboutTab('story')}
