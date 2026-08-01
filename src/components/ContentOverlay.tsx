@@ -48,8 +48,12 @@ import tezza6395 from '../assets/images/Tezza-6395.jpg';
 import tezza6604 from '../assets/images/Tezza-6604.jpg';
 import tezza8159 from '../assets/images/Tezza-8159.jpg';
 import tezza8593 from '../assets/images/Tezza-8593.jpg';
+import cert1Photo from '../assets/certificate/cert_1.jpg';
+import cert2Photo from '../assets/certificate/cert_2.jpg';
 
-const gardenImages = [
+type GalleryImage = { src: string; type: string; location?: string };
+
+const gardenImages: GalleryImage[] = [
   { src: tezza9027, type: 'general' },
   { src: tezza0029, type: 'general' },
   { src: tezza1398, type: 'general' },
@@ -64,6 +68,11 @@ const gardenImages = [
   { src: tezza8593, type: 'general' },
   { src: farm17, type: 'blueberry', location: 'Huelva - Spain' },
   { src: farm19, type: 'blueberry', location: 'Huelva - Spain' }
+];
+
+const certificateImages: GalleryImage[] = [
+  { src: cert1Photo, type: 'certificate' },
+  { src: cert2Photo, type: 'certificate' }
 ];
 
 const getAssetPath = (path: string) => {
@@ -164,16 +173,24 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
   const [aboutTab, setAboutTab] = useState<'story' | 'organic' | 'terroir'>('story');
   const [isAutoplay, setIsAutoplay] = useState(true);
 
+  // Organic tab shows our certificates instead of the garden gallery
+  const activeGalleryImages = aboutTab === 'organic' ? certificateImages : gardenImages;
+
+  // Reset to the first slide whenever the image set changes
+  useEffect(() => {
+    setGardenIndex(0);
+  }, [aboutTab]);
+
   // Autoplay slideshow effect
   useEffect(() => {
-    if (!isAutoplay || gardenImages.length === 0) return;
-    
+    if (!isAutoplay || activeGalleryImages.length === 0) return;
+
     const interval = setInterval(() => {
-      setGardenIndex((prev) => (prev + 1) % gardenImages.length);
+      setGardenIndex((prev) => (prev + 1) % activeGalleryImages.length);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [isAutoplay, gardenImages.length]);
+  }, [isAutoplay, activeGalleryImages.length]);
 
   const getTranslated = (
     id: string,
@@ -408,16 +425,16 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
             {/* Main Preview Container */}
             <div className="gallery-main-viewport">
               <img
-                src={gardenImages[gardenIndex].src}
+                src={activeGalleryImages[gardenIndex].src}
                 alt={`Dereçine Organik Bahçemiz - Fotoğraf ${gardenIndex + 1}`}
                 className="gallery-main-slide"
-                onClick={() => setLightboxImage(gardenImages[gardenIndex].src)}
+                onClick={() => setLightboxImage(activeGalleryImages[gardenIndex].src)}
               />
               
               {/* Floating Huelva Spain location badge for gallery */}
-              {gardenImages[gardenIndex]?.location && (
+              {activeGalleryImages[gardenIndex]?.location && (
                 <div className="blueberry-location-badge">
-                  <MapPin size={12} /> {gardenImages[gardenIndex].location}
+                  <MapPin size={12} /> {activeGalleryImages[gardenIndex].location}
                 </div>
               )}
               
@@ -425,7 +442,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
               <button 
                 className="gallery-side-arrow prev"
                 onClick={() => {
-                  setGardenIndex((prev) => (prev - 1 + gardenImages.length) % gardenImages.length);
+                  setGardenIndex((prev) => (prev - 1 + activeGalleryImages.length) % activeGalleryImages.length);
                   setIsAutoplay(false);
                 }}
                 aria-label="Önceki"
@@ -436,7 +453,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
               <button 
                 className="gallery-side-arrow next"
                 onClick={() => {
-                  setGardenIndex((prev) => (prev + 1) % gardenImages.length);
+                  setGardenIndex((prev) => (prev + 1) % activeGalleryImages.length);
                   setIsAutoplay(false);
                 }}
                 aria-label="Sonraki"
@@ -446,7 +463,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
  
               {/* Floating Page Chip */}
               <div className="gallery-page-chip">
-                {gardenIndex + 1} / {gardenImages.length}
+                {gardenIndex + 1} / {activeGalleryImages.length}
               </div>
  
               {/* Action Info overlay */}
@@ -458,7 +475,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
  
             {/* Aligned Scrollable Thumbnail Strip */}
             <div className="gallery-thumbnails-strip" ref={thumbnailBarRef}>
-              {gardenImages.map((imgObj, idx) => (
+              {activeGalleryImages.map((imgObj, idx) => (
                 <button
                   key={imgObj.src}
                   className={`gallery-thumb-btn garden-thumb-item ${idx === gardenIndex ? 'active' : ''}`}
@@ -725,10 +742,10 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
             className="lightbox-arrow prev" 
             onClick={(e) => {
               e.stopPropagation();
-              const currentIdx = gardenImages.findIndex(img => img.src === lightboxImage);
+              const currentIdx = activeGalleryImages.findIndex(img => img.src === lightboxImage);
               if (currentIdx !== -1) {
-                const prevIdx = (currentIdx - 1 + gardenImages.length) % gardenImages.length;
-                setLightboxImage(gardenImages[prevIdx].src);
+                const prevIdx = (currentIdx - 1 + activeGalleryImages.length) % activeGalleryImages.length;
+                setLightboxImage(activeGalleryImages[prevIdx].src);
               }
             }}
             aria-label="Önceki"
@@ -740,10 +757,10 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
             className="lightbox-arrow next" 
             onClick={(e) => {
               e.stopPropagation();
-              const currentIdx = gardenImages.findIndex(img => img.src === lightboxImage);
+              const currentIdx = activeGalleryImages.findIndex(img => img.src === lightboxImage);
               if (currentIdx !== -1) {
-                const nextIdx = (currentIdx + 1) % gardenImages.length;
-                setLightboxImage(gardenImages[nextIdx].src);
+                const nextIdx = (currentIdx + 1) % activeGalleryImages.length;
+                setLightboxImage(activeGalleryImages[nextIdx].src);
               }
             }}
             aria-label="Sonraki"
@@ -759,9 +776,9 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
             <img src={lightboxImage} alt="Bahçemizden Büyük Görsel" />
             
             {/* Show badge in lightbox if it has location */}
-            {gardenImages.find(img => img.src === lightboxImage)?.location && (
+            {activeGalleryImages.find(img => img.src === lightboxImage)?.location && (
               <div className="blueberry-location-badge" style={{ position: 'absolute', bottom: '20px', right: '20px', top: 'auto' }}>
-                <MapPin size={12} /> {gardenImages.find(img => img.src === lightboxImage)?.location}
+                <MapPin size={12} /> {activeGalleryImages.find(img => img.src === lightboxImage)?.location}
               </div>
             )}
           </div>
@@ -790,7 +807,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
             <span className="section-tag">{t.galleryTitle}</span>
             <h3 className="modal-title" style={{ fontSize: '1.8rem', marginBottom: '8px' }}>{t.gallerySub}</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', margin: 0 }}>
-              {t.galleryDesc.replace('{count}', String(gardenImages.length))}
+              {t.galleryDesc.replace('{count}', String(activeGalleryImages.length))}
             </p>
           </div>
 
@@ -800,7 +817,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
             gap: '12px',
             paddingTop: '10px'
           }}>
-            {gardenImages.map((imgObj, idx) => (
+            {activeGalleryImages.map((imgObj, idx) => (
               <div 
                 key={imgObj.src}
                 onClick={() => {
