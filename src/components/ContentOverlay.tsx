@@ -418,7 +418,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
                 </p>
                 
                 {/* Localized organic certificates cards directly visible on screen */}
-                <div style={{ display: 'flex', gap: '15px', marginTop: '20px', flexWrap: 'wrap' }}>
+                <div className="tab-certificates-grid">
                   {certificateImages.map((cert, idx) => {
                     const certT = certTranslations[language] || certTranslations['en'];
                     const certName = idx === 0 ? certT.cert1 : certT.cert2;

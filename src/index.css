@@ -463,7 +463,7 @@ h1, h2, h3, h4 {
 .logo-vintage-text span {
   font-family: var(--font-vintage);
   font-weight: 500;
-  color: #6b5c7e; /* blackberry grey/purple */
+  color: #7b2cbf; /* clear purple/berry */
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.26em; /* wider tracking for elite touch */
@@ -1025,6 +1025,39 @@ h1, h2, h3, h4 {
   align-self: flex-start !important;
   margin-top: 0 !important;
   padding-top: 0 !important;
+}
+
+/* About header and certificates grid styling */
+.about-header {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.about-header .section-title {
+  margin-bottom: 0 !important;
+}
+
+.tab-certificates-grid {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+@media (max-width: 1024px) {
+  .about-header {
+    text-align: center !important;
+    margin-bottom: 24px !important;
+  }
+  
+  .tab-certificates-grid {
+    justify-content: center !important;
+  }
 }
 
 .section-tag {
@@ -3024,7 +3057,7 @@ h1, h2, h3, h4 {
   transition: all 0.3s ease;
 }
 .navbar-vintage .logo-vintage-text span {
-  color: #6b5c7e !important;
+  color: #7b2cbf !important;
   border-color: rgba(22, 11, 40, 0.15) !important;
   transition: all 0.3s ease;
 }
@@ -4128,10 +4161,10 @@ html[dir="rtl"] .gallery-thumbnails-strip {
   .mobile-menu-logo-text span {
     font-family: var(--font-vintage);
     font-size: 0.65rem;
-    color: #6b5c7e; /* blackberry grey/purple */
+    color: #7b2cbf !important; /* clear purple/berry */
     letter-spacing: 0.2em;
     margin-left: 8px;
-    border-left: 1px solid rgba(0, 0, 0, 0.15);
+    border-left: 1px solid rgba(22, 11, 40, 0.15);
     padding-left: 8px;
   }
 }
