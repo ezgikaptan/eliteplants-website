@@ -34,48 +34,36 @@ interface ContentOverlayProps {
 }
 
 // Import all garden images from assets
-import farm1 from '../assets/images/farm_1.jpeg';
-import farm2 from '../assets/images/farm_2.jpeg';
-import farm3 from '../assets/images/farm_3.jpeg';
-import farm4 from '../assets/images/farm_4.jpeg';
-import farm5 from '../assets/images/farm_5.jpeg';
-import farm6 from '../assets/images/farm_6.jpeg';
-import farm7 from '../assets/images/farm_7.jpeg';
-import farm8 from '../assets/images/farm_8.jpeg';
-import farm9 from '../assets/images/farm_9.jpeg';
-import farm10 from '../assets/images/farm_10.jpeg';
-import farm11 from '../assets/images/farm_11.jpeg';
-import farm12 from '../assets/images/farm_12.jpeg';
-import farm13 from '../assets/images/farm_13.jpeg';
-import farm14 from '../assets/images/farm_14.jpeg';
-import farm15 from '../assets/images/farm_15.jpeg';
-import farm16 from '../assets/images/farm_16.jpeg';
 import farm17 from '../assets/images/farm_17.jpeg';
-import farm18 from '../assets/images/farm_18.jpeg';
 import farm19 from '../assets/images/farm_19.jpeg';
-import farm20 from '../assets/images/farm_20.jpeg';
+import tezza9027 from '../assets/images/Tezza-9027.jpg';
+import tezza0029 from '../assets/images/Tezza-0029.jpg';
+import tezza1398 from '../assets/images/Tezza-1398.jpg';
+import tezza1607 from '../assets/images/Tezza-1607.jpg';
+import tezza3001 from '../assets/images/Tezza-3001.jpg';
+import tezza5766 from '../assets/images/Tezza-5766.jpg';
+import tezza5812 from '../assets/images/Tezza-5812.jpg';
+import tezza5894 from '../assets/images/Tezza-5894.jpg';
+import tezza6395 from '../assets/images/Tezza-6395.jpg';
+import tezza6604 from '../assets/images/Tezza-6604.jpg';
+import tezza8159 from '../assets/images/Tezza-8159.jpg';
+import tezza8593 from '../assets/images/Tezza-8593.jpg';
 
 const gardenImages = [
-  { src: farm1, type: 'general' },
-  { src: farm2, type: 'general' },
-  { src: farm3, type: 'general' },
-  { src: farm4, type: 'general' },
-  { src: farm5, type: 'general' },
-  { src: farm6, type: 'general' },
-  { src: farm7, type: 'general' },
-  { src: farm8, type: 'general' },
-  { src: farm9, type: 'general' },
-  { src: farm10, type: 'general' },
-  { src: farm11, type: 'general' },
-  { src: farm12, type: 'general' },
-  { src: farm13, type: 'general' },
-  { src: farm14, type: 'general' },
-  { src: farm15, type: 'general' },
-  { src: farm16, type: 'blueberry', location: 'Huelva - Spain' },
+  { src: tezza9027, type: 'general' },
+  { src: tezza0029, type: 'general' },
+  { src: tezza1398, type: 'general' },
+  { src: tezza1607, type: 'general' },
+  { src: tezza3001, type: 'general' },
+  { src: tezza5766, type: 'general' },
+  { src: tezza5812, type: 'general' },
+  { src: tezza5894, type: 'general' },
+  { src: tezza6395, type: 'general' },
+  { src: tezza6604, type: 'general' },
+  { src: tezza8159, type: 'general' },
+  { src: tezza8593, type: 'general' },
   { src: farm17, type: 'blueberry', location: 'Huelva - Spain' },
-  { src: farm18, type: 'blueberry', location: 'Huelva - Spain' },
-  { src: farm19, type: 'blueberry', location: 'Huelva - Spain' },
-  { src: farm20, type: 'blueberry', location: 'Huelva - Spain' }
+  { src: farm19, type: 'blueberry', location: 'Huelva - Spain' }
 ];
 
 const getAssetPath = (path: string) => {
@@ -314,7 +302,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
     <div style={{ position: 'relative', zIndex: 10 }}>
       {/* 1. Hero Section - Full-bleed Photo */}
       <section id="home" className="hero-vintage-section">
-        <img src={farm2} alt="" aria-hidden="true" className="hero-bg-image" />
+        <img src={tezza9027} alt="" aria-hidden="true" className="hero-bg-image" />
         <div className="hero-bg-overlay" />
         <div className="hero-mascot-wrap">
           <img src={heroMascotImg} alt="" aria-hidden="true" className="hero-mascot" />
