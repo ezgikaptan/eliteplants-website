@@ -159,7 +159,7 @@ export const certTranslations: Record<string, {
 };
 
 export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, setActiveFruit }) => {
-  const { t, language } = useTranslation();
+  const { t } = useTranslation();
   const [gardenIndex, setGardenIndex] = useState(0);
   const [expandedVarietyId, setExpandedVarietyId] = useState<string | null>(null);
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
@@ -413,73 +413,9 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
             {aboutTab === 'organic' && (
               <div className="about-tab-pane">
                 <h3 className="about-pane-title">{t.aboutOrganicTitle}</h3>
-                <p className="about-desc" style={{ marginBottom: '20px' }}>
+                <p className="about-desc">
                   {t.aboutOrganicDesc}
                 </p>
-                
-                {/* Localized organic certificates cards directly visible on screen */}
-                <div className="tab-certificates-grid">
-                  {certificateImages.map((cert, idx) => {
-                    const certT = certTranslations[language] || certTranslations['en'];
-                    const certName = idx === 0 ? certT.cert1 : certT.cert2;
-                    return (
-                      <div 
-                        key={cert.src || idx}
-                        onClick={() => setLightboxImage(cert.src)}
-                        style={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                          alignItems: 'center',
-                          gap: '8px',
-                          cursor: 'pointer',
-                          background: '#ffffff',
-                          padding: '10px',
-                          borderRadius: '12px',
-                          border: '1px solid rgba(22, 11, 40, 0.12)',
-                          boxShadow: '0 4px 12px rgba(0,0,0,0.03)',
-                          transition: 'all 0.25s ease',
-                          width: '135px',
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.transform = 'translateY(-3px)';
-                          e.currentTarget.style.borderColor = 'var(--color-primary)';
-                          e.currentTarget.style.boxShadow = '0 6px 16px rgba(22, 11, 40, 0.1)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.transform = 'translateY(0)';
-                          e.currentTarget.style.borderColor = 'rgba(22, 11, 40, 0.12)';
-                          e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.03)';
-                        }}
-                      >
-                        <div style={{
-                          width: '100%',
-                          height: '150px',
-                          borderRadius: '6px',
-                          overflow: 'hidden',
-                          backgroundColor: '#fbfbfb',
-                        }}>
-                          <img 
-                            src={cert.src} 
-                            alt={certName} 
-                            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                          />
-                        </div>
-                        <span style={{ 
-                          fontSize: '0.7rem', 
-                          fontWeight: '700', 
-                          color: 'var(--color-primary)', 
-                          textAlign: 'center',
-                          fontFamily: 'var(--font-body)',
-                          lineHeight: '1.2',
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.02em'
-                        }}>
-                          {certName}
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
               </div>
             )}
           </div>
