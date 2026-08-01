@@ -159,7 +159,7 @@ export const certTranslations: Record<string, {
 };
 
 export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, setActiveFruit }) => {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const [gardenIndex, setGardenIndex] = useState(0);
   const [expandedVarietyId, setExpandedVarietyId] = useState<string | null>(null);
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
@@ -169,6 +169,11 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
 
   // Organic tab shows our certificates instead of the garden gallery
   const activeGalleryImages = aboutTab === 'organic' ? certificateImages : gardenImages;
+  // Clamped so a stale index from the previous tab can never index past the new array
+  // (the reset effect below runs a render late, so this guards that one frame)
+  const safeGardenIndex = activeGalleryImages && activeGalleryImages.length > 0
+    ? Math.max(0, Math.min(gardenIndex, activeGalleryImages.length - 1))
+    : 0;
 
   // Reset to the first slide whenever the image set changes
   useEffect(() => {
@@ -405,9 +410,73 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
             {aboutTab === 'organic' && (
               <div className="about-tab-pane">
                 <h3 className="about-pane-title">{t.aboutOrganicTitle}</h3>
-                <p className="about-desc">
+                <p className="about-desc" style={{ marginBottom: '20px' }}>
                   {t.aboutOrganicDesc}
                 </p>
+                
+                {/* Localized organic certificates cards directly visible on screen */}
+                <div style={{ display: 'flex', gap: '15px', marginTop: '20px', flexWrap: 'wrap' }}>
+                  {certificateImages.map((cert, idx) => {
+                    const certT = certTranslations[language] || certTranslations['en'];
+                    const certName = idx === 0 ? certT.cert1 : certT.cert2;
+                    return (
+                      <div 
+                        key={cert.src || idx}
+                        onClick={() => setLightboxImage(cert.src)}
+                        style={{
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'center',
+                          gap: '8px',
+                          cursor: 'pointer',
+                          background: '#ffffff',
+                          padding: '10px',
+                          borderRadius: '12px',
+                          border: '1px solid rgba(22, 11, 40, 0.12)',
+                          boxShadow: '0 4px 12px rgba(0,0,0,0.03)',
+                          transition: 'all 0.25s ease',
+                          width: '135px',
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.transform = 'translateY(-3px)';
+                          e.currentTarget.style.borderColor = 'var(--color-primary)';
+                          e.currentTarget.style.boxShadow = '0 6px 16px rgba(22, 11, 40, 0.1)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.transform = 'translateY(0)';
+                          e.currentTarget.style.borderColor = 'rgba(22, 11, 40, 0.12)';
+                          e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.03)';
+                        }}
+                      >
+                        <div style={{
+                          width: '100%',
+                          height: '150px',
+                          borderRadius: '6px',
+                          overflow: 'hidden',
+                          backgroundColor: '#fbfbfb',
+                        }}>
+                          <img 
+                            src={cert.src} 
+                            alt={certName} 
+                            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                          />
+                        </div>
+                        <span style={{ 
+                          fontSize: '0.7rem', 
+                          fontWeight: '700', 
+                          color: 'var(--color-primary)', 
+                          textAlign: 'center',
+                          fontFamily: 'var(--font-body)',
+                          lineHeight: '1.2',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.02em'
+                        }}>
+                          {certName}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             )}
           </div>
@@ -418,17 +487,19 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
           <div className="gallery-showcase-container">
             {/* Main Preview Container */}
             <div className="gallery-main-viewport">
-              <img
-                src={activeGalleryImages[gardenIndex].src}
-                alt={`Dereçine Organik Bahçemiz - Fotoğraf ${gardenIndex + 1}`}
-                className="gallery-main-slide"
-                onClick={() => setLightboxImage(activeGalleryImages[gardenIndex].src)}
-              />
-              
+              {activeGalleryImages[safeGardenIndex] && (
+                <img
+                  src={activeGalleryImages[safeGardenIndex].src}
+                  alt={`Dereçine Organik Bahçemiz - Fotoğraf ${safeGardenIndex + 1}`}
+                  className="gallery-main-slide"
+                  onClick={() => setLightboxImage(activeGalleryImages[safeGardenIndex].src)}
+                />
+              )}
+
               {/* Floating Huelva Spain location badge for gallery */}
-              {activeGalleryImages[gardenIndex]?.location && (
+              {activeGalleryImages[safeGardenIndex]?.location && (
                 <div className="blueberry-location-badge">
-                  <MapPin size={12} /> {activeGalleryImages[gardenIndex].location}
+                  <MapPin size={12} /> {activeGalleryImages[safeGardenIndex].location}
                 </div>
               )}
               
@@ -436,7 +507,9 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
               <button 
                 className="gallery-side-arrow prev"
                 onClick={() => {
-                  setGardenIndex((prev) => (prev - 1 + activeGalleryImages.length) % activeGalleryImages.length);
+                  if (activeGalleryImages.length > 0) {
+                    setGardenIndex((prev) => (prev - 1 + activeGalleryImages.length) % activeGalleryImages.length);
+                  }
                   setIsAutoplay(false);
                 }}
                 aria-label="Önceki"
@@ -447,7 +520,9 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
               <button 
                 className="gallery-side-arrow next"
                 onClick={() => {
-                  setGardenIndex((prev) => (prev + 1) % activeGalleryImages.length);
+                  if (activeGalleryImages.length > 0) {
+                    setGardenIndex((prev) => (prev + 1) % activeGalleryImages.length);
+                  }
                   setIsAutoplay(false);
                 }}
                 aria-label="Sonraki"
@@ -457,7 +532,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
  
               {/* Floating Page Chip */}
               <div className="gallery-page-chip">
-                {gardenIndex + 1} / {activeGalleryImages.length}
+                {safeGardenIndex + 1} / {activeGalleryImages.length || 1}
               </div>
  
               {/* Action Info overlay */}
@@ -471,8 +546,8 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
             <div className="gallery-thumbnails-strip" ref={thumbnailBarRef}>
               {activeGalleryImages.map((imgObj, idx) => (
                 <button
-                  key={imgObj.src}
-                  className={`gallery-thumb-btn garden-thumb-item ${idx === gardenIndex ? 'active' : ''}`}
+                  key={imgObj.src ? `${imgObj.src}-${idx}` : idx}
+                  className={`gallery-thumb-btn garden-thumb-item ${idx === safeGardenIndex ? 'active' : ''}`}
                   onClick={() => {
                     setGardenIndex(idx);
                     setIsAutoplay(false);
