@@ -10,12 +10,6 @@ const BASE = import.meta.env.BASE_URL;
 const cizimImg = `${BASE}images/çizim.png`;
 const heroMascotImg = `${BASE}images/icons/blackberry-mascot-full.png`;
 
-const mascotByFruit: Record<FruitType, string> = {
-  blackberry: `${BASE}images/icons/blackberry-mascot-full.png`,
-  raspberry: `${BASE}images/icons/raspberry-mascot-full.png`,
-  blueberry: `${BASE}images/icons/blueberry-mascot-full.png`,
-};
-
 const wordmarkByFruit: Record<FruitType, string> = {
   blackberry: `${BASE}images/logos/karaberry-wordmark.png`,
   raspberry: `${BASE}images/logos/alberry-wordmark.png`,
@@ -507,14 +501,6 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
 
       {/* 4. Varieties Section - Category Tabs + Accordion */}
       <section id="varieties" className="scroll-section varieties-section" style={{ width: '100%' }}>
-        {/* Grower mascot side decorations, matches the active variety tab */}
-        <div className="section-side-drawing left cizim-float varieties-mascot-drawing">
-          <img src={mascotByFruit[activeFruit]} alt="" aria-hidden="true" />
-        </div>
-        <div className="section-side-drawing right cizim-float-r varieties-mascot-drawing">
-          <img src={mascotByFruit[activeFruit]} alt="" aria-hidden="true" style={{ transform: 'scaleX(-1)' }} />
-        </div>
-
         <div className="varieties-header">
           <span className="section-tag">{t.navVarieties}</span>
           <h2 className="section-title">{t.varietiesTitle}</h2>
