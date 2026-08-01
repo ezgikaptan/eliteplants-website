@@ -3,6 +3,10 @@ import { MapPin } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
 import type { FruitType } from '../types';
 
+import karraberryIcon from '../assets/icon/karraberry-1-removebg-preview.png';
+import alberyIcon from '../assets/icon/albery-k__rm__z__-removebg-preview.png';
+import gokberryIcon from '../assets/icon/go_êkberry-1-removebg-preview.png';
+
 interface ProductShowcaseProps {
   activeFruit: FruitType;
   setActiveFruit: (fruit: FruitType) => void;
@@ -21,9 +25,9 @@ export const ProductShowcase: React.FC<ProductShowcaseProps> = ({ setActiveFruit
   const { t } = useTranslation();
 
   const cards: { id: FruitType; name: string; brand: string; desc: string; accentClass: string; wordmark: string; seal: string; icon: string }[] = [
-    { id: 'blackberry', name: t.productsKaraberryName, brand: 'Karaberry', desc: t.productsKaraberryDesc, accentClass: 'accent-karaberry', wordmark: '/images/logos/karaberry-wordmark.png', seal: '/images/logos/karaberry-seal.png', icon: '/images/icons/blackberry-icon.png' },
-    { id: 'raspberry', name: t.productsAlberryName, brand: 'Alberry', desc: t.productsAlberryDesc, accentClass: 'accent-alberry', wordmark: '/images/logos/alberry-wordmark.png', seal: '/images/logos/alberry-seal.png', icon: '/images/icons/raspberry-icon.png' },
-    { id: 'blueberry', name: t.productsGokberryName, brand: 'Gökberry', desc: t.productsGokberryDesc, accentClass: 'accent-gokberry', wordmark: '/images/logos/gokberry-wordmark.png', seal: '/images/logos/gokberry-seal.png', icon: '/images/icons/blueberry-icon.png' },
+    { id: 'blackberry', name: t.productsKaraberryName, brand: 'Karaberry', desc: t.productsKaraberryDesc, accentClass: 'accent-karaberry', wordmark: '/images/logos/karaberry-wordmark.png', seal: karraberryIcon, icon: '/images/icons/blackberry-icon.png' },
+    { id: 'raspberry', name: t.productsAlberryName, brand: 'Alberry', desc: t.productsAlberryDesc, accentClass: 'accent-alberry', wordmark: '/images/logos/alberry-wordmark.png', seal: alberyIcon, icon: '/images/icons/raspberry-icon.png' },
+    { id: 'blueberry', name: t.productsGokberryName, brand: 'Gökberry', desc: t.productsGokberryDesc, accentClass: 'accent-gokberry', wordmark: '/images/logos/gokberry-wordmark.png', seal: gokberryIcon, icon: '/images/icons/blueberry-icon.png' },
   ];
 
   const handleSelect = (fruit: FruitType) => {
@@ -61,7 +65,7 @@ export const ProductShowcase: React.FC<ProductShowcaseProps> = ({ setActiveFruit
               </div>
 
               <span className="product-showcase-seal">
-                <img src={getAssetPath(card.seal)} alt="" aria-hidden="true" />
+                <img src={card.seal} alt="" aria-hidden="true" />
               </span>
             </div>
             <div className="product-showcase-body">
