@@ -62,6 +62,17 @@ const mobileMenuSubtitles: Record<string, Record<string, string>> = {
     zh: '联系我们',
     ja: 'お問い合わせ',
     ar: 'اتصل بنا'
+  },
+  shop: {
+    tr: 'Taze Meyvelerimizi Sipariş Verin',
+    en: 'Order Our Fresh Berries',
+    es: 'Pida Nuestras Moras Frescas',
+    fr: 'Commandez Nos Fruits Frais',
+    de: 'Bestellen Sie Unsere Frischen Beeren',
+    ru: 'Закажите Наши Свежие Ягоды',
+    zh: '订购我们的新鲜浆果',
+    ja: '新鮮なベリーをご注文ください',
+    ar: 'اطلب توتنا الطازج'
   }
 };
 
@@ -168,8 +179,14 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
 
         {/* Right Side Navigation Links (Desktop Only) */}
         <div className="nav-col nav-col-right desktop-only">
-          <a 
-            onClick={() => scrollToSection('contact')} 
+          <a
+            onClick={() => scrollToSection('shop')}
+            className={activeSection === 'shop' ? 'active' : ''}
+          >
+            {t.navShop}
+          </a>
+          <a
+            onClick={() => scrollToSection('contact')}
             className={activeSection === 'contact' ? 'active' : ''}
           >
             {t.navContact}
@@ -235,15 +252,22 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             <span className="menu-link-title">{t.navAbout}</span>
             <span className="menu-link-subtitle">{mobileMenuSubtitles.about[language] || mobileMenuSubtitles.about['en']}</span>
           </a>
-          <a 
-            onClick={() => { scrollToSection('varieties'); setIsMenuOpen(false); }} 
+          <a
+            onClick={() => { scrollToSection('varieties'); setIsMenuOpen(false); }}
             className={`mobile-menu-link-item ${activeSection === 'varieties' ? 'active' : ''}`}
           >
             <span className="menu-link-title">{t.navVarieties}</span>
             <span className="menu-link-subtitle">{mobileMenuSubtitles.varieties[language] || mobileMenuSubtitles.varieties['en']}</span>
           </a>
-          <a 
-            onClick={() => { scrollToSection('contact'); setIsMenuOpen(false); }} 
+          <a
+            onClick={() => { scrollToSection('shop'); setIsMenuOpen(false); }}
+            className={`mobile-menu-link-item ${activeSection === 'shop' ? 'active' : ''}`}
+          >
+            <span className="menu-link-title">{t.navShop}</span>
+            <span className="menu-link-subtitle">{mobileMenuSubtitles.shop[language] || mobileMenuSubtitles.shop['en']}</span>
+          </a>
+          <a
+            onClick={() => { scrollToSection('contact'); setIsMenuOpen(false); }}
             className={`mobile-menu-link-item ${activeSection === 'contact' ? 'active' : ''}`}
           >
             <span className="menu-link-title">{t.navContact}</span>

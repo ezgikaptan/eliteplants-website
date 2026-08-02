@@ -991,6 +991,349 @@ h1, h2, h3, h4 {
   border-color: rgba(0, 0, 0, 0.15);
 }
 
+/* ─── Online Satış (Shop) Section ─── */
+.shop-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: transparent;
+}
+
+.shop-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 48px;
+}
+
+.shop-sub {
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+.shop-product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+}
+
+@media (max-width: 1024px) {
+  .shop-product-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+  }
+}
+
+.shop-product-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid var(--color-earth-sand);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: var(--transition-fast);
+}
+
+.shop-product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(27, 48, 36, 0.08);
+}
+
+.shop-product-img-wrap {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.shop-product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.shop-product-card.unavailable .shop-product-img {
+  filter: grayscale(0.7) brightness(0.85);
+}
+
+.shop-product-badge-container {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 5;
+}
+
+.shop-product-body {
+  padding: 24px;
+  text-align: center;
+}
+
+.shop-product-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.shop-product-desc {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 12px 0;
+}
+
+.shop-product-package-note {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  opacity: 0.75;
+  margin-bottom: 10px;
+}
+
+.shop-product-price-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.shop-price-value {
+  font-family: var(--font-serif);
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.shop-price-unit {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.shop-shipping-note {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #9e6f24;
+  background: rgba(199, 146, 62, 0.12);
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 4px;
+}
+
+.shop-product-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.shop-qty-stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--color-earth-sand);
+  border-radius: 10px;
+  padding: 6px 10px;
+}
+
+.shop-qty-stepper button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  color: var(--color-primary);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: var(--transition-fast);
+}
+
+.shop-qty-stepper button:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.shop-qty-stepper span {
+  font-family: var(--font-body);
+  font-weight: 600;
+  min-width: 18px;
+  text-align: center;
+}
+
+.shop-add-to-cart-btn {
+  padding: 10px 20px;
+  font-size: 0.85rem;
+}
+
+.shop-product-unavailable-note {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  font-style: italic;
+}
+
+.shop-panels-row {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .shop-panels-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.shop-cart-panel,
+.shop-wholesale-callout {
+  padding: 28px;
+}
+
+.shop-cart-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-primary);
+  margin-bottom: 18px;
+}
+
+.shop-cart-header h3 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.shop-cart-empty {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  opacity: 0.75;
+}
+
+.shop-cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.shop-cart-line-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  font-family: var(--font-body);
+}
+
+.shop-cart-line-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.shop-cart-line-total {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.shop-cart-line-remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: var(--transition-fast);
+}
+
+.shop-cart-line-remove:hover {
+  background: rgba(139, 30, 43, 0.08);
+  color: var(--color-berry-red);
+}
+
+.shop-cart-subtotal-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-primary);
+  padding-top: 14px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  margin-bottom: 10px;
+}
+
+.shop-cart-shipping-note {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  opacity: 0.85;
+  margin-bottom: 18px;
+}
+
+.shop-cart-whatsapp-btn {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background: #25d366;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+  text-decoration: none;
+}
+
+.shop-cart-whatsapp-btn:hover {
+  filter: brightness(1.05);
+}
+
+.shop-wholesale-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+}
+
+.shop-wholesale-desc {
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.shop-wholesale-whatsapp-btn {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  text-decoration: none;
+}
+
 /* About section (scroll-section wrapper) - blueberry blue */
 .about-scroll-section {
   background: transparent;

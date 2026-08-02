@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { ChevronLeft, ChevronRight, Eye, X, MapPin, TrendingUp, Maximize, Utensils, Snowflake, CalendarDays, ShieldCheck } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
 import { ProductShowcase } from './ProductShowcase';
+import { Shop } from './Shop';
 import type { VarietyDetail, FruitType } from '../types';
 import type { TranslationDict } from '../i18n';
 
@@ -174,11 +175,6 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
   const safeGardenIndex = activeGalleryImages && activeGalleryImages.length > 0
     ? Math.max(0, Math.min(gardenIndex, activeGalleryImages.length - 1))
     : 0;
-
-  // Reset to the first slide whenever the image set changes
-  useEffect(() => {
-    setGardenIndex(0);
-  }, [aboutTab]);
 
   // Autoplay slideshow effect
   useEffect(() => {
@@ -387,15 +383,15 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
           {/* Middle Column: Text & Tabs & Content (40%) */}
           <div className="about-text-col">
             <div className="about-tabs-nav">
-            <button 
+            <button
               className={`about-tab-btn ${aboutTab === 'story' ? 'active' : ''}`}
-              onClick={() => setAboutTab('story')}
+              onClick={() => { setAboutTab('story'); setGardenIndex(0); }}
             >
               {t.aboutStoryTab}
             </button>
             <button
               className={`about-tab-btn ${aboutTab === 'organic' ? 'active' : ''}`}
-              onClick={() => setAboutTab('organic')}
+              onClick={() => { setAboutTab('organic'); setGardenIndex(0); }}
             >
               {t.aboutOrganicTab}
             </button>
@@ -734,6 +730,9 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
           </div>
         )}
       </section>
+
+      {/* 5. Online Satış (Shop) Section */}
+      <Shop />
 
       {/* Garden Lightbox Modal rendered via Portal directly under document.body to bypass z-index context issues */}
       {lightboxImage && createPortal(
