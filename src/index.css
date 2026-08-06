@@ -420,6 +420,36 @@ h1, h2, h3, h4 {
   vertical-align: middle;
 }
 
+.nav-soon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.55rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1px 6px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #c7923e, #9e6f24);
+  color: #ffffff;
+  margin-left: 6px;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.nav-col a.disabled {
+  opacity: 0.55;
+  cursor: not-allowed !important;
+}
+
+.nav-col a.disabled:hover::after {
+  transform: scaleX(0) !important;
+}
+
+.nav-col a.disabled:hover {
+  color: #374151 !important;
+}
+
 html[dir="rtl"] .menu-link-title .nav-cart-badge {
   margin-left: 0;
   margin-right: 8px;
@@ -4589,6 +4619,17 @@ html[dir="rtl"] .gallery-thumbnails-strip {
     color: #160b28 !important;
     opacity: 0.9;
     transform: translateX(8px);
+  }
+
+  .mobile-menu-link-item.disabled {
+    cursor: not-allowed !important;
+    opacity: 0.55;
+  }
+
+  .mobile-menu-link-item.disabled:hover .menu-link-title,
+  .mobile-menu-link-item.disabled:hover .menu-link-subtitle {
+    transform: none !important;
+    color: inherit !important;
   }
 
   /* Mobile menu footer branding */

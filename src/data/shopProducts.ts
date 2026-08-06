@@ -73,3 +73,8 @@ export const formatPrice = (price: number): string =>
 
 export const RETAIL_QTY_SOFT_CAP = 5000;
 export const WHATSAPP_NUMBER = '905334166484';
+
+// Online sales are paused for now — the nav link stays visible (with a
+// "coming soon" marker) but isn't clickable, and the /shop route redirects
+// home. Flip this back to true whenever the shop is ready to go live.
+export const SHOP_ENABLED = false;

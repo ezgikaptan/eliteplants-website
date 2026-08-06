@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import type { FruitType } from './types';
 import { ContentOverlay } from './components/ContentOverlay';
 import { Shop } from './components/Shop';
 import { Footer } from './components/Footer';
+import { SHOP_ENABLED } from './data/shopProducts';
 import { ArrowUp } from 'lucide-react';
 
 function App() {
@@ -92,7 +93,7 @@ function App() {
           path="/"
           element={<ContentOverlay activeFruit={activeFruit} setActiveFruit={setActiveFruit} />}
         />
-        <Route path="/shop" element={<Shop />} />
+        <Route path="/shop" element={SHOP_ENABLED ? <Shop /> : <Navigate to="/" replace />} />
       </Routes>
 
       {/* Corporate Footer */}

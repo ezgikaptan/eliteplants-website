@@ -4,6 +4,7 @@ import { Languages } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
 import { useCart } from '../context/CartContext';
 import type { Language } from '../i18n';
+import { SHOP_ENABLED } from '../data/shopProducts';
 
 const BASE = import.meta.env.BASE_URL;
 const mascotImg = `${BASE}images/icons/blackberry-mascot-full.png`;
@@ -209,11 +210,12 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
         {/* Right Side Navigation Links (Desktop Only) */}
         <div className="nav-col nav-col-right desktop-only">
           <a
-            onClick={goToShop}
-            className={`nav-shop-link ${activeSection === 'shop' ? 'active' : ''}`}
+            onClick={SHOP_ENABLED ? goToShop : undefined}
+            className={`nav-shop-link ${activeSection === 'shop' ? 'active' : ''} ${!SHOP_ENABLED ? 'disabled' : ''}`}
           >
             {t.navShop}
-            {cartCount > 0 && <span className="nav-cart-badge">{cartCount}</span>}
+            {!SHOP_ENABLED && <span className="nav-soon-badge">{t.varietiesSoon}</span>}
+            {SHOP_ENABLED && cartCount > 0 && <span className="nav-cart-badge">{cartCount}</span>}
           </a>
           <a
             onClick={() => scrollToSection('contact')}
@@ -297,12 +299,13 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             <span className="menu-link-subtitle">{mobileMenuSubtitles.varieties[language] || mobileMenuSubtitles.varieties['en']}</span>
           </a>
           <a
-            onClick={() => { goToShop(); setIsMenuOpen(false); }}
-            className={`mobile-menu-link-item ${activeSection === 'shop' ? 'active' : ''}`}
+            onClick={SHOP_ENABLED ? () => { goToShop(); setIsMenuOpen(false); } : undefined}
+            className={`mobile-menu-link-item ${activeSection === 'shop' ? 'active' : ''} ${!SHOP_ENABLED ? 'disabled' : ''}`}
           >
             <span className="menu-link-title">
               {t.navShop}
-              {cartCount > 0 && <span className="nav-cart-badge">{cartCount}</span>}
+              {!SHOP_ENABLED && <span className="nav-soon-badge">{t.varietiesSoon}</span>}
+              {SHOP_ENABLED && cartCount > 0 && <span className="nav-cart-badge">{cartCount}</span>}
             </span>
             <span className="menu-link-subtitle">{mobileMenuSubtitles.shop[language] || mobileMenuSubtitles.shop['en']}</span>
           </a>
