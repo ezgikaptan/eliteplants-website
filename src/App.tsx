@@ -1,44 +1,62 @@
 import { useState, useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import type { FruitType } from './types';
 import { ContentOverlay } from './components/ContentOverlay';
+import { Shop } from './components/Shop';
 import { Footer } from './components/Footer';
 import { ArrowUp } from 'lucide-react';
 
 function App() {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
   const [activeFruit, setActiveFruit] = useState<FruitType>('blackberry');
-  const [activeSection, setActiveSection] = useState('home');
+  const [scrollSection, setScrollSection] = useState('home');
   const [showScrollTop, setShowScrollTop] = useState(false);
 
+  // The Shop page has no scroll-tracked sections, so it's always its own
+  // "section" for nav-highlighting purposes; the home page derives its
+  // active section from scroll position (tracked below).
+  const activeSection = isHome ? scrollSection : 'shop';
+
+  // Scroll-to-top button visibility — applies on every page
   useEffect(() => {
+    const handleScroll = () => setShowScrollTop(window.scrollY > 400);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Reset scroll position when switching pages
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [isHome]);
+
+  // Active-section tracking only makes sense on the single-scroll home page
+  useEffect(() => {
+    if (!isHome) return;
+
     let lastSection = 'home';
-    
+
     const handleScroll = () => {
       const viewportHeight = window.innerHeight;
-      const scrollY = window.scrollY;
-
-      // Show scroll-to-top button if scrolled down past 400px
-      setShowScrollTop(scrollY > 400);
-      
-      // Active section calculation based on viewport intersection
-      const sections = ['home', 'about', 'varieties', 'shop', 'contact'];
+      const sections = ['home', 'about', 'varieties', 'contact'];
       let currentSection = 'home';
-      
+
       for (const section of sections) {
         const el = document.getElementById(section);
         if (el) {
           const rect = el.getBoundingClientRect();
-          // If the section occupies the center of the screen, mark it as active
           if (rect.top <= viewportHeight * 0.4 && rect.bottom >= viewportHeight * 0.4) {
             currentSection = section;
             break;
           }
         }
       }
-      
+
       if (currentSection !== lastSection) {
         lastSection = currentSection;
-        setActiveSection(currentSection);
+        setScrollSection(currentSection);
       }
     };
 
@@ -46,7 +64,19 @@ function App() {
     handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isHome]);
+
+  // A cross-page nav link (e.g. clicking "Hakkımızda" from the Shop page) lands
+  // here with the target anchor id in router state, once the home page mounts.
+  useEffect(() => {
+    if (!isHome) return;
+    const target = (location.state as { scrollTo?: string } | null)?.scrollTo;
+    if (target) {
+      requestAnimationFrame(() => {
+        document.getElementById(target)?.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+  }, [isHome, location.state]);
 
   return (
     <div className={`app-container active-sec-${activeSection}`}>
@@ -56,19 +86,20 @@ function App() {
       {/* Navigation Bar */}
       <Navbar activeSection={activeSection} />
 
-
-
-      {/* Primary Scrollable Content Sections */}
-      <ContentOverlay
-        activeFruit={activeFruit}
-        setActiveFruit={setActiveFruit}
-      />
+      {/* Page Content */}
+      <Routes>
+        <Route
+          path="/"
+          element={<ContentOverlay activeFruit={activeFruit} setActiveFruit={setActiveFruit} />}
+        />
+        <Route path="/shop" element={<Shop />} />
+      </Routes>
 
       {/* Corporate Footer */}
       <Footer />
 
       {/* Scroll to Top Button */}
-      <button 
+      <button
         className={`scroll-to-top ${showScrollTop ? 'visible' : ''}`}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         aria-label="Scroll to top"

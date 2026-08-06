@@ -398,6 +398,33 @@ h1, h2, h3, h4 {
   color: #111827;
 }
 
+.nav-cart-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: var(--accent-alberry, #a6222b);
+  color: #ffffff;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1;
+}
+
+.menu-link-title .nav-cart-badge {
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+html[dir="rtl"] .menu-link-title .nav-cart-badge {
+  margin-left: 0;
+  margin-right: 8px;
+}
+
 .nav-col a.active {
   color: #111827;
   font-weight: 700;

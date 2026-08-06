@@ -3,7 +3,6 @@ import { createPortal } from 'react-dom';
 import { ChevronLeft, ChevronRight, Eye, X, MapPin, TrendingUp, Maximize, Utensils, Snowflake, CalendarDays, ShieldCheck } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
 import { ProductShowcase } from './ProductShowcase';
-import { Shop } from './Shop';
 import type { VarietyDetail, FruitType } from '../types';
 import type { TranslationDict } from '../i18n';
 
@@ -730,9 +729,6 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
           </div>
         )}
       </section>
-
-      {/* 5. Online Satış (Shop) Section */}
-      <Shop />
 
       {/* Garden Lightbox Modal rendered via Portal directly under document.body to bypass z-index context issues */}
       {lightboxImage && createPortal(

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Languages } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
+import { useCart } from '../context/CartContext';
 import type { Language } from '../i18n';
 
 const BASE = import.meta.env.BASE_URL;
@@ -85,6 +87,11 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
   const { t, language, setLanguage } = useTranslation();
+  const { items } = useCart();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+  const cartCount = items.reduce((sum, item) => sum + item.quantity, 0);
   const homeT = homeTranslations[language] || homeTranslations['en'];
 
   useEffect(() => {
@@ -108,6 +115,13 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
   }, []);
 
   const scrollToSection = (id: string) => {
+    // From the Shop page (or any non-home route), navigate home first and
+    // let App.tsx scroll to the target once the home page has mounted.
+    if (!isHome) {
+      navigate('/', { state: { scrollTo: id } });
+      return;
+    }
+
     const element = document.getElementById(id);
     if (element) {
       const offset = 80; // Account for flat navbar height
@@ -121,6 +135,11 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
         behavior: 'smooth'
       });
     }
+  };
+
+  const goToShop = () => {
+    navigate('/shop');
+    window.scrollTo(0, 0);
   };
 
   const getLanguageLabel = (lang: Language) => {
@@ -154,14 +173,14 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
 
         {/* Left Side Navigation Links (Desktop Only) */}
         <div className="nav-col nav-col-left desktop-only">
-          <a 
-            onClick={() => scrollToSection('about')} 
+          <a
+            onClick={() => scrollToSection('about')}
             className={activeSection === 'about' ? 'active' : ''}
           >
             {t.navAbout}
           </a>
-          <a 
-            onClick={() => scrollToSection('varieties')} 
+          <a
+            onClick={() => scrollToSection('varieties')}
             className={activeSection === 'varieties' ? 'active' : ''}
           >
             {t.navVarieties}
@@ -170,7 +189,17 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
 
         {/* Centered Logo */}
         <div className="nav-col nav-col-center">
-          <div className="logo-vintage" onClick={() => { scrollToSection('home'); setIsMenuOpen(false); }}>
+          <div
+            className="logo-vintage"
+            onClick={() => {
+              if (isHome) {
+                scrollToSection('home');
+              } else {
+                navigate('/');
+              }
+              setIsMenuOpen(false);
+            }}
+          >
             <span className="logo-vintage-text">
               SULTAN <span>berry</span>
             </span>
@@ -180,10 +209,11 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
         {/* Right Side Navigation Links (Desktop Only) */}
         <div className="nav-col nav-col-right desktop-only">
           <a
-            onClick={() => scrollToSection('shop')}
-            className={activeSection === 'shop' ? 'active' : ''}
+            onClick={goToShop}
+            className={`nav-shop-link ${activeSection === 'shop' ? 'active' : ''}`}
           >
             {t.navShop}
+            {cartCount > 0 && <span className="nav-cart-badge">{cartCount}</span>}
           </a>
           <a
             onClick={() => scrollToSection('contact')}
@@ -238,8 +268,15 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
       <div className={`mobile-menu-panel ${isMenuOpen ? 'open' : ''}`}>
         <img src={mascotImg} alt="" aria-hidden="true" className="mobile-menu-mascot" />
         <div className="mobile-menu-links">
-          <a 
-            onClick={() => { scrollToSection('home'); setIsMenuOpen(false); }} 
+          <a
+            onClick={() => {
+              if (isHome) {
+                scrollToSection('home');
+              } else {
+                navigate('/');
+              }
+              setIsMenuOpen(false);
+            }}
             className={`mobile-menu-link-item ${activeSection === 'home' ? 'active' : ''}`}
           >
             <span className="menu-link-title">{homeT}</span>
@@ -260,10 +297,13 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             <span className="menu-link-subtitle">{mobileMenuSubtitles.varieties[language] || mobileMenuSubtitles.varieties['en']}</span>
           </a>
           <a
-            onClick={() => { scrollToSection('shop'); setIsMenuOpen(false); }}
+            onClick={() => { goToShop(); setIsMenuOpen(false); }}
             className={`mobile-menu-link-item ${activeSection === 'shop' ? 'active' : ''}`}
           >
-            <span className="menu-link-title">{t.navShop}</span>
+            <span className="menu-link-title">
+              {t.navShop}
+              {cartCount > 0 && <span className="nav-cart-badge">{cartCount}</span>}
+            </span>
             <span className="menu-link-subtitle">{mobileMenuSubtitles.shop[language] || mobileMenuSubtitles.shop['en']}</span>
           </a>
           <a
