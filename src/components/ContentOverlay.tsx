@@ -32,6 +32,7 @@ import farm17 from '../assets/images/farm_17.jpeg';
 import farm19 from '../assets/images/farm_19.jpeg';
 import tezza9027 from '../assets/images/Tezza-9027.jpg';
 import kapakImg from '../assets/images/kapak.jpeg';
+import kapakDesktopImg from '../assets/images/kapak-desktop.jpeg';
 import tezza0029 from '../assets/images/Tezza-0029.jpg';
 import tezza1398 from '../assets/images/Tezza-1398.jpg';
 import tezza1607 from '../assets/images/Tezza-1607.jpg';
@@ -314,7 +315,10 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
     <div style={{ position: 'relative', zIndex: 10 }}>
       {/* 1. Hero Section - Full-bleed Photo */}
       <section id="home" className="hero-vintage-section">
-        <img src={kapakImg} alt="" aria-hidden="true" className="hero-bg-image" />
+        <picture>
+          <source media="(max-width: 768px)" srcSet={kapakImg} />
+          <img src={kapakDesktopImg} alt="" aria-hidden="true" className="hero-bg-image" />
+        </picture>
         <div className="hero-bg-overlay" />
         <div className="hero-mascot-wrap">
           <img src={heroMascotImg} alt="" aria-hidden="true" className="hero-mascot" />
