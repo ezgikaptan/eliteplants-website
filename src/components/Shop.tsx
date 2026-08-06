@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Minus, Plus, ShoppingCart, Trash2, Truck } from 'lucide-react';
+import { Minus, Plus, ShoppingCart, Trash2, Truck, TrendingDown, ArrowRight } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
 import { useCart } from '../context/CartContext';
 import { shopProducts, getUnitPrice, formatPrice, WHATSAPP_NUMBER, RETAIL_QTY_SOFT_CAP } from '../data/shopProducts';
@@ -85,7 +85,7 @@ export const Shop: React.FC = () => {
   })();
 
   const wholesaleWhatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    'Merhaba, tablodaki adetlerin dışında özel bir sipariş için bilgi almak istiyorum.'
+    'Merhaba, daha büyük veya özel bir sipariş için bilgi almak istiyorum.'
   )}`;
 
   return (
@@ -102,6 +102,9 @@ export const Shop: React.FC = () => {
           const name = t[productNameKey[product.fruitType]];
           const unitPrice = product.available ? getUnitPrice(product, qty) : product.retailPriceTRY;
           const isDiscounted = unitPrice < product.retailPriceTRY;
+          const discountPercent = isDiscounted
+            ? Math.round((1 - unitPrice / product.retailPriceTRY) * 100)
+            : 0;
 
           return (
             <div
@@ -130,15 +133,16 @@ export const Shop: React.FC = () => {
                   <>
                     <div className="shop-product-package-note">{t.shopPackageLabel}</div>
                     <div className="shop-product-price-row">
+                      {isDiscounted && (
+                        <span className="shop-price-original">{formatPrice(product.retailPriceTRY)}₺</span>
+                      )}
                       <span className="shop-price-value">{formatPrice(unitPrice)}₺</span>
                       <span className="shop-price-unit">{t.shopPriceUnit}</span>
+                      {isDiscounted && <span className="shop-discount-badge">-%{discountPercent}</span>}
+                    </div>
+                    <div className="shop-price-meta-row">
                       <span className="shop-shipping-note">{t.shopShippingNote}</span>
                     </div>
-                    {isDiscounted && (
-                      <div className="shop-tier-hint">
-                        {formatPrice(product.retailPriceTRY)}₺ → {formatPrice(unitPrice)}₺ ({qty} {t.shopTiersQtyLabel.toLowerCase()})
-                      </div>
-                    )}
                     <div className="shop-product-actions">
                       <QtyStepper
                         quantity={qty}
@@ -227,31 +231,17 @@ export const Shop: React.FC = () => {
         </div>
 
         <div className="shop-wholesale-callout glass-panel-glow">
+          <div className="shop-wholesale-icon">
+            <TrendingDown size={20} />
+          </div>
           <h3 className="shop-wholesale-title">{t.shopWholesaleTitle}</h3>
-          <table className="shop-tier-table">
-            <thead>
-              <tr>
-                <th>{t.shopTiersQtyLabel}</th>
-                <th>{t.shopTiersPriceLabel}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1 – {karaberry.priceTiers[0].minUnits - 1}</td>
-                <td>{formatPrice(karaberry.retailPriceTRY)}₺</td>
-              </tr>
-              {karaberry.priceTiers.map((tier, idx) => {
-                const next = karaberry.priceTiers[idx + 1];
-                return (
-                  <tr key={tier.minUnits}>
-                    <td>{tier.minUnits}{next ? ` – ${next.minUnits - 1}` : '+'}</td>
-                    <td>{formatPrice(tier.pricePerUnit)}₺</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-
+          <div className="shop-wholesale-range">
+            <span>{formatPrice(karaberry.retailPriceTRY)}₺</span>
+            <ArrowRight size={15} />
+            <span className="shop-wholesale-range-best">
+              {formatPrice(karaberry.priceTiers[karaberry.priceTiers.length - 1].pricePerUnit)}₺
+            </span>
+          </div>
           <p className="shop-wholesale-desc">{t.shopWholesaleDesc}</p>
           <a
             href={wholesaleWhatsappUrl}
