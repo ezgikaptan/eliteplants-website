@@ -440,6 +440,7 @@ h1, h2, h3, h4 {
 .nav-col a.disabled {
   opacity: 0.55;
   cursor: not-allowed !important;
+  pointer-events: none !important;
 }
 
 .nav-col a.disabled:hover::after {
@@ -4624,6 +4625,7 @@ html[dir="rtl"] .gallery-thumbnails-strip {
   .mobile-menu-link-item.disabled {
     cursor: not-allowed !important;
     opacity: 0.55;
+    pointer-events: none !important;
   }
 
   .mobile-menu-link-item.disabled:hover .menu-link-title,
