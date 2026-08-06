@@ -31,6 +31,7 @@ interface ContentOverlayProps {
 import farm17 from '../assets/images/farm_17.jpeg';
 import farm19 from '../assets/images/farm_19.jpeg';
 import tezza9027 from '../assets/images/Tezza-9027.jpg';
+import kapakImg from '../assets/images/kapak.jpeg';
 import tezza0029 from '../assets/images/Tezza-0029.jpg';
 import tezza1398 from '../assets/images/Tezza-1398.jpg';
 import tezza1607 from '../assets/images/Tezza-1607.jpg';
@@ -313,7 +314,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ activeFruit, set
     <div style={{ position: 'relative', zIndex: 10 }}>
       {/* 1. Hero Section - Full-bleed Photo */}
       <section id="home" className="hero-vintage-section">
-        <img src={tezza9027} alt="" aria-hidden="true" className="hero-bg-image" />
+        <img src={kapakImg} alt="" aria-hidden="true" className="hero-bg-image" />
         <div className="hero-bg-overlay" />
         <div className="hero-mascot-wrap">
           <img src={heroMascotImg} alt="" aria-hidden="true" className="hero-mascot" />

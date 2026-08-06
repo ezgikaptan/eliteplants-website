@@ -214,7 +214,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             className={`nav-shop-link ${activeSection === 'shop' ? 'active' : ''} ${!SHOP_ENABLED ? 'disabled' : ''}`}
           >
             {t.navShop}
-            {!SHOP_ENABLED && <span className="nav-soon-badge">{t.varietiesSoon}</span>}
             {SHOP_ENABLED && cartCount > 0 && <span className="nav-cart-badge">{cartCount}</span>}
           </a>
           <a
@@ -304,7 +303,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
           >
             <span className="menu-link-title">
               {t.navShop}
-              {!SHOP_ENABLED && <span className="nav-soon-badge">{t.varietiesSoon}</span>}
               {SHOP_ENABLED && cartCount > 0 && <span className="nav-cart-badge">{cartCount}</span>}
             </span>
             <span className="menu-link-subtitle">{mobileMenuSubtitles.shop[language] || mobileMenuSubtitles.shop['en']}</span>
