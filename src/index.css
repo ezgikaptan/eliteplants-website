@@ -1191,11 +1191,33 @@ html[dir="rtl"] .menu-link-title .nav-cart-badge {
   background: rgba(0, 0, 0, 0.05);
 }
 
-.shop-qty-stepper span {
+.shop-qty-input {
   font-family: var(--font-body);
   font-weight: 600;
-  min-width: 18px;
+  width: 52px;
   text-align: center;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  -moz-appearance: textfield;
+}
+
+.shop-qty-input::-webkit-outer-spin-button,
+.shop-qty-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.shop-qty-input:focus {
+  outline: none;
+}
+
+.shop-tier-hint {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent-alberry, #a6222b);
+  margin: -8px 0 14px;
 }
 
 .shop-add-to-cart-btn {
@@ -1271,9 +1293,20 @@ html[dir="rtl"] .menu-link-title .nav-cart-badge {
 }
 
 .shop-cart-line-name {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--text-primary);
+}
+
+.shop-cart-line-name em {
+  font-style: normal;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  opacity: 0.8;
 }
 
 .shop-cart-line-total {
@@ -1343,7 +1376,47 @@ html[dir="rtl"] .menu-link-title .nav-cart-badge {
   font-size: 1.15rem;
   font-weight: 600;
   color: var(--color-primary);
-  margin-bottom: 10px;
+  margin-bottom: 14px;
+}
+
+.shop-tier-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 18px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+}
+
+.shop-tier-table th {
+  text-align: start;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  opacity: 0.75;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.shop-tier-table td {
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  color: var(--text-primary);
+}
+
+.shop-tier-table td:last-child {
+  font-weight: 700;
+  color: var(--color-primary);
+  text-align: end;
+}
+
+.shop-tier-table th:last-child {
+  text-align: end;
+}
+
+.shop-tier-table tr:last-child td {
+  border-bottom: none;
 }
 
 .shop-wholesale-desc {

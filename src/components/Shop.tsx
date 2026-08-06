@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Minus, Plus, ShoppingCart, Trash2, Truck } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
 import { useCart } from '../context/CartContext';
-import { shopProducts, WHATSAPP_NUMBER, RETAIL_QTY_SOFT_CAP } from '../data/shopProducts';
+import { shopProducts, getUnitPrice, formatPrice, WHATSAPP_NUMBER, RETAIL_QTY_SOFT_CAP } from '../data/shopProducts';
 import type { FruitType } from '../types';
 import type { TranslationDict } from '../i18n';
 
@@ -25,6 +25,32 @@ const productDescKey: Record<FruitType, keyof TranslationDict> = {
   blueberry: 'productsGokberryDesc',
 };
 
+const clampQty = (value: number) => Math.min(RETAIL_QTY_SOFT_CAP, Math.max(1, Math.round(value) || 1));
+
+interface QtyStepperProps {
+  quantity: number;
+  onChange: (quantity: number) => void;
+}
+
+const QtyStepper: React.FC<QtyStepperProps> = ({ quantity, onChange }) => (
+  <div className="shop-qty-stepper">
+    <button type="button" onClick={() => onChange(clampQty(quantity - 1))} aria-label="-">
+      <Minus size={14} />
+    </button>
+    <input
+      type="number"
+      className="shop-qty-input"
+      value={quantity}
+      min={1}
+      max={RETAIL_QTY_SOFT_CAP}
+      onChange={(e) => onChange(clampQty(Number(e.target.value)))}
+    />
+    <button type="button" onClick={() => onChange(clampQty(quantity + 1))} aria-label="+">
+      <Plus size={14} />
+    </button>
+  </div>
+);
+
 export const Shop: React.FC = () => {
   const { t } = useTranslation();
   const { items, addToCart, removeFromCart, setQuantity } = useCart();
@@ -34,9 +60,11 @@ export const Shop: React.FC = () => {
     blueberry: 1,
   });
 
+  const karaberry = shopProducts.find((p) => p.fruitType === 'blackberry')!;
+
   const subtotal = items.reduce((sum, item) => {
     const product = shopProducts.find((p) => p.fruitType === item.fruitType);
-    return sum + (product ? product.retailPriceTRY * item.quantity : 0);
+    return sum + (product ? getUnitPrice(product, item.quantity) * item.quantity : 0);
   }, 0);
 
   const orderWhatsappUrl = (() => {
@@ -44,7 +72,8 @@ export const Shop: React.FC = () => {
       const product = shopProducts.find((p) => p.fruitType === item.fruitType);
       if (!product) return '';
       const name = t[productNameKey[item.fruitType]];
-      return `- ${name} (${product.packageSizeGrams}g) x${item.quantity} = ${product.retailPriceTRY * item.quantity}₺`;
+      const unitPrice = getUnitPrice(product, item.quantity);
+      return `- ${name} (${product.packageSizeGrams}g) x${item.quantity} @ ${formatPrice(unitPrice)}₺ = ${unitPrice * item.quantity}₺`;
     });
     const text = [
       "Merhaba, Sultanberry'den sipariş vermek istiyorum:",
@@ -56,7 +85,7 @@ export const Shop: React.FC = () => {
   })();
 
   const wholesaleWhatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    'Merhaba, toptan sipariş hakkında bilgi almak istiyorum.'
+    'Merhaba, tablodaki adetlerin dışında özel bir sipariş için bilgi almak istiyorum.'
   )}`;
 
   return (
@@ -71,6 +100,8 @@ export const Shop: React.FC = () => {
         {shopProducts.map((product) => {
           const qty = pendingQty[product.fruitType];
           const name = t[productNameKey[product.fruitType]];
+          const unitPrice = product.available ? getUnitPrice(product, qty) : product.retailPriceTRY;
+          const isDiscounted = unitPrice < product.retailPriceTRY;
 
           return (
             <div
@@ -99,38 +130,22 @@ export const Shop: React.FC = () => {
                   <>
                     <div className="shop-product-package-note">{t.shopPackageLabel}</div>
                     <div className="shop-product-price-row">
-                      <span className="shop-price-value">{product.retailPriceTRY}₺</span>
+                      <span className="shop-price-value">{formatPrice(unitPrice)}₺</span>
                       <span className="shop-price-unit">{t.shopPriceUnit}</span>
                       <span className="shop-shipping-note">{t.shopShippingNote}</span>
                     </div>
-                    <div className="shop-product-actions">
-                      <div className="shop-qty-stepper">
-                        <button
-                          type="button"
-                          onClick={() =>
-                            setPendingQty((prev) => ({
-                              ...prev,
-                              [product.fruitType]: Math.max(1, prev[product.fruitType] - 1),
-                            }))
-                          }
-                          aria-label="-"
-                        >
-                          <Minus size={14} />
-                        </button>
-                        <span>{qty}</span>
-                        <button
-                          type="button"
-                          onClick={() =>
-                            setPendingQty((prev) => ({
-                              ...prev,
-                              [product.fruitType]: Math.min(RETAIL_QTY_SOFT_CAP, prev[product.fruitType] + 1),
-                            }))
-                          }
-                          aria-label="+"
-                        >
-                          <Plus size={14} />
-                        </button>
+                    {isDiscounted && (
+                      <div className="shop-tier-hint">
+                        {formatPrice(product.retailPriceTRY)}₺ → {formatPrice(unitPrice)}₺ ({qty} {t.shopTiersQtyLabel.toLowerCase()})
                       </div>
+                    )}
+                    <div className="shop-product-actions">
+                      <QtyStepper
+                        quantity={qty}
+                        onChange={(next) =>
+                          setPendingQty((prev) => ({ ...prev, [product.fruitType]: next }))
+                        }
+                      />
                       <button
                         type="button"
                         className="btn-primary shop-add-to-cart-btn"
@@ -165,27 +180,18 @@ export const Shop: React.FC = () => {
                 {items.map((item) => {
                   const product = shopProducts.find((p) => p.fruitType === item.fruitType);
                   if (!product) return null;
+                  const unitPrice = getUnitPrice(product, item.quantity);
                   return (
                     <div key={item.fruitType} className="shop-cart-line-item">
-                      <span className="shop-cart-line-name">{t[productNameKey[item.fruitType]]}</span>
-                      <div className="shop-qty-stepper">
-                        <button
-                          type="button"
-                          onClick={() => setQuantity(item.fruitType, item.quantity - 1)}
-                          aria-label="-"
-                        >
-                          <Minus size={14} />
-                        </button>
-                        <span>{item.quantity}</span>
-                        <button
-                          type="button"
-                          onClick={() => setQuantity(item.fruitType, item.quantity + 1)}
-                          aria-label="+"
-                        >
-                          <Plus size={14} />
-                        </button>
-                      </div>
-                      <span className="shop-cart-line-total">{product.retailPriceTRY * item.quantity}₺</span>
+                      <span className="shop-cart-line-name">
+                        {t[productNameKey[item.fruitType]]}
+                        <em>{formatPrice(unitPrice)}₺ / {t.shopPackageLabel}</em>
+                      </span>
+                      <QtyStepper
+                        quantity={item.quantity}
+                        onChange={(next) => setQuantity(item.fruitType, next)}
+                      />
+                      <span className="shop-cart-line-total">{unitPrice * item.quantity}₺</span>
                       <button
                         type="button"
                         className="shop-cart-line-remove"
@@ -222,6 +228,30 @@ export const Shop: React.FC = () => {
 
         <div className="shop-wholesale-callout glass-panel-glow">
           <h3 className="shop-wholesale-title">{t.shopWholesaleTitle}</h3>
+          <table className="shop-tier-table">
+            <thead>
+              <tr>
+                <th>{t.shopTiersQtyLabel}</th>
+                <th>{t.shopTiersPriceLabel}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1 – {karaberry.priceTiers[0].minUnits - 1}</td>
+                <td>{formatPrice(karaberry.retailPriceTRY)}₺</td>
+              </tr>
+              {karaberry.priceTiers.map((tier, idx) => {
+                const next = karaberry.priceTiers[idx + 1];
+                return (
+                  <tr key={tier.minUnits}>
+                    <td>{tier.minUnits}{next ? ` – ${next.minUnits - 1}` : '+'}</td>
+                    <td>{formatPrice(tier.pricePerUnit)}₺</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+
           <p className="shop-wholesale-desc">{t.shopWholesaleDesc}</p>
           <a
             href={wholesaleWhatsappUrl}
